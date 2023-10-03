@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class NewBook extends StatelessWidget {
   @override
@@ -141,14 +142,22 @@ class NewBook extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Row(
-              children: List.generate(5, (index) {
-                return Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: 30,
-                );
-              }),
+            //5 stars widget to rate the book
+            RatingBar.builder(
+              initialRating: 3,
+              minRating: 1,
+              direction: Axis.horizontal,
+              allowHalfRating: true,
+              itemCount: 5,
+              itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+              itemBuilder: (context, _) => Icon(
+                Icons.star,
+                color: Colors.amber,
+              ),
+              onRatingUpdate: (rating) {
+                //rating contains the rating value from 1 to 5, also allows half values
+                print(rating);
+              },
             ),
             SizedBox(height: 10), // Add spacing
 
