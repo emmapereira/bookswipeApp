@@ -1,0 +1,29 @@
+dependencies: \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/URLSessionPromiseWrapper/NSURLSession+GULPromises.m \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Intermediates.noindex/Pods.build/Debug/GoogleUtilities.build/module.modulemap \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/NSURLSession+GULPromises.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/dyld.modulemap \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromises.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Intermediates.noindex/Pods.build/Debug/PromisesObjC.build/module.modulemap \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Wrap.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Validate.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Timeout.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Then.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Testing.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Retry.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Reduce.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Recover.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Race.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Do.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Delay.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Catch.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Await.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Async.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Any.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Always.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromiseError.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+All.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/Target\ Support\ Files/PromisesObjC/PromisesObjC-umbrella.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULURLSessionDataResponse.h

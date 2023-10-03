@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "226501837922",
+    "firebase_url": "https://bookswipe5-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "bookswipe5",
+    "storage_bucket": "bookswipe5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226501837922:android:069ec312d663f533a0fd3b",
+        "android_client_info": {
+          "package_name": "com.example.bookswipe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi-AFj_lTfsL0TEfA2SnYDTqJ_A2knssM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

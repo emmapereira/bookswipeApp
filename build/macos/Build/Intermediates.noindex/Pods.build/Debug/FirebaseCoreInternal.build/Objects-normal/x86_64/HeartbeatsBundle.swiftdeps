@@ -1,0 +1,643 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "HeartbeatsPayloadConvertible"
+- "HeartbeatsBundle"
+provides-nominal:
+- "20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP"
+- "20FirebaseCoreInternal16HeartbeatsBundleV"
+provides-member:
+- ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", ""]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "+"
+- "<"
+- "=="
+- !private ">"
+- !private "Array"
+- "AssignmentPrecedence"
+- "Codable"
+- "Date"
+- "Dictionary"
+- !private "FloatLiteralType"
+- "Heartbeat"
+- "HeartbeatsBundle"
+- "HeartbeatsPayload"
+- "HeartbeatsPayloadConvertible"
+- "Int"
+- !private "IntegerLiteralType"
+- !private "Result"
+- "RingBuffer"
+- !private "String"
+- !private "StringLiteralType"
+- !private "TernaryPrecedence"
+- "TimePeriod"
+- !private "UnicodeScalarType"
+- "buffer"
+- "cacheProvider"
+- !private "capacity"
+- "lastAddedHeartbeatDates"
+- !private "~="
+depends-member:
+- !private ["Sa", "append"]
+- !private ["Sa", "forEach"]
+- !private ["Sa", "map"]
+- !private ["Sa", "reversed"]
+- !private ["Sa", "sorted"]
+- !private ["SK", ""]
+- !private ["SK", "append"]
+- !private ["SK", "forEach"]
+- !private ["SK", "map"]
+- !private ["SK", "replacingOccurrences"]
+- !private ["SK", "reversed"]
+- !private ["SK", "sorted"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "append"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "distantPast"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "forEach"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "map"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "replacingOccurrences"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "reversed"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "sorted"]
+- !private ["s7CVarArgP", "append"]
+- !private ["s7CVarArgP", "forEach"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "map"]
+- !private ["s7CVarArgP", "mapValues"]
+- !private ["s7CVarArgP", "replacingOccurrences"]
+- !private ["s7CVarArgP", "reversed"]
+- !private ["s7CVarArgP", "sorted"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["s12CaseIterableP", "Element"]
+- !private ["s12CaseIterableP", "allCases"]
+- ["s9CodingKeyP", "=="]
+- !private ["s9CodingKeyP", ""]
+- ["s9CodingKeyP", "_rawHashValue"]
+- ["s9CodingKeyP", "debugDescription"]
+- ["s9CodingKeyP", "description"]
+- ["s9CodingKeyP", "hash"]
+- ["s9CodingKeyP", "hashValue"]
+- ["s9CodingKeyP", "init"]
+- ["s9CodingKeyP", "intValue"]
+- ["s9CodingKeyP", "stringValue"]
+- !private ["Sl", ""]
+- !private ["Sl", "append"]
+- !private ["Sl", "forEach"]
+- !private ["Sl", "init"]
+- !private ["Sl", "map"]
+- !private ["Sl", "mapValues"]
+- !private ["Sl", "replacingOccurrences"]
+- !private ["Sl", "reversed"]
+- !private ["Sl", "sorted"]
+- !private ["Sl", "subscript"]
+- !private ["SL", ""]
+- !private ["SL", "distantPast"]
+- !private ["SL", "replacingOccurrences"]
+- !private ["10Foundation15ContiguousBytesP", "append"]
+- !private ["10Foundation15ContiguousBytesP", "forEach"]
+- !private ["10Foundation15ContiguousBytesP", "map"]
+- !private ["10Foundation15ContiguousBytesP", "reversed"]
+- !private ["10Foundation15ContiguousBytesP", "sorted"]
+- ["s28CustomDebugStringConvertibleP", "=="]
+- ["s28CustomDebugStringConvertibleP", ""]
+- ["s28CustomDebugStringConvertibleP", "_rawHashValue"]
+- !private ["s28CustomDebugStringConvertibleP", "append"]
+- ["s28CustomDebugStringConvertibleP", "debugDescription"]
+- ["s28CustomDebugStringConvertibleP", "description"]
+- !private ["s28CustomDebugStringConvertibleP", "distantPast"]
+- !private ["s28CustomDebugStringConvertibleP", "forEach"]
+- ["s28CustomDebugStringConvertibleP", "hash"]
+- ["s28CustomDebugStringConvertibleP", "hashValue"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- ["s28CustomDebugStringConvertibleP", "intValue"]
+- !private ["s28CustomDebugStringConvertibleP", "map"]
+- !private ["s28CustomDebugStringConvertibleP", "mapValues"]
+- !private ["s28CustomDebugStringConvertibleP", "replacingOccurrences"]
+- !private ["s28CustomDebugStringConvertibleP", "reversed"]
+- !private ["s28CustomDebugStringConvertibleP", "sorted"]
+- ["s28CustomDebugStringConvertibleP", "stringValue"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s17CustomReflectableP", "append"]
+- !private ["s17CustomReflectableP", "distantPast"]
+- !private ["s17CustomReflectableP", "forEach"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "map"]
+- !private ["s17CustomReflectableP", "mapValues"]
+- !private ["s17CustomReflectableP", "replacingOccurrences"]
+- !private ["s17CustomReflectableP", "reversed"]
+- !private ["s17CustomReflectableP", "sorted"]
+- !private ["s17CustomReflectableP", "subscript"]
+- ["s23CustomStringConvertibleP", "=="]
+- ["s23CustomStringConvertibleP", ""]
+- ["s23CustomStringConvertibleP", "_rawHashValue"]
+- !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- ["s23CustomStringConvertibleP", "debugDescription"]
+- ["s23CustomStringConvertibleP", "description"]
+- !private ["s23CustomStringConvertibleP", "distantPast"]
+- !private ["s23CustomStringConvertibleP", "forEach"]
+- ["s23CustomStringConvertibleP", "hash"]
+- ["s23CustomStringConvertibleP", "hashValue"]
+- ["s23CustomStringConvertibleP", "init"]
+- ["s23CustomStringConvertibleP", "intValue"]
+- !private ["s23CustomStringConvertibleP", "map"]
+- !private ["s23CustomStringConvertibleP", "mapValues"]
+- !private ["s23CustomStringConvertibleP", "replacingOccurrences"]
+- !private ["s23CustomStringConvertibleP", "reversed"]
+- !private ["s23CustomStringConvertibleP", "sorted"]
+- ["s23CustomStringConvertibleP", "stringValue"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["10Foundation12DataProtocolP", ""]
+- !private ["10Foundation12DataProtocolP", "append"]
+- !private ["10Foundation12DataProtocolP", "forEach"]
+- !private ["10Foundation12DataProtocolP", "map"]
+- !private ["10Foundation12DataProtocolP", "reversed"]
+- !private ["10Foundation12DataProtocolP", "sorted"]
+- !private ["10Foundation4DateV", "distantPast"]
+- !private ["Se", "Date"]
+- !private ["Se", "Dictionary"]
+- !private ["Se", "Error"]
+- !private ["Se", "Heartbeat"]
+- !private ["Se", "HeartbeatsBundle"]
+- !private ["Se", "HeartbeatsPayload"]
+- !private ["Se", "Result"]
+- !private ["Se", "RingBuffer"]
+- !private ["Se", "String"]
+- !private ["Se", "TimePeriod"]
+- !private ["Se", "UserAgentPayload"]
+- ["Se", ""]
+- !private ["Se", "agent"]
+- !private ["Se", "allCases"]
+- !private ["Se", "append"]
+- !private ["Se", "buffer"]
+- !private ["Se", "cacheProvider"]
+- !private ["Se", "capacity"]
+- !private ["Se", "date"]
+- !private ["Se", "distantPast"]
+- ["Se", "encode"]
+- !private ["Se", "forEach"]
+- ["Se", "init"]
+- !private ["Se", "lastAddedHeartbeatDates"]
+- ["Se", "makeHeartbeatsPayload"]
+- !private ["Se", "map"]
+- !private ["Se", "mapValues"]
+- !private ["Se", "pop"]
+- !private ["Se", "push"]
+- !private ["Se", "replacingOccurrences"]
+- !private ["Se", "reversed"]
+- !private ["Se", "sorted"]
+- !private ["Se", "subscript"]
+- !private ["Se", "timePeriods"]
+- !private ["s7DecoderP", "container"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- !private ["SD", "init"]
+- !private ["SD", "map"]
+- !private ["SD", "mapValues"]
+- !private ["SD", "subscript"]
+- !private ["SE", "Date"]
+- !private ["SE", "Dictionary"]
+- !private ["SE", "Error"]
+- !private ["SE", "Heartbeat"]
+- !private ["SE", "HeartbeatsBundle"]
+- !private ["SE", "HeartbeatsPayload"]
+- !private ["SE", "Result"]
+- !private ["SE", "RingBuffer"]
+- !private ["SE", "String"]
+- !private ["SE", "TimePeriod"]
+- !private ["SE", "UserAgentPayload"]
+- ["SE", ""]
+- !private ["SE", "agent"]
+- !private ["SE", "allCases"]
+- !private ["SE", "append"]
+- !private ["SE", "buffer"]
+- !private ["SE", "cacheProvider"]
+- !private ["SE", "capacity"]
+- !private ["SE", "date"]
+- !private ["SE", "distantPast"]
+- ["SE", "encode"]
+- !private ["SE", "forEach"]
+- ["SE", "init"]
+- !private ["SE", "lastAddedHeartbeatDates"]
+- ["SE", "makeHeartbeatsPayload"]
+- !private ["SE", "map"]
+- !private ["SE", "mapValues"]
+- !private ["SE", "pop"]
+- !private ["SE", "push"]
+- !private ["SE", "replacingOccurrences"]
+- !private ["SE", "reversed"]
+- !private ["SE", "sorted"]
+- !private ["SE", "subscript"]
+- !private ["SE", "timePeriods"]
+- !private ["s7EncoderP", "container"]
+- ["SQ", "=="]
+- !private ["SQ", "UserAgentPayload"]
+- ["SQ", ""]
+- ["SQ", "_rawHashValue"]
+- !private ["SQ", "agent"]
+- !private ["SQ", "allCases"]
+- !private ["SQ", "append"]
+- !private ["SQ", "date"]
+- ["SQ", "debugDescription"]
+- ["SQ", "description"]
+- !private ["SQ", "distantPast"]
+- !private ["SQ", "forEach"]
+- ["SQ", "hash"]
+- ["SQ", "hashValue"]
+- ["SQ", "init"]
+- ["SQ", "intValue"]
+- !private ["SQ", "map"]
+- !private ["SQ", "mapValues"]
+- !private ["SQ", "replacingOccurrences"]
+- !private ["SQ", "reversed"]
+- !private ["SQ", "sorted"]
+- ["SQ", "stringValue"]
+- !private ["SQ", "subscript"]
+- ["SQ", "success"]
+- !private ["SQ", "timePeriods"]
+- !private ["20FirebaseCoreInternal10RingBufferV5ErrorO", ""]
+- !private ["s5ErrorP", ""]
+- !private ["20FirebaseCoreInternal10RingBufferV5ErrorO", "errorDescription"]
+- !private ["s5ErrorP", "errorDescription"]
+- !private ["s25ExpressibleByArrayLiteralP", ""]
+- !private ["s25ExpressibleByArrayLiteralP", "append"]
+- !private ["s25ExpressibleByArrayLiteralP", "forEach"]
+- !private ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "map"]
+- !private ["s25ExpressibleByArrayLiteralP", "reversed"]
+- !private ["s25ExpressibleByArrayLiteralP", "sorted"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "init"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "map"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "mapValues"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", ""]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "replacingOccurrences"]
+- !private ["s23ExpressibleByNilLiteralP", "replacingOccurrences"]
+- !private ["s32ExpressibleByStringInterpolationP", "StringInterpolation"]
+- !private ["s32ExpressibleByStringInterpolationP", ""]
+- !private ["s32ExpressibleByStringInterpolationP", "init"]
+- !private ["s32ExpressibleByStringInterpolationP", "replacingOccurrences"]
+- !private ["s26ExpressibleByStringLiteralP", ""]
+- !private ["s26ExpressibleByStringLiteralP", "replacingOccurrences"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", ""]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "replacingOccurrences"]
+- !private ["20FirebaseCoreInternal23HTTPHeaderRepresentableP", "UserAgentPayload"]
+- !private ["20FirebaseCoreInternal23HTTPHeaderRepresentableP", "init"]
+- ["SH", "=="]
+- !private ["SH", ""]
+- ["SH", "_rawHashValue"]
+- !private ["SH", "allCases"]
+- !private ["SH", "append"]
+- ["SH", "debugDescription"]
+- ["SH", "description"]
+- !private ["SH", "distantPast"]
+- !private ["SH", "forEach"]
+- ["SH", "hash"]
+- ["SH", "hashValue"]
+- ["SH", "init"]
+- ["SH", "intValue"]
+- !private ["SH", "map"]
+- !private ["SH", "mapValues"]
+- !private ["SH", "replacingOccurrences"]
+- !private ["SH", "reversed"]
+- !private ["SH", "sorted"]
+- ["SH", "stringValue"]
+- !private ["SH", "subscript"]
+- ["SH", "success"]
+- !private ["s6HasherV", "combine"]
+- ["20FirebaseCoreInternal9HeartbeatV", ""]
+- !private ["20FirebaseCoreInternal9HeartbeatV", "agent"]
+- !private ["20FirebaseCoreInternal9HeartbeatV", "date"]
+- !private ["20FirebaseCoreInternal9HeartbeatV", "init"]
+- !private ["20FirebaseCoreInternal9HeartbeatV", "timePeriods"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "CodingKeys"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "Date"]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", "Dictionary"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "Heartbeat"]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", "HeartbeatsBundle"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "HeartbeatsPayload"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "Int"]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", "Result"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "RingBuffer"]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", "String"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "TimePeriod"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", ""]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "append"]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", "buffer"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "cacheProvider"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "capacity"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "encode"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "init"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "lastAddedHeartbeatDates"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "makeHeartbeatsPayload"]
+- ["20FirebaseCoreInternal16HeartbeatsBundleV", "removeHeartbeat"]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV", "UserAgentPayload"]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV", ""]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV", "init"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "Date"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "Dictionary"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "Heartbeat"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "HeartbeatsBundle"]
+- ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "HeartbeatsPayload"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "Result"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "RingBuffer"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "String"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "TimePeriod"]
+- ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", ""]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "agent"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "buffer"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "cacheProvider"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "capacity"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "date"]
+- ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "encode"]
+- ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "init"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "lastAddedHeartbeatDates"]
+- ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "makeHeartbeatsPayload"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "timePeriods"]
+- !private ["s22KeyedDecodingContainerV", "decode"]
+- !private ["s30KeyedDecodingContainerProtocolP", "decode"]
+- !private ["s22KeyedEncodingContainerV", "encode"]
+- !private ["s30KeyedEncodingContainerProtocolP", "encode"]
+- !private ["s20LazySequenceProtocolP", "forEach"]
+- !private ["10Foundation14LocalizedErrorP", "errorDescription"]
+- !private ["s25LosslessStringConvertibleP", ""]
+- !private ["s25LosslessStringConvertibleP", "replacingOccurrences"]
+- !private ["s10MirrorPathP", "replacingOccurrences"]
+- !private ["SM", ""]
+- !private ["SM", "append"]
+- !private ["SM", "forEach"]
+- !private ["SM", "map"]
+- !private ["SM", "reversed"]
+- !private ["SM", "sorted"]
+- !private ["10Foundation19MutableDataProtocolP", "append"]
+- !private ["10Foundation19MutableDataProtocolP", "forEach"]
+- !private ["10Foundation19MutableDataProtocolP", "map"]
+- !private ["10Foundation19MutableDataProtocolP", "reversed"]
+- !private ["10Foundation19MutableDataProtocolP", "sorted"]
+- ["So8NSCodingP", ""]
+- !private ["So8NSCodingP", "replacingOccurrences"]
+- !private ["So9NSCopyingP", "replacingOccurrences"]
+- !private ["So21NSItemProviderReadingP", "replacingOccurrences"]
+- !private ["So21NSItemProviderWritingP", "replacingOccurrences"]
+- !private ["So16NSMutableCopyingP", "replacingOccurrences"]
+- !private ["So8NSObjectC", "replacingOccurrences"]
+- !private ["So8NSObjectC", "stringByReplacingOccurrencesOfString"]
+- ["So8NSObjectP", ""]
+- !private ["So8NSObjectP", "replacingOccurrences"]
+- !private ["So8NSObjectP", "stringByReplacingOccurrencesOfString"]
+- !private ["So19NSPasteboardReadingP", "replacingOccurrences"]
+- !private ["So19NSPasteboardWritingP", "replacingOccurrences"]
+- !private ["So14NSSecureCodingP", "replacingOccurrences"]
+- !private ["So8NSStringC", "replacingOccurrences"]
+- !private ["Sq", "replacingOccurrences"]
+- !private ["Sk", ""]
+- !private ["Sk", "append"]
+- !private ["Sk", "forEach"]
+- !private ["Sk", "map"]
+- !private ["Sk", "reversed"]
+- !private ["Sk", "sorted"]
+- !private ["Sm", ""]
+- !private ["Sm", "append"]
+- !private ["Sm", "forEach"]
+- !private ["Sm", "map"]
+- !private ["Sm", "replacingOccurrences"]
+- !private ["Sm", "reversed"]
+- !private ["Sm", "sorted"]
+- !private ["SY", "allCases"]
+- !private ["10Foundation20ReferenceConvertibleP", "distantPast"]
+- !private ["s6ResultO", "init"]
+- ["s6ResultO", "success"]
+- !private ["s18ReversedCollectionV", "forEach"]
+- !private ["20FirebaseCoreInternal10RingBufferV", "CodingKeys"]
+- !private ["20FirebaseCoreInternal10RingBufferV", "Error"]
+- ["20FirebaseCoreInternal10RingBufferV", ""]
+- !private ["20FirebaseCoreInternal10RingBufferV", "init"]
+- !private ["20FirebaseCoreInternal10RingBufferV", "map"]
+- !private ["20FirebaseCoreInternal10RingBufferV", "pop"]
+- !private ["20FirebaseCoreInternal10RingBufferV", "push"]
+- !private ["ST", "Element"]
+- !private ["ST", "Error"]
+- !private ["ST", ""]
+- !private ["ST", "append"]
+- !private ["ST", "forEach"]
+- !private ["ST", "init"]
+- !private ["ST", "map"]
+- !private ["ST", "mapValues"]
+- !private ["ST", "pop"]
+- !private ["ST", "push"]
+- !private ["ST", "replacingOccurrences"]
+- !private ["ST", "reversed"]
+- !private ["ST", "sorted"]
+- !private ["ST", "subscript"]
+- !private ["SS", "replacingOccurrences"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["s27StringInterpolationProtocolP", "init"]
+- !private ["Sy", "replacingOccurrences"]
+- !private ["s16TextOutputStreamP", ""]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "replacingOccurrences"]
+- !private ["s20TextOutputStreamableP", ""]
+- !private ["s20TextOutputStreamableP", "replacingOccurrences"]
+- ["20FirebaseCoreInternal10TimePeriodO", ""]
+- !private ["20FirebaseCoreInternal10TimePeriodO", "allCases"]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV09UserAgentE0V", "CodingKeys"]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV09UserAgentE0V", ""]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV09UserAgentE0V", "agent"]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV09UserAgentE0V", "init"]
+- !private ["s14_ArrayProtocolP", "append"]
+- !private ["s14_ArrayProtocolP", "forEach"]
+- !private ["s14_ArrayProtocolP", "map"]
+- !private ["s14_ArrayProtocolP", "reversed"]
+- !private ["s14_ArrayProtocolP", "sorted"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "distantPast"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "replacingOccurrences"]
+- !private ["s24_DestructorSafeContainerP", "append"]
+- !private ["s24_DestructorSafeContainerP", "forEach"]
+- !private ["s24_DestructorSafeContainerP", "map"]
+- !private ["s24_DestructorSafeContainerP", "reversed"]
+- !private ["s24_DestructorSafeContainerP", "sorted"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", ""]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "replacingOccurrences"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "replacingOccurrences"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", ""]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "replacingOccurrences"]
+- !private ["s19_HasContiguousBytesP", "append"]
+- !private ["s19_HasContiguousBytesP", "forEach"]
+- !private ["s19_HasContiguousBytesP", "map"]
+- !private ["s19_HasContiguousBytesP", "replacingOccurrences"]
+- !private ["s19_HasContiguousBytesP", "reversed"]
+- !private ["s19_HasContiguousBytesP", "sorted"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "append"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "forEach"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "map"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "mapValues"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "replacingOccurrences"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "reversed"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "sorted"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "replacingOccurrences"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "replacingOccurrences"]
+- !private ["s21_ObjectiveCBridgeableP", ""]
+- !private ["s21_ObjectiveCBridgeableP", "_ObjectiveCType"]
+- !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "distantPast"]
+- !private ["s21_ObjectiveCBridgeableP", "forEach"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "map"]
+- !private ["s21_ObjectiveCBridgeableP", "mapValues"]
+- !private ["s21_ObjectiveCBridgeableP", "replacingOccurrences"]
+- !private ["s21_ObjectiveCBridgeableP", "reversed"]
+- !private ["s21_ObjectiveCBridgeableP", "sorted"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+- !private ["So13CKRecordValueP", "replacingOccurrences"]
+depends-nominal:
+- !private "Sa"
+- !private "SK"
+- !private "8CloudKit21CKRecordValueProtocolP"
+- !private "s7CVarArgP"
+- !private "s12CaseIterableP"
+- "s9CodingKeyP"
+- !private "Sl"
+- !private "SL"
+- !private "10Foundation15ContiguousBytesP"
+- "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "10Foundation12DataProtocolP"
+- !private "10Foundation4DateV"
+- "Se"
+- !private "s7DecoderP"
+- !private "s26DefaultStringInterpolationV"
+- !private "SD"
+- "SE"
+- !private "s7EncoderP"
+- "SQ"
+- !private "20FirebaseCoreInternal10RingBufferV5ErrorO"
+- !private "s5ErrorP"
+- !private "20FirebaseCoreInternal10RingBufferV5ErrorO"
+- !private "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "20FirebaseCoreInternal23HTTPHeaderRepresentableP"
+- "SH"
+- !private "s6HasherV"
+- "20FirebaseCoreInternal9HeartbeatV"
+- "20FirebaseCoreInternal16HeartbeatsBundleV"
+- !private "20FirebaseCoreInternal17HeartbeatsPayloadV"
+- "20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP"
+- !private "s22KeyedDecodingContainerV"
+- !private "s30KeyedDecodingContainerProtocolP"
+- !private "s22KeyedEncodingContainerV"
+- !private "s30KeyedEncodingContainerProtocolP"
+- !private "s20LazySequenceProtocolP"
+- !private "10Foundation14LocalizedErrorP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- !private "So8NSObjectC"
+- "So8NSObjectP"
+- !private "So19NSPasteboardReadingP"
+- !private "So19NSPasteboardWritingP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "Sq"
+- !private "Sk"
+- !private "Sm"
+- !private "SY"
+- !private "10Foundation20ReferenceConvertibleP"
+- "s6ResultO"
+- !private "s18ReversedCollectionV"
+- "20FirebaseCoreInternal10RingBufferV"
+- !private "ST"
+- !private "SS"
+- !private "s27StringInterpolationProtocolP"
+- !private "Sy"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- "20FirebaseCoreInternal10TimePeriodO"
+- !private "20FirebaseCoreInternal17HeartbeatsPayloadV09UserAgentE0V"
+- !private "s14_ArrayProtocolP"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "10Foundation37_KeyValueCodingAndObservingPublishingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "So13CKRecordValueP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/XPC.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/ObjectiveC.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreData.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreImage.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Combine.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/QuartzCore.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Dispatch.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Metal.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Darwin.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreLocation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Foundation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreFoundation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreGraphics.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Swift.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/IOKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CloudKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/AppKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/SwiftOnoneSupport.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/Target Support Files/FirebaseCoreInternal/FirebaseCoreInternal-umbrella.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/Target Support Files/GoogleUtilities/GoogleUtilities-umbrella.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/NSData+zlib/Public/GoogleUtilities/GULNSData+zlib.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorage.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainStorage.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorable.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULURLSessionDataResponse.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULSecureCoding.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GoogleUtilities/GULLoggerLevel.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULAppEnvironmentUtil.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULNetworkInfo.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GoogleUtilities/GULLogger.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/NSURLSession+GULPromises.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainUtils.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorageUserDefaults.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/dyld.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Intermediates.noindex/Pods.build/Debug/FirebaseCoreInternal.build/unextended-module.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Intermediates.noindex/Pods.build/Debug/GoogleUtilities.build/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/xpc/XPC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CloudKit.framework/Headers/CloudKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "fefc257945c806e6a1e6e3ccf9ae5489"

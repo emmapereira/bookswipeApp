@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)"
+options: "1b4f290ca8b6688d6a34e86ddf014a74"
+build_time: [1696165888, 171940000]
+inputs:
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Runner/MainFlutterWindow.swift": [1678307516, 0]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Runner/AppDelegate.swift": [1678307516, 0]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Flutter/GeneratedPluginRegistrant.swift": [1696165583, 300000000]

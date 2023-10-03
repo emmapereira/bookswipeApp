@@ -1,0 +1,146 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "RegisterGeneratedPlugins"
+provides-nominal:
+provides-member:
+provides-dynamic-lookup:
+depends-top-level:
+- !private "FLTFirebaseCorePlugin"
+- !private "FLTFirebaseDatabasePlugin"
+- "FlutterPluginRegistry"
+- "RegisterGeneratedPlugins"
+- !private "StringLiteralType"
+depends-member:
+- !private ["s7CVarArgP", "register"]
+- !private ["s28CustomDebugStringConvertibleP", "register"]
+- !private ["s23CustomStringConvertibleP", "register"]
+- !private ["SQ", ""]
+- !private ["SQ", "register"]
+- !private ["So21FLTFirebaseCorePluginC", "register"]
+- !private ["So25FLTFirebaseDatabasePluginC", "register"]
+- ["So17FLTFirebasePluginC", ""]
+- !private ["So17FLTFirebasePluginC", "register"]
+- !private ["So17FLTFirebasePluginP", "register"]
+- !private ["So18FirebaseAppHostApiP", "register"]
+- !private ["So19FirebaseCoreHostApiP", "register"]
+- !private ["So13FlutterPluginP", "register"]
+- !private ["So21FlutterPluginRegistryP", "registrar"]
+- !private ["SH", "register"]
+- !private ["So8NSCodingP", ""]
+- ["So8NSObjectC", ""]
+- !private ["So8NSObjectC", "register"]
+- !private ["So8NSObjectP", ""]
+- !private ["So8NSObjectP", "register"]
+- !private ["So8NSObjectP", "registrar"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "register"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "register"]
+depends-nominal:
+- !private "s7CVarArgP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s23CustomStringConvertibleP"
+- !private "SQ"
+- !private "So21FLTFirebaseCorePluginC"
+- !private "So25FLTFirebaseDatabasePluginC"
+- "So17FLTFirebasePluginC"
+- !private "So17FLTFirebasePluginP"
+- !private "So18FirebaseAppHostApiP"
+- !private "So19FirebaseCoreHostApiP"
+- !private "So13FlutterPluginP"
+- !private "So21FlutterPluginRegistryP"
+- !private "SH"
+- !private "So8NSCodingP"
+- "So8NSObjectC"
+- !private "So8NSObjectP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "10Foundation37_KeyValueCodingAndObservingPublishingP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/XPC.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/ObjectiveC.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreMedia.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreData.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreImage.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Combine.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/QuartzCore.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Dispatch.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Metal.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Darwin.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreLocation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Foundation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreFoundation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreAudio.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreGraphics.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Swift.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/IOKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CloudKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/AppKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/SwiftOnoneSupport.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterPluginMacOS.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterPluginRegistrarMacOS.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterMacOS.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseCore/FirebaseCore.framework/Headers/FirebaseCore-umbrella.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/firebase_core/firebase_core.framework/Headers/firebase_core-umbrella.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseDatabase/FirebaseDatabase.framework/Headers/FirebaseDatabase-umbrella.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/firebase_database/firebase_database.framework/Headers/firebase_database-umbrella.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseDatabase/FirebaseDatabase.framework/Headers/FIRMutableData.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseDatabase/FirebaseDatabase.framework/Headers/FIRDatabaseReference.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterEngine.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseDatabase/FirebaseDatabase.framework/Headers/FIRDataEventType.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseCore/FirebaseCore.framework/Headers/FirebaseCore.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterTexture.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseDatabase/FirebaseDatabase.framework/Headers/FIRDatabase.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseDatabase/FirebaseDatabase.framework/Headers/FirebaseDatabase.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/Headers/Public/Firebase/Firebase.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterAppDelegate.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseDatabase/FirebaseDatabase.framework/Headers/FIRServerValue.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/firebase_core/firebase_core.framework/Headers/messages.g.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseCore/FirebaseCore.framework/Headers/FIRLoggerLevel.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/firebase_core/firebase_core.framework/Headers/FLTFirebaseCorePlugin.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/firebase_database/firebase_database.framework/Headers/FLTFirebaseDatabasePlugin.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/firebase_core/firebase_core.framework/Headers/FLTFirebasePlugin.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseCore/FirebaseCore.framework/Headers/FIRVersion.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseCore/FirebaseCore.framework/Headers/FIRConfiguration.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseCore/FirebaseCore.framework/Headers/FIRApp.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterBinaryMessenger.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/firebase_database/firebase_database.framework/Headers/FLTFirebaseDatabaseObserveStreamHandler.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterViewController.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterCodecs.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterChannels.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/firebase_database/firebase_database.framework/Headers/FLTFirebaseDatabaseUtils.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseCore/FirebaseCore.framework/Headers/FIROptions.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterMacros.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterPlatformViews.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Headers/FlutterDartProject.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseDatabase/FirebaseDatabase.framework/Headers/FIRTransactionResult.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseDatabase/FirebaseDatabase.framework/Headers/FIRDataSnapshot.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseDatabase/FirebaseDatabase.framework/Headers/FIRDatabaseQuery.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/firebase_core/firebase_core.framework/Headers/FLTFirebasePluginRegistry.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/dyld.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/Firebase/CoreOnly/Sources/module.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FlutterMacOS.framework/Modules/module.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseCore/FirebaseCore.framework/Modules/module.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/firebase_core/firebase_core.framework/Modules/module.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/FirebaseDatabase/FirebaseDatabase.framework/Modules/module.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Products/Debug/firebase_database/firebase_database.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/xpc/XPC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CoreMedia.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioTypes.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CloudKit.framework/Headers/CloudKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "78d83d7a5cf13b45071840fafa4e06bd"

@@ -1,0 +1,386 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "HeartbeatController"
+provides-nominal:
+- "20FirebaseCoreInternal19HeartbeatControllerC"
+provides-member:
+- ["20FirebaseCoreInternal19HeartbeatControllerC", ""]
+provides-dynamic-lookup:
+- "dateProvider"
+- "dateStandardizer"
+- "flush"
+- "flushHeartbeatFromToday"
+- "heartbeatsStorageCapacity"
+- "log"
+- "storage"
+depends-top-level:
+- "!"
+- !private "!="
+- ">="
+- "??"
+- "AssignmentPrecedence"
+- "Calendar"
+- "Date"
+- "FloatLiteralType"
+- "Heartbeat"
+- "HeartbeatController"
+- !private "HeartbeatStorage"
+- "HeartbeatStorageProtocol"
+- "HeartbeatsBundle"
+- "HeartbeatsPayload"
+- "Int"
+- "IntegerLiteralType"
+- "Locale"
+- "Self"
+- "String"
+- "StringLiteralType"
+- "TimeZone"
+- !private "dateProvider"
+- !private "storage"
+depends-member:
+- !private ["s18AdditiveArithmeticP", ""]
+- !private ["Sa", "isEmpty"]
+- !private ["Sa", "map"]
+- !private ["SK", ""]
+- !private ["SK", "isEmpty"]
+- !private ["SK", "map"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "init"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "isEmpty"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "map"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "timeIntervalSince"]
+- !private ["s7CVarArgP", "filter"]
+- !private ["s7CVarArgP", "isEmpty"]
+- !private ["s7CVarArgP", "map"]
+- ["10Foundation8CalendarV", "init"]
+- ["10Foundation8CalendarV", "locale"]
+- ["10Foundation8CalendarV", "startOfDay"]
+- ["10Foundation8CalendarV", "timeZone"]
+- !private ["s12CaseIterableP", "timeInterval"]
+- !private ["s9CodingKeyP", ""]
+- !private ["s9CodingKeyP", "init"]
+- !private ["s9CodingKeyP", "intValue"]
+- !private ["s9CodingKeyP", "stringValue"]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV10CodingKeysO", ""]
+- !private ["Sl", ""]
+- !private ["Sl", "filter"]
+- !private ["Sl", "isEmpty"]
+- !private ["Sl", "map"]
+- !private ["SL", ""]
+- !private ["SL", "init"]
+- !private ["SL", "timeIntervalSince"]
+- !private ["10Foundation15ContiguousBytesP", "isEmpty"]
+- !private ["10Foundation15ContiguousBytesP", "map"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "filter"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "isEmpty"]
+- ["s28CustomDebugStringConvertibleP", "locale"]
+- !private ["s28CustomDebugStringConvertibleP", "map"]
+- ["s28CustomDebugStringConvertibleP", "startOfDay"]
+- !private ["s28CustomDebugStringConvertibleP", "timeIntervalSince"]
+- ["s28CustomDebugStringConvertibleP", "timeZone"]
+- !private ["s17CustomReflectableP", "filter"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "isEmpty"]
+- ["s17CustomReflectableP", "locale"]
+- !private ["s17CustomReflectableP", "map"]
+- ["s17CustomReflectableP", "startOfDay"]
+- !private ["s17CustomReflectableP", "timeIntervalSince"]
+- ["s17CustomReflectableP", "timeZone"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "filter"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "isEmpty"]
+- ["s23CustomStringConvertibleP", "locale"]
+- !private ["s23CustomStringConvertibleP", "map"]
+- ["s23CustomStringConvertibleP", "startOfDay"]
+- !private ["s23CustomStringConvertibleP", "timeIntervalSince"]
+- ["s23CustomStringConvertibleP", "timeZone"]
+- !private ["10Foundation12DataProtocolP", ""]
+- !private ["10Foundation12DataProtocolP", "isEmpty"]
+- !private ["10Foundation12DataProtocolP", "map"]
+- !private ["10Foundation4DateV", "init"]
+- !private ["10Foundation4DateV", "timeIntervalSince"]
+- !private ["Se", "append"]
+- !private ["Se", "emptyPayload"]
+- !private ["Se", "filter"]
+- ["Se", "init"]
+- !private ["Se", "isEmpty"]
+- !private ["Se", "lastAddedHeartbeatDates"]
+- ["Se", "locale"]
+- !private ["Se", "makeHeartbeatsPayload"]
+- !private ["Se", "map"]
+- !private ["Se", "removeHeartbeat"]
+- ["Se", "startOfDay"]
+- !private ["Se", "timeInterval"]
+- !private ["Se", "timeIntervalSince"]
+- ["Se", "timeZone"]
+- !private ["SD", "filter"]
+- !private ["SD", "map"]
+- !private ["SE", "append"]
+- !private ["SE", "emptyPayload"]
+- !private ["SE", "filter"]
+- ["SE", "init"]
+- !private ["SE", "isEmpty"]
+- !private ["SE", "lastAddedHeartbeatDates"]
+- ["SE", "locale"]
+- !private ["SE", "makeHeartbeatsPayload"]
+- !private ["SE", "map"]
+- !private ["SE", "removeHeartbeat"]
+- ["SE", "startOfDay"]
+- !private ["SE", "timeInterval"]
+- !private ["SE", "timeIntervalSince"]
+- ["SE", "timeZone"]
+- !private ["SQ", "=="]
+- ["SQ", ""]
+- !private ["SQ", "emptyPayload"]
+- !private ["SQ", "filter"]
+- ["SQ", "init"]
+- !private ["SQ", "isEmpty"]
+- ["SQ", "iso8601"]
+- ["SQ", "locale"]
+- !private ["SQ", "makeHeartbeatsPayload"]
+- !private ["SQ", "map"]
+- ["SQ", "startOfDay"]
+- !private ["SQ", "timeInterval"]
+- !private ["SQ", "timeIntervalSince"]
+- ["SQ", "timeZone"]
+- !private ["s25ExpressibleByArrayLiteralP", ""]
+- !private ["s25ExpressibleByArrayLiteralP", "isEmpty"]
+- !private ["s25ExpressibleByArrayLiteralP", "map"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "filter"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "map"]
+- !private ["s27ExpressibleByIntegerLiteralP", ""]
+- !private ["s23ExpressibleByNilLiteralP", "init"]
+- !private ["20FirebaseCoreInternal23HTTPHeaderRepresentableP", "emptyPayload"]
+- ["SH", ""]
+- !private ["SH", "filter"]
+- !private ["SH", "hash"]
+- !private ["SH", "hashValue"]
+- ["SH", "init"]
+- !private ["SH", "isEmpty"]
+- ["SH", "iso8601"]
+- ["SH", "locale"]
+- !private ["SH", "map"]
+- ["SH", "startOfDay"]
+- !private ["SH", "timeInterval"]
+- !private ["SH", "timeIntervalSince"]
+- ["SH", "timeZone"]
+- !private ["20FirebaseCoreInternal9HeartbeatV", "CodingKeys"]
+- !private ["20FirebaseCoreInternal9HeartbeatV", ""]
+- !private ["20FirebaseCoreInternal9HeartbeatV", "init"]
+- !private ["20FirebaseCoreInternal9HeartbeatV", "makeHeartbeatsPayload"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "Calendar"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "Date"]
+- !private ["20FirebaseCoreInternal19HeartbeatControllerC", "Heartbeat"]
+- !private ["20FirebaseCoreInternal19HeartbeatControllerC", "HeartbeatStorage"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "HeartbeatStorageProtocol"]
+- !private ["20FirebaseCoreInternal19HeartbeatControllerC", "HeartbeatsBundle"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "HeartbeatsPayload"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "Int"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "Locale"]
+- !private ["20FirebaseCoreInternal19HeartbeatControllerC", "Self"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "String"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "TimeZone"]
+- !private ["20FirebaseCoreInternal19HeartbeatControllerC", "dateProvider"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "dateStandardizer"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "deinit"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "flush"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "flushHeartbeatFromToday"]
+- !private ["20FirebaseCoreInternal19HeartbeatControllerC", "heartbeatsStorageCapacity"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "init"]
+- ["20FirebaseCoreInternal19HeartbeatControllerC", "log"]
+- !private ["20FirebaseCoreInternal19HeartbeatControllerC", "storage"]
+- !private ["20FirebaseCoreInternal16HeartbeatStorageC", ""]
+- !private ["20FirebaseCoreInternal16HeartbeatStorageC", "getInstance"]
+- !private ["20FirebaseCoreInternal24HeartbeatStorageProtocolP", "getAndSet"]
+- !private ["20FirebaseCoreInternal24HeartbeatStorageProtocolP", "getInstance"]
+- !private ["20FirebaseCoreInternal24HeartbeatStorageProtocolP", "readAndWriteAsync"]
+- !private ["20FirebaseCoreInternal24HeartbeatStorageProtocolP", "readAndWriteSync"]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", "CodingKeys"]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", ""]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", "append"]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", "init"]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", "lastAddedHeartbeatDates"]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", "makeHeartbeatsPayload"]
+- !private ["20FirebaseCoreInternal16HeartbeatsBundleV", "removeHeartbeat"]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV", "CodingKeys"]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV", ""]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV", "emptyPayload"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "append"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "init"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "lastAddedHeartbeatDates"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "makeHeartbeatsPayload"]
+- !private ["20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP", "removeHeartbeat"]
+- ["10Foundation8CalendarV10IdentifierO", "iso8601"]
+- ["10Foundation6LocaleV", "init"]
+- !private ["SM", ""]
+- !private ["SM", "isEmpty"]
+- !private ["SM", "map"]
+- !private ["10Foundation19MutableDataProtocolP", "isEmpty"]
+- !private ["10Foundation19MutableDataProtocolP", "map"]
+- !private ["So8NSCodingP", ""]
+- !private ["So8NSObjectP", ""]
+- !private ["Sj", ""]
+- !private ["Sk", ""]
+- !private ["Sk", "isEmpty"]
+- !private ["Sk", "map"]
+- !private ["Sm", ""]
+- !private ["Sm", "isEmpty"]
+- !private ["Sm", "map"]
+- !private ["SY", "timeInterval"]
+- ["10Foundation20ReferenceConvertibleP", "init"]
+- ["10Foundation20ReferenceConvertibleP", "locale"]
+- ["10Foundation20ReferenceConvertibleP", "startOfDay"]
+- !private ["10Foundation20ReferenceConvertibleP", "timeIntervalSince"]
+- ["10Foundation20ReferenceConvertibleP", "timeZone"]
+- !private ["20FirebaseCoreInternal10RingBufferV", ""]
+- !private ["ST", ""]
+- !private ["ST", "filter"]
+- !private ["ST", "isEmpty"]
+- !private ["ST", "map"]
+- !private ["s13SignedNumericP", ""]
+- !private ["Sx", ""]
+- !private ["20FirebaseCoreInternal10TimePeriodO", ""]
+- !private ["20FirebaseCoreInternal10TimePeriodO", "timeInterval"]
+- ["10Foundation8TimeZoneV", "init"]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV09UserAgentE0V", ""]
+- !private ["s14_ArrayProtocolP", "isEmpty"]
+- !private ["s14_ArrayProtocolP", "map"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "timeIntervalSince"]
+- !private ["s24_DestructorSafeContainerP", "isEmpty"]
+- !private ["s24_DestructorSafeContainerP", "map"]
+- ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s19_HasContiguousBytesP", "isEmpty"]
+- !private ["s19_HasContiguousBytesP", "map"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "filter"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "isEmpty"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "map"]
+- ["s21_ObjectiveCBridgeableP", ""]
+- !private ["s21_ObjectiveCBridgeableP", "filter"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "isEmpty"]
+- ["s21_ObjectiveCBridgeableP", "locale"]
+- !private ["s21_ObjectiveCBridgeableP", "map"]
+- ["s21_ObjectiveCBridgeableP", "startOfDay"]
+- !private ["s21_ObjectiveCBridgeableP", "timeIntervalSince"]
+- ["s21_ObjectiveCBridgeableP", "timeZone"]
+depends-nominal:
+- !private "s18AdditiveArithmeticP"
+- !private "Sa"
+- !private "SK"
+- !private "8CloudKit21CKRecordValueProtocolP"
+- !private "s7CVarArgP"
+- "10Foundation8CalendarV"
+- !private "s12CaseIterableP"
+- !private "s9CodingKeyP"
+- !private "20FirebaseCoreInternal17HeartbeatsPayloadV10CodingKeysO"
+- !private "Sl"
+- !private "SL"
+- !private "10Foundation15ContiguousBytesP"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "10Foundation12DataProtocolP"
+- !private "10Foundation4DateV"
+- "Se"
+- !private "SD"
+- "SE"
+- "SQ"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- !private "20FirebaseCoreInternal23HTTPHeaderRepresentableP"
+- "SH"
+- !private "20FirebaseCoreInternal9HeartbeatV"
+- "20FirebaseCoreInternal19HeartbeatControllerC"
+- !private "20FirebaseCoreInternal16HeartbeatStorageC"
+- !private "20FirebaseCoreInternal24HeartbeatStorageProtocolP"
+- !private "20FirebaseCoreInternal16HeartbeatsBundleV"
+- !private "20FirebaseCoreInternal17HeartbeatsPayloadV"
+- !private "20FirebaseCoreInternal28HeartbeatsPayloadConvertibleP"
+- "10Foundation8CalendarV10IdentifierO"
+- "10Foundation6LocaleV"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- !private "So8NSCodingP"
+- !private "So8NSObjectP"
+- !private "Sj"
+- !private "Sk"
+- !private "Sm"
+- !private "SY"
+- "10Foundation20ReferenceConvertibleP"
+- !private "20FirebaseCoreInternal10RingBufferV"
+- !private "ST"
+- !private "s13SignedNumericP"
+- !private "Sx"
+- !private "20FirebaseCoreInternal10TimePeriodO"
+- "10Foundation8TimeZoneV"
+- !private "20FirebaseCoreInternal17HeartbeatsPayloadV09UserAgentE0V"
+- !private "s14_ArrayProtocolP"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s24_DestructorSafeContainerP"
+- "s35_ExpressibleByBuiltinIntegerLiteralP"
+- "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/XPC.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/ObjectiveC.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreData.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreImage.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Combine.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/QuartzCore.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Dispatch.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Metal.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Darwin.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreLocation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Foundation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreFoundation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreGraphics.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Swift.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/IOKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CloudKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/AppKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/SwiftOnoneSupport.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/Target Support Files/FirebaseCoreInternal/FirebaseCoreInternal-umbrella.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/Target Support Files/GoogleUtilities/GoogleUtilities-umbrella.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/NSData+zlib/Public/GoogleUtilities/GULNSData+zlib.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorage.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainStorage.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorable.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULURLSessionDataResponse.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULSecureCoding.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GoogleUtilities/GULLoggerLevel.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULAppEnvironmentUtil.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULNetworkInfo.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GoogleUtilities/GULLogger.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/NSURLSession+GULPromises.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainUtils.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorageUserDefaults.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/dyld.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Intermediates.noindex/Pods.build/Debug/FirebaseCoreInternal.build/unextended-module.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Intermediates.noindex/Pods.build/Debug/GoogleUtilities.build/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/xpc/XPC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CloudKit.framework/Headers/CloudKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "a42bf34954c79c95e43faf3a6b86f2e2"

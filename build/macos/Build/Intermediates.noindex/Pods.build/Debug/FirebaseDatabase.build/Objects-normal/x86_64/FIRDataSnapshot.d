@@ -1,0 +1,27 @@
+dependencies: \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Api/FIRDataSnapshot.m \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Intermediates.noindex/Pods.build/Debug/FirebaseDatabase.build/module.modulemap \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Public/FirebaseDatabase/FIRDataSnapshot.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/dyld.modulemap \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Api/Private/FIRDataSnapshot_Private.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Api/Private/FTypedefs_Private.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Snapshot/FIndexedNode.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/FIndex.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/FNamedNode.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Snapshot/FNode.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Core/Utilities/FPath.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/FTransformedEnumerator.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Public/FirebaseDatabase/FIRDatabaseReference.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Public/FirebaseDatabase/FIRDatabase.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Public/FirebaseDatabase/FIRDatabaseQuery.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Public/FirebaseDatabase/FIRDataEventType.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Public/FirebaseDatabase/FIRMutableData.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Public/FirebaseDatabase/FIRServerValue.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Public/FirebaseDatabase/FIRTransactionResult.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Snapshot/FChildrenNode.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Utilities/FTypedefs.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/third_party/FImmutableSortedDictionary/FImmutableSortedDictionary/FImmutableSortedDictionary.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Utilities/FValidation.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Utilities/FParsedUrl.h \
+  /Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseDatabase/FirebaseDatabase/Sources/Core/FRepoInfo.h

@@ -1,0 +1,16 @@
+version: "Apple Swift version 5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)"
+options: "0f68be573402827588332b959924954f"
+build_time: [1696165697, 193059000]
+inputs:
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatController.swift": [1696165595, 820000000]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatsPayload.swift": [1696165595, 880000000]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/Heartbeat.swift": [1696165595, 770000000]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatController.swift": [1696165595, 850000000]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatLoggingTestUtils.swift": [1696165595, 900000000]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsBundle.swift": [1696165595, 970000000]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsPayload.swift": [1696165596, 10000000]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatStorage.swift": [1696165595, 930000000]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/RingBuffer.swift": [1696165595, 790000000]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/Storage.swift": [1696165595, 600000000]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/StorageFactory.swift": [1696165596, 10000000]
+  "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/WeakContainer.swift": [1696165595, 990000000]

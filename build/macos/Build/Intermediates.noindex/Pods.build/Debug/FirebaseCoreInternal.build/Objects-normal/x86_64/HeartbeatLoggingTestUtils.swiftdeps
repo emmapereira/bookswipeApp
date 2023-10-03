@@ -1,0 +1,663 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "HeartbeatLoggingTestUtils"
+provides-nominal:
+- "20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC"
+- "20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC9ConstantsO"
+provides-member:
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", ""]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC9ConstantsO", ""]
+provides-dynamic-lookup:
+- "assertEqualPayloadStrings"
+- "dateFormatter"
+- "emptyHeartbeatsPayload"
+- "nonEmptyHeartbeatsPayload"
+- "removeUnderlyingHeartbeatStorageContainers"
+depends-top-level:
+- !private "=="
+- !private ">"
+- !private "??"
+- "AssignmentPrecedence"
+- !private "BooleanLiteralType"
+- "CocoaError"
+- !private "Constants"
+- !private "Data"
+- "DateFormatter"
+- !private "FileManager"
+- !private "FloatLiteralType"
+- "HeartbeatLoggingTestUtils"
+- !private "HeartbeatsPayload"
+- !private "IntegerLiteralType"
+- !private "JSONDecoder"
+- !private "JSONEncoder"
+- "NSObject"
+- "String"
+- "StringLiteralType"
+- !private "UnicodeScalarType"
+- "_ObjC_HeartbeatsPayload"
+- !private "assert"
+- !private "~="
+depends-member:
+- !private ["Sa", "first"]
+- !private ["SK", ""]
+- !private ["SK", "count"]
+- !private ["SK", "data"]
+- !private ["SK", "first"]
+- !private ["SK", "init"]
+- !private ["SK", "unzipped"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "count"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "data"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "first"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "init"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "unzipped"]
+- !private ["s7CVarArgP", "CocoaError"]
+- !private ["s7CVarArgP", "Constants"]
+- !private ["s7CVarArgP", "Data"]
+- !private ["s7CVarArgP", "FileManager"]
+- !private ["s7CVarArgP", "HeartbeatsPayload"]
+- !private ["s7CVarArgP", "JSONDecoder"]
+- !private ["s7CVarArgP", "JSONEncoder"]
+- !private ["s7CVarArgP", "ObjC_HeartbeatsPayload"]
+- !private ["s7CVarArgP", "String"]
+- ["s7CVarArgP", ""]
+- !private ["s7CVarArgP", "_ObjC_HeartbeatsPayload"]
+- !private ["s7CVarArgP", "assert"]
+- !private ["s7CVarArgP", "assertEqualPayloadStrings"]
+- !private ["s7CVarArgP", "data"]
+- !private ["s7CVarArgP", "dateFormatter"]
+- !private ["s7CVarArgP", "default"]
+- !private ["s7CVarArgP", "first"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "removeItem"]
+- !private ["s7CVarArgP", "removeUnderlyingHeartbeatStorageContainers"]
+- !private ["s7CVarArgP", "urls"]
+- !private ["10Foundation10CocoaErrorV", "fileNoSuchFile"]
+- !private ["Sl", ""]
+- !private ["Sl", "_customIndexOfEquatableElement"]
+- !private ["Sl", "_customLastIndexOfEquatableElement"]
+- !private ["Sl", "_failEarlyRangeCheck"]
+- !private ["Sl", "count"]
+- !private ["Sl", "data"]
+- !private ["Sl", "distance"]
+- !private ["Sl", "endIndex"]
+- !private ["Sl", "first"]
+- !private ["Sl", "formIndex"]
+- !private ["Sl", "index"]
+- !private ["Sl", "indices"]
+- !private ["Sl", "init"]
+- !private ["Sl", "isEmpty"]
+- !private ["Sl", "makeIterator"]
+- !private ["Sl", "startIndex"]
+- !private ["Sl", "subscript"]
+- !private ["Sl", "unzipped"]
+- !private ["SL", ""]
+- !private ["SL", "data"]
+- !private ["SL", "init"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC9ConstantsO", "heartbeatFileStorageDirectoryPath"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC9ConstantsO", "heartbeatUserDefaultsSuiteName"]
+- !private ["10Foundation15ContiguousBytesP", "count"]
+- !private ["10Foundation15ContiguousBytesP", "first"]
+- !private ["10Foundation15ContiguousBytesP", "init"]
+- !private ["10Foundation15ContiguousBytesP", "unzipped"]
+- !private ["s28CustomDebugStringConvertibleP", "CocoaError"]
+- !private ["s28CustomDebugStringConvertibleP", "Constants"]
+- !private ["s28CustomDebugStringConvertibleP", "Data"]
+- !private ["s28CustomDebugStringConvertibleP", "FileManager"]
+- !private ["s28CustomDebugStringConvertibleP", "HeartbeatsPayload"]
+- !private ["s28CustomDebugStringConvertibleP", "JSONDecoder"]
+- !private ["s28CustomDebugStringConvertibleP", "JSONEncoder"]
+- !private ["s28CustomDebugStringConvertibleP", "ObjC_HeartbeatsPayload"]
+- !private ["s28CustomDebugStringConvertibleP", "String"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "_ObjC_HeartbeatsPayload"]
+- !private ["s28CustomDebugStringConvertibleP", "appendingPathComponent"]
+- !private ["s28CustomDebugStringConvertibleP", "assert"]
+- !private ["s28CustomDebugStringConvertibleP", "assertEqualPayloadStrings"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "data"]
+- !private ["s28CustomDebugStringConvertibleP", "dateFormatter"]
+- !private ["s28CustomDebugStringConvertibleP", "default"]
+- !private ["s28CustomDebugStringConvertibleP", "first"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "removeItem"]
+- !private ["s28CustomDebugStringConvertibleP", "removeUnderlyingHeartbeatStorageContainers"]
+- !private ["s28CustomDebugStringConvertibleP", "unzipped"]
+- !private ["s28CustomDebugStringConvertibleP", "urls"]
+- !private ["10Foundation13CustomNSErrorP", ""]
+- !private ["10Foundation13CustomNSErrorP", "fileNoSuchFile"]
+- !private ["s17CustomReflectableP", "count"]
+- !private ["s17CustomReflectableP", "data"]
+- !private ["s17CustomReflectableP", "first"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "unzipped"]
+- !private ["s23CustomStringConvertibleP", "CocoaError"]
+- !private ["s23CustomStringConvertibleP", "Constants"]
+- !private ["s23CustomStringConvertibleP", "Data"]
+- !private ["s23CustomStringConvertibleP", "FileManager"]
+- !private ["s23CustomStringConvertibleP", "HeartbeatsPayload"]
+- !private ["s23CustomStringConvertibleP", "JSONDecoder"]
+- !private ["s23CustomStringConvertibleP", "JSONEncoder"]
+- !private ["s23CustomStringConvertibleP", "ObjC_HeartbeatsPayload"]
+- !private ["s23CustomStringConvertibleP", "String"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "_ObjC_HeartbeatsPayload"]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- !private ["s23CustomStringConvertibleP", "appendingPathComponent"]
+- !private ["s23CustomStringConvertibleP", "assert"]
+- !private ["s23CustomStringConvertibleP", "assertEqualPayloadStrings"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "data"]
+- !private ["s23CustomStringConvertibleP", "dateFormatter"]
+- !private ["s23CustomStringConvertibleP", "default"]
+- !private ["s23CustomStringConvertibleP", "first"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "removeItem"]
+- !private ["s23CustomStringConvertibleP", "removeUnderlyingHeartbeatStorageContainers"]
+- !private ["s23CustomStringConvertibleP", "unzipped"]
+- !private ["s23CustomStringConvertibleP", "urls"]
+- !private ["s23CustomStringConvertibleP", "utf8"]
+- !private ["10Foundation4DataV", "count"]
+- !private ["10Foundation4DataV", "init"]
+- !private ["10Foundation4DataV", "unzipped"]
+- !private ["10Foundation12DataProtocolP", ""]
+- !private ["10Foundation12DataProtocolP", "count"]
+- !private ["10Foundation12DataProtocolP", "first"]
+- !private ["10Foundation12DataProtocolP", "init"]
+- !private ["10Foundation12DataProtocolP", "unzipped"]
+- !private ["10Foundation11JSONDecoderC20DateDecodingStrategyO", "formatted"]
+- !private ["10Foundation11JSONEncoderC20DateEncodingStrategyO", "formatted"]
+- !private ["Se", "appendingPathComponent"]
+- !private ["Se", "count"]
+- !private ["Se", "data"]
+- !private ["Se", "dateFormatter"]
+- !private ["Se", "first"]
+- !private ["Se", "init"]
+- !private ["Se", "unzipped"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- !private ["SE", "appendingPathComponent"]
+- !private ["SE", "count"]
+- !private ["SE", "data"]
+- !private ["SE", "dateFormatter"]
+- !private ["SE", "first"]
+- !private ["SE", "init"]
+- !private ["SE", "unzipped"]
+- !private ["SS10FoundationE8EncodingV", "utf8"]
+- !private ["SQ", "CocoaError"]
+- !private ["SQ", "Constants"]
+- !private ["SQ", "Data"]
+- !private ["SQ", "FileManager"]
+- !private ["SQ", "HeartbeatsPayload"]
+- !private ["SQ", "JSONDecoder"]
+- !private ["SQ", "JSONEncoder"]
+- !private ["SQ", "ObjC_HeartbeatsPayload"]
+- !private ["SQ", "String"]
+- ["SQ", ""]
+- !private ["SQ", "_ObjC_HeartbeatsPayload"]
+- !private ["SQ", "appendingPathComponent"]
+- !private ["SQ", "applicationSupportDirectory"]
+- !private ["SQ", "assert"]
+- !private ["SQ", "assertEqualPayloadStrings"]
+- !private ["SQ", "count"]
+- !private ["SQ", "data"]
+- !private ["SQ", "dateFormatter"]
+- !private ["SQ", "default"]
+- !private ["SQ", "fileNoSuchFile"]
+- !private ["SQ", "first"]
+- !private ["SQ", "init"]
+- !private ["SQ", "prettyPrinted"]
+- !private ["SQ", "removeItem"]
+- !private ["SQ", "removeUnderlyingHeartbeatStorageContainers"]
+- !private ["SQ", "unzipped"]
+- !private ["SQ", "urls"]
+- !private ["SQ", "userDomainMask"]
+- !private ["SQ", "utf8"]
+- !private ["s5ErrorP", ""]
+- !private ["s5ErrorP", "fileNoSuchFile"]
+- !private ["s25ExpressibleByArrayLiteralP", ""]
+- !private ["s25ExpressibleByArrayLiteralP", "first"]
+- !private ["s25ExpressibleByArrayLiteralP", "prettyPrinted"]
+- !private ["s25ExpressibleByArrayLiteralP", "userDomainMask"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", ""]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "data"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s32ExpressibleByStringInterpolationP", "StringInterpolation"]
+- !private ["s32ExpressibleByStringInterpolationP", ""]
+- !private ["s32ExpressibleByStringInterpolationP", "data"]
+- !private ["s32ExpressibleByStringInterpolationP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", ""]
+- !private ["s26ExpressibleByStringLiteralP", "data"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", ""]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "data"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["So13NSFileManagerC", "default"]
+- !private ["So13NSFileManagerC", "removeItem"]
+- !private ["So13NSFileManagerC", "urls"]
+- !private ["20FirebaseCoreInternal23HTTPHeaderRepresentableP", "dateFormatter"]
+- !private ["20FirebaseCoreInternal23HTTPHeaderRepresentableP", "init"]
+- !private ["SH", "CocoaError"]
+- !private ["SH", "Constants"]
+- !private ["SH", "Data"]
+- !private ["SH", "FileManager"]
+- !private ["SH", "HeartbeatsPayload"]
+- !private ["SH", "JSONDecoder"]
+- !private ["SH", "JSONEncoder"]
+- !private ["SH", "ObjC_HeartbeatsPayload"]
+- !private ["SH", "String"]
+- ["SH", ""]
+- !private ["SH", "_ObjC_HeartbeatsPayload"]
+- !private ["SH", "appendingPathComponent"]
+- !private ["SH", "applicationSupportDirectory"]
+- !private ["SH", "assert"]
+- !private ["SH", "assertEqualPayloadStrings"]
+- !private ["SH", "count"]
+- !private ["SH", "data"]
+- !private ["SH", "dateFormatter"]
+- !private ["SH", "default"]
+- !private ["SH", "fileNoSuchFile"]
+- !private ["SH", "first"]
+- !private ["SH", "init"]
+- !private ["SH", "removeItem"]
+- !private ["SH", "removeUnderlyingHeartbeatStorageContainers"]
+- !private ["SH", "unzipped"]
+- !private ["SH", "urls"]
+- !private ["SH", "utf8"]
+- !private ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "CocoaError"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "Constants"]
+- !private ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "Data"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "DateFormatter"]
+- !private ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "FileManager"]
+- !private ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "HeartbeatsPayload"]
+- !private ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "JSONDecoder"]
+- !private ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "JSONEncoder"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "ObjC_HeartbeatsPayload"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "String"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", ""]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "_ObjC_HeartbeatsPayload"]
+- !private ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "assert"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "assertEqualPayloadStrings"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "dateFormatter"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "deinit"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "emptyHeartbeatsPayload"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "init"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "nonEmptyHeartbeatsPayload"]
+- ["20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC", "removeUnderlyingHeartbeatStorageContainers"]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV", ""]
+- !private ["20FirebaseCoreInternal17HeartbeatsPayloadV", "dateFormatter"]
+- !private ["10Foundation11JSONDecoderC", "dateDecodingStrategy"]
+- !private ["10Foundation11JSONDecoderC", "decode"]
+- !private ["10Foundation11JSONDecoderC", "init"]
+- !private ["10Foundation11JSONEncoderC", "dateEncodingStrategy"]
+- !private ["10Foundation11JSONEncoderC", "encode"]
+- !private ["10Foundation11JSONEncoderC", "init"]
+- !private ["10Foundation11JSONEncoderC", "outputFormatting"]
+- !private ["s25LosslessStringConvertibleP", ""]
+- !private ["s25LosslessStringConvertibleP", "data"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "data"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["SM", ""]
+- !private ["SM", "count"]
+- !private ["SM", "first"]
+- !private ["SM", "init"]
+- !private ["SM", "unzipped"]
+- !private ["10Foundation19MutableDataProtocolP", "count"]
+- !private ["10Foundation19MutableDataProtocolP", "first"]
+- !private ["10Foundation19MutableDataProtocolP", "init"]
+- !private ["10Foundation19MutableDataProtocolP", "unzipped"]
+- ["So8NSCodingP", ""]
+- !private ["So8NSCodingP", "data"]
+- !private ["So9NSCopyingP", "data"]
+- !private ["So21NSItemProviderReadingP", "data"]
+- !private ["So21NSItemProviderWritingP", "data"]
+- !private ["So16NSMutableCopyingP", "data"]
+- !private ["So8NSObjectC", "CocoaError"]
+- !private ["So8NSObjectC", "Constants"]
+- !private ["So8NSObjectC", "Data"]
+- ["So8NSObjectC", "DateFormatter"]
+- !private ["So8NSObjectC", "FileManager"]
+- !private ["So8NSObjectC", "HeartbeatsPayload"]
+- !private ["So8NSObjectC", "JSONDecoder"]
+- !private ["So8NSObjectC", "JSONEncoder"]
+- ["So8NSObjectC", "ObjC_HeartbeatsPayload"]
+- ["So8NSObjectC", "String"]
+- !private ["So8NSObjectC", "URLsForDirectory"]
+- ["So8NSObjectC", ""]
+- ["So8NSObjectC", "_ObjC_HeartbeatsPayload"]
+- !private ["So8NSObjectC", "assert"]
+- ["So8NSObjectC", "assertEqualPayloadStrings"]
+- !private ["So8NSObjectC", "data"]
+- !private ["So8NSObjectC", "dataUsingEncoding"]
+- ["So8NSObjectC", "dateFormatter"]
+- !private ["So8NSObjectC", "default"]
+- ["So8NSObjectC", "emptyHeartbeatsPayload"]
+- ["So8NSObjectC", "init"]
+- ["So8NSObjectC", "nonEmptyHeartbeatsPayload"]
+- !private ["So8NSObjectC", "removeItem"]
+- !private ["So8NSObjectC", "removeItemAtPath"]
+- !private ["So8NSObjectC", "removeItemAtURL"]
+- ["So8NSObjectC", "removeUnderlyingHeartbeatStorageContainers"]
+- !private ["So8NSObjectC", "urls"]
+- !private ["So8NSObjectP", "CocoaError"]
+- !private ["So8NSObjectP", "Constants"]
+- !private ["So8NSObjectP", "Data"]
+- ["So8NSObjectP", "DateFormatter"]
+- !private ["So8NSObjectP", "FileManager"]
+- !private ["So8NSObjectP", "HeartbeatsPayload"]
+- !private ["So8NSObjectP", "JSONDecoder"]
+- !private ["So8NSObjectP", "JSONEncoder"]
+- ["So8NSObjectP", "ObjC_HeartbeatsPayload"]
+- ["So8NSObjectP", "String"]
+- !private ["So8NSObjectP", "URLsForDirectory"]
+- ["So8NSObjectP", ""]
+- ["So8NSObjectP", "_ObjC_HeartbeatsPayload"]
+- !private ["So8NSObjectP", "assert"]
+- ["So8NSObjectP", "assertEqualPayloadStrings"]
+- !private ["So8NSObjectP", "data"]
+- !private ["So8NSObjectP", "dataUsingEncoding"]
+- ["So8NSObjectP", "dateFormatter"]
+- !private ["So8NSObjectP", "default"]
+- ["So8NSObjectP", "emptyHeartbeatsPayload"]
+- ["So8NSObjectP", "init"]
+- ["So8NSObjectP", "nonEmptyHeartbeatsPayload"]
+- !private ["So8NSObjectP", "removeItem"]
+- !private ["So8NSObjectP", "removeItemAtPath"]
+- !private ["So8NSObjectP", "removeItemAtURL"]
+- ["So8NSObjectP", "removeUnderlyingHeartbeatStorageContainers"]
+- !private ["So8NSObjectP", "urls"]
+- !private ["So19NSPasteboardReadingP", "data"]
+- !private ["So19NSPasteboardWritingP", "data"]
+- !private ["So14NSSecureCodingP", "data"]
+- !private ["So8NSStringC", "data"]
+- !private ["s9OptionSetP", "prettyPrinted"]
+- !private ["s9OptionSetP", "userDomainMask"]
+- !private ["10Foundation11JSONEncoderC16OutputFormattingV", "prettyPrinted"]
+- !private ["Sk", ""]
+- !private ["Sk", "count"]
+- !private ["Sk", "distance"]
+- !private ["Sk", "first"]
+- !private ["Sk", "index"]
+- !private ["Sk", "init"]
+- !private ["Sk", "unzipped"]
+- !private ["Sm", ""]
+- !private ["Sm", "_customRemoveLast"]
+- !private ["Sm", "append"]
+- !private ["Sm", "count"]
+- !private ["Sm", "data"]
+- !private ["Sm", "first"]
+- !private ["Sm", "init"]
+- !private ["Sm", "insert"]
+- !private ["Sm", "remove"]
+- !private ["Sm", "removeAll"]
+- !private ["Sm", "removeFirst"]
+- !private ["Sm", "removeSubrange"]
+- !private ["Sm", "replaceSubrange"]
+- !private ["Sm", "reserveCapacity"]
+- !private ["Sm", "subscript"]
+- !private ["Sm", "unzipped"]
+- !private ["SY", ""]
+- !private ["SY", "applicationSupportDirectory"]
+- !private ["SY", "prettyPrinted"]
+- !private ["SY", "userDomainMask"]
+- !private ["SY", "utf8"]
+- !private ["10Foundation20ReferenceConvertibleP", "appendingPathComponent"]
+- !private ["10Foundation20ReferenceConvertibleP", "count"]
+- !private ["10Foundation20ReferenceConvertibleP", "init"]
+- !private ["10Foundation20ReferenceConvertibleP", "unzipped"]
+- !private ["So21NSSearchPathDirectoryV", "applicationSupportDirectory"]
+- !private ["So22NSSearchPathDomainMaskV", "userDomainMask"]
+- !private ["ST", ""]
+- !private ["ST", "count"]
+- !private ["ST", "data"]
+- !private ["ST", "first"]
+- !private ["ST", "init"]
+- !private ["ST", "unzipped"]
+- !private ["s10SetAlgebraP", ""]
+- !private ["s10SetAlgebraP", "prettyPrinted"]
+- !private ["s10SetAlgebraP", "userDomainMask"]
+- !private ["SS", "data"]
+- !private ["SS", "init"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["s27StringInterpolationProtocolP", "init"]
+- !private ["Sy", "data"]
+- !private ["Sy", "init"]
+- !private ["s16TextOutputStreamP", ""]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "data"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", ""]
+- !private ["s20TextOutputStreamableP", "data"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["7Combine15TopLevelDecoderP", "dateDecodingStrategy"]
+- !private ["7Combine15TopLevelDecoderP", "decode"]
+- !private ["7Combine15TopLevelDecoderP", "init"]
+- !private ["7Combine15TopLevelEncoderP", "dateEncodingStrategy"]
+- !private ["7Combine15TopLevelEncoderP", "encode"]
+- !private ["7Combine15TopLevelEncoderP", "init"]
+- !private ["7Combine15TopLevelEncoderP", "outputFormatting"]
+- !private ["10Foundation3URLV", "appendingPathComponent"]
+- !private ["s14_ArrayProtocolP", "first"]
+- !private ["10Foundation21_BridgedStoredNSErrorP", "fileNoSuchFile"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "appendingPathComponent"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "data"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s24_DestructorSafeContainerP", "first"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "init"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", ""]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "data"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "data"]
+- ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", ""]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "data"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s34_ExpressibleByFileReferenceLiteralP", "appendingPathComponent"]
+- !private ["s19_HasContiguousBytesP", "data"]
+- !private ["s19_HasContiguousBytesP", "first"]
+- !private ["s19_HasContiguousBytesP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "data"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "first"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "CocoaError"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Constants"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Data"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "FileManager"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "HeartbeatsPayload"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "JSONDecoder"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "JSONEncoder"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "ObjC_HeartbeatsPayload"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "String"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "_ObjC_HeartbeatsPayload"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "assert"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "assertEqualPayloadStrings"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "data"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "dateFormatter"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "default"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "removeItem"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "removeUnderlyingHeartbeatStorageContainers"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "urls"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "CocoaError"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "Constants"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "Data"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "FileManager"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "HeartbeatsPayload"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "JSONDecoder"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "JSONEncoder"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "ObjC_HeartbeatsPayload"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "String"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", ""]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "_ObjC_HeartbeatsPayload"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "assert"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "assertEqualPayloadStrings"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "data"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "dateFormatter"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "default"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "init"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "removeItem"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "removeUnderlyingHeartbeatStorageContainers"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "urls"]
+- !private ["20FirebaseCoreInternal23_ObjC_HeartbeatsPayloadC", "init"]
+- !private ["s21_ObjectiveCBridgeableP", ""]
+- !private ["s21_ObjectiveCBridgeableP", "_ObjectiveCType"]
+- !private ["s21_ObjectiveCBridgeableP", "_bridgeToObjectiveC"]
+- !private ["s21_ObjectiveCBridgeableP", "_conditionallyBridgeFromObjectiveC"]
+- !private ["s21_ObjectiveCBridgeableP", "_forceBridgeFromObjectiveC"]
+- !private ["s21_ObjectiveCBridgeableP", "_unconditionallyBridgeFromObjectiveC"]
+- !private ["s21_ObjectiveCBridgeableP", "appendingPathComponent"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "data"]
+- !private ["s21_ObjectiveCBridgeableP", "first"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "unzipped"]
+- !private ["10Foundation26_ObjectiveCBridgeableErrorP", ""]
+- !private ["10Foundation26_ObjectiveCBridgeableErrorP", "fileNoSuchFile"]
+- !private ["So13CKRecordValueP", "data"]
+depends-nominal:
+- !private "Sa"
+- !private "SK"
+- !private "8CloudKit21CKRecordValueProtocolP"
+- "s7CVarArgP"
+- !private "10Foundation10CocoaErrorV"
+- !private "Sl"
+- !private "SL"
+- "20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC9ConstantsO"
+- !private "10Foundation15ContiguousBytesP"
+- "s28CustomDebugStringConvertibleP"
+- !private "10Foundation13CustomNSErrorP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "10Foundation4DataV"
+- !private "10Foundation12DataProtocolP"
+- !private "10Foundation11JSONDecoderC20DateDecodingStrategyO"
+- !private "10Foundation11JSONEncoderC20DateEncodingStrategyO"
+- !private "Se"
+- !private "s26DefaultStringInterpolationV"
+- !private "SE"
+- !private "SS10FoundationE8EncodingV"
+- "SQ"
+- !private "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "So13NSFileManagerC"
+- !private "20FirebaseCoreInternal23HTTPHeaderRepresentableP"
+- "SH"
+- "20FirebaseCoreInternal25HeartbeatLoggingTestUtilsC"
+- !private "20FirebaseCoreInternal17HeartbeatsPayloadV"
+- !private "10Foundation11JSONDecoderC"
+- !private "10Foundation11JSONEncoderC"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- "So8NSObjectC"
+- "So8NSObjectP"
+- !private "So19NSPasteboardReadingP"
+- !private "So19NSPasteboardWritingP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "s9OptionSetP"
+- !private "10Foundation11JSONEncoderC16OutputFormattingV"
+- !private "Sk"
+- !private "Sm"
+- !private "SY"
+- !private "10Foundation20ReferenceConvertibleP"
+- !private "So21NSSearchPathDirectoryV"
+- !private "So22NSSearchPathDomainMaskV"
+- !private "ST"
+- !private "s10SetAlgebraP"
+- !private "SS"
+- !private "s27StringInterpolationProtocolP"
+- !private "Sy"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "7Combine15TopLevelDecoderP"
+- !private "7Combine15TopLevelEncoderP"
+- !private "10Foundation3URLV"
+- !private "s14_ArrayProtocolP"
+- !private "10Foundation21_BridgedStoredNSErrorP"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s34_ExpressibleByFileReferenceLiteralP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "10Foundation37_KeyValueCodingAndObservingPublishingP"
+- !private "20FirebaseCoreInternal23_ObjC_HeartbeatsPayloadC"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "10Foundation26_ObjectiveCBridgeableErrorP"
+- !private "So13CKRecordValueP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/XPC.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/ObjectiveC.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreData.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreImage.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Combine.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/QuartzCore.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Dispatch.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Metal.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Darwin.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreLocation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Foundation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreFoundation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreGraphics.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Swift.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/IOKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CloudKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/AppKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/SwiftOnoneSupport.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/Target Support Files/FirebaseCoreInternal/FirebaseCoreInternal-umbrella.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/Target Support Files/GoogleUtilities/GoogleUtilities-umbrella.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/NSData+zlib/Public/GoogleUtilities/GULNSData+zlib.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorage.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainStorage.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorable.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULURLSessionDataResponse.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULSecureCoding.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GoogleUtilities/GULLoggerLevel.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULAppEnvironmentUtil.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULNetworkInfo.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GoogleUtilities/GULLogger.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/NSURLSession+GULPromises.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainUtils.h"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/macos/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorageUserDefaults.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/dyld.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Intermediates.noindex/Pods.build/Debug/FirebaseCoreInternal.build/unextended-module.modulemap"
+- "/Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/build/macos/Build/Intermediates.noindex/Pods.build/Debug/GoogleUtilities.build/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/xpc/XPC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CloudKit.framework/Headers/CloudKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "3106816d52d4c5823f1f574b2a1faa25"
