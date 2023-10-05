@@ -112,7 +112,7 @@ Future<Map<String, dynamic>?> fetchBookDataByID(String bookId) async {
     if (bookDoc.exists) {
       // The document exists, you can access its data
       Map<String, dynamic> bookData = bookDoc.data() as Map<String, dynamic>;
-      print('User Data: $bookData');
+      //print('User Data: $bookData');
       return bookData;
       // Use the book data in your Flutter app
       // For example, set it in a state variable or display it in a widget
@@ -144,11 +144,11 @@ Future<String?> fetchGenreNameByID(String genreId) async {
 
     if (genreDoc.exists) {
       Map<String, dynamic> genreData = genreDoc.data() as Map<String, dynamic>;
-      print('User Data: $genreData');
+      //print('User Data: $genreData');
 
       if (genreData.containsKey("name")) {
         String name = genreData["name"];
-        print('name: $name');
+        //print('name: $name');
 
         return name;
       } else {
@@ -174,11 +174,11 @@ Future<String?> fetchUserNameByID(String userId) async {
 
     if (userDoc.exists) {
       Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
-      print('User Data: $userData');
+      //print('User Data: $userData');
 
       if (userData.containsKey("name")) {
         String name = userData["name"];
-        print('name: $name');
+        //print('name: $name');
 
         return name;
       } else {

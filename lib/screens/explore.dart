@@ -18,7 +18,7 @@ class Explore extends StatefulWidget {
 }
 
 class _ExploreState extends State<Explore> {
-  late List<int> booksToShow;
+  late String bookToShow;
   late Map<String, dynamic> currentBook = {};
   late String genreName = '';
   late String bookOwner = '';
@@ -50,8 +50,8 @@ class _ExploreState extends State<Explore> {
   void initState() {
     super.initState();
     // TO DO: List to contain only books filtered for this user
-    booksToShow = [1, 2, 3];
-    _fetchBookDataByID('2');
+    bookToShow = '1';
+    _fetchBookDataByID(bookToShow);
   }
 
   @override
@@ -68,15 +68,50 @@ class _ExploreState extends State<Explore> {
               color: Color.fromARGB(255, 79, 81, 140)),
         ),
       ),
-      Center(
-        child: Align(
-            alignment: Alignment.center, // Adjust alignment as needed
-            child: Image.asset(
-              currentBook['picture'] != null
-                  ? 'lib/assets/images/${currentBook['picture']}'
-                  : 'lib/assets/images/1.png',
-              height: 300.0,
-            )),
+      GestureDetector(
+        onHorizontalDragEnd: (details) {
+          // swipe Right
+          if (details.primaryVelocity! > 0) {
+            print("RIGHT SWIPE");
+            setState(() {
+              // TO DO: Change here
+              if (bookToShow == '1') {
+                bookToShow = '2';
+              } else if (bookToShow == '2') {
+                bookToShow = '3';
+              } else if (bookToShow == '3') {
+                bookToShow = '1';
+              }
+              _fetchBookDataByID(bookToShow);
+            });
+            // Positive velocity means a right swipe
+            // swipe Left
+          } else if (details.primaryVelocity! < 0) {
+            print("LEFT SWIPE");
+            setState(() {
+              // TO DO: Change here
+              if (bookToShow == '1') {
+                bookToShow = '3';
+              } else if (bookToShow == '2') {
+                bookToShow = '1';
+              } else if (bookToShow == '3') {
+                bookToShow = '2';
+              }
+              _fetchBookDataByID(bookToShow);
+            });
+            // Negative velocity means a left swipe
+          }
+        },
+        child: Center(
+          child: Align(
+              alignment: Alignment.center, // Adjust alignment as needed
+              child: Image.asset(
+                currentBook['picture'] != null
+                    ? 'lib/assets/images/${currentBook['picture']}'
+                    : 'lib/assets/images/1.png',
+                height: 300.0,
+              )),
+        ),
       ),
       Padding(
         padding: EdgeInsets.all(10.0),
