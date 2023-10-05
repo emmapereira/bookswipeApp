@@ -1,7 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../models/models.dart';
 
-class NewBook extends StatelessWidget {
+class NewBook extends StatefulWidget {
+  @override
+  _NewBookState createState() => _NewBookState();
+
+  @override
+  Widget build(BuildContext context) {
+    throw UnimplementedError();
+  }
+}
+
+class _NewBookState extends State<NewBook> {
+  late List<String> genreNames = [];
+
+  Future<void> _loadGenres() async {
+    // Perform your asynchronous operations here
+    genreNames = await loadGenres();
+    // Use setState to trigger a rebuild with the fetched data
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadGenres();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,7 +148,7 @@ class NewBook extends StatelessWidget {
             ),
             DropdownButton<String>(
               // Genre dropdown (you can replace the items with your genres)
-              items: ["Genre 1", "Genre 2", "Genre 3"].map((String value) {
+              items: genreNames.map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),

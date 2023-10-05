@@ -1,12 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'screens/home.dart';
 import 'screens/explore.dart';
 import 'screens/matches.dart';
 import 'screens/profile.dart';
 import 'models/app_state.dart';
+import 'models/models.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 Future main() async {
@@ -32,36 +34,17 @@ Future main() async {
   } else {
     await Firebase.initializeApp();
   }
+
   final appState = AppState();
   appState.init();
   runApp(MyApp(appState: appState));
-  await readUserData();
+  //await readUserData();
+  await readGenreData();
+  //await writeNewGenre("NEW GENRE");
 }
 
 //this is the command i use to run the app
 //flutter run -d chrome --web-renderer html --no-sound-null-safety
-
-Future<void> readUserData() async {
-  print("holaa readuserdata");
-
-  try {
-    // Reference to the "users" collection
-    CollectionReference usersCollection =
-        FirebaseFirestore.instance.collection('users');
-
-    // Get all documents in the "users" collection
-    QuerySnapshot querySnapshot = await usersCollection.get();
-
-    // Iterate through the documents and print their data
-    querySnapshot.docs.forEach((doc) {
-      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      print("Document ID: ${doc.id}");
-      print("Data: $data");
-    });
-  } catch (e) {
-    print('Error: $e');
-  }
-}
 
 class MyApp extends StatelessWidget {
   final AppState appState;
