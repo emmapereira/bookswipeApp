@@ -139,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: Color(0xffdabfff),
+      backgroundColor: const Color(0xffdabfff),
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
