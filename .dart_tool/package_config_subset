@@ -70,6 +70,10 @@ flutter_lints
 2.19
 file:///Users/emma/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3/
 file:///Users/emma/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3/lib/
+flutter_rating_bar
+2.14
+file:///Users/emma/.pub-cache/hosted/pub.dev/flutter_rating_bar-4.0.1/
+file:///Users/emma/.pub-cache/hosted/pub.dev/flutter_rating_bar-4.0.1/lib/
 js
 2.16
 file:///Users/emma/.pub-cache/hosted/pub.dev/js-0.6.5/
@@ -132,8 +136,8 @@ file:///Users/emma/.pub-cache/hosted/pub.dev/vector_math-2.1.4/
 file:///Users/emma/.pub-cache/hosted/pub.dev/vector_math-2.1.4/lib/
 bookswipe
 2.19
-file:///Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/
-file:///Volumes/em/dtu/fall23/02830/final/bookswipe2.0/books/lib/
+file:///Volumes/em/dtu/fall23/02830/bookswipe/
+file:///Volumes/em/dtu/fall23/02830/bookswipe/lib/
 sky_engine
 2.12
 file:///usr/local/Caskroom/flutter/3.7.7/flutter/bin/cache/pkg/sky_engine/
