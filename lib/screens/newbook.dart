@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/models.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class NewBook extends StatefulWidget {
   @override
@@ -13,8 +15,86 @@ class NewBook extends StatefulWidget {
   }
 }
 
+class BookDetails {
+  final String title;
+  final List<String> authors;
+
+  BookDetails({
+    required this.title,
+    required this.authors,
+  });
+}
+
+Future<BookDetails?> getBookDetails(String isbn) async {
+  final url = Uri.parse(
+      'https://openlibrary.org/api/books?bibkeys=ISBN:$isbn&format=json&jscmd=data');
+
+  final response = await http.get(url);
+
+  if (response.statusCode == 200) {
+    final jsonResponse = json.decode(response.body);
+
+    if (jsonResponse.isNotEmpty) {
+      final bookDetails = jsonResponse['ISBN:$isbn'];
+
+      // Extract book details as needed
+      final title = bookDetails['title'];
+      final authors = (bookDetails['authors'] as List<dynamic>)
+          .map((author) => author['name'].toString())
+          .toList();
+
+      // Create a BookDetails object to return the data
+      final book = BookDetails(
+        title: title,
+        authors: authors,
+      );
+
+      return book;
+    } else {
+      print('No book found for ISBN: $isbn');
+      return null;
+    }
+  } else {
+    throw Exception('Failed to load book details');
+  }
+}
+
 class _NewBookState extends State<NewBook> {
   late List<String> genreNames = [];
+  final isbnController = TextEditingController();
+  final titleController = TextEditingController();
+  final authorController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Dispose of the controllers when the widget is disposed to prevent memory leaks
+    isbnController.dispose();
+    titleController.dispose();
+    authorController.dispose();
+    super.dispose();
+  }
+
+  void handleISBNInput() {
+    final isbn = isbnController.text;
+    if (isbn.isNotEmpty) {
+      getBookDetails(isbn).then((bookDetails) {
+        setState(() {
+          if (bookDetails != null) {
+            // Update the controllers with book details
+            titleController.text = bookDetails.title;
+            authorController.text = bookDetails.authors.join(", ");
+            // ...
+          } else {
+            // Handle the case when no book is found
+            // Clear or update controllers as needed
+          }
+        });
+      }).catchError((error) {
+        // Handle any errors that occur during the API call
+        print('Error fetching book details: $error');
+      });
+    }
+  }
 
   Future<void> _loadGenres() async {
     // Perform your asynchronous operations here
@@ -27,17 +107,18 @@ class _NewBookState extends State<NewBook> {
   void initState() {
     super.initState();
     _loadGenres();
+    //getBookDetails("9780804172707");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Add a new book",
               style: TextStyle(
                   fontSize: 24,
@@ -48,14 +129,14 @@ class _NewBookState extends State<NewBook> {
             // Upload a Picture Box
             Container(
               width: double.infinity,
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               decoration: BoxDecoration(
                 color: Colors.grey[200], // Background color
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Text(
                     "Upload a Picture",
                     style: TextStyle(
@@ -69,10 +150,10 @@ class _NewBookState extends State<NewBook> {
               ),
             ),
 
-            SizedBox(height: 20), // Add spacing
+            const SizedBox(height: 20), // Add spacing
 
             // ISBN
-            Text(
+            const Text(
               "ISBN",
               style: TextStyle(
                 fontSize: 16,
@@ -81,14 +162,16 @@ class _NewBookState extends State<NewBook> {
             ),
             TextFormField(
               // ISBN input field
-              decoration: InputDecoration(
+              controller: isbnController,
+              onFieldSubmitted: (_) => handleISBNInput(),
+              decoration: const InputDecoration(
                 hintText: "Enter ISBN",
               ),
             ),
-            SizedBox(height: 10), // Add spacing
+            const SizedBox(height: 10), // Add spacing
 
             // Title
-            Text(
+            const Text(
               "Title",
               style: TextStyle(
                 fontSize: 16,
@@ -96,33 +179,16 @@ class _NewBookState extends State<NewBook> {
               ),
             ),
             TextFormField(
-              // Title input field (auto-filled later)
+              controller: titleController,
               readOnly: true, // To make it non-editable
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Auto-filled later",
               ),
             ),
-            SizedBox(height: 10), // Add spacing
-
-            // Edition
-            Text(
-              "Edition",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            TextFormField(
-              // Edition input field (auto-filled later)
-              readOnly: true, // To make it non-editable
-              decoration: InputDecoration(
-                hintText: "Auto-filled later",
-              ),
-            ),
-            SizedBox(height: 10), // Add spacing
+            const SizedBox(height: 10), // Add spacing
 
             // Author
-            Text(
+            const Text(
               "Author",
               style: TextStyle(
                 fontSize: 16,
@@ -130,16 +196,31 @@ class _NewBookState extends State<NewBook> {
               ),
             ),
             TextFormField(
-              // Author input field (auto-filled later)
+              controller: authorController,
               readOnly: true, // To make it non-editable
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Auto-filled later",
               ),
             ),
-            SizedBox(height: 10), // Add spacing
+            const SizedBox(height: 10), // Add spacing
+            // Edition
+            const Text(
+              "Edition",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            TextFormField(
+              readOnly: false, // To make it editable
+              decoration: const InputDecoration(
+                hintText: "Book edition",
+              ),
+            ),
+            const SizedBox(height: 10), // Add spacing
 
             // Genre Dropdown
-            Text(
+            const Text(
               "Genre",
               style: TextStyle(
                 fontSize: 16,
@@ -159,10 +240,10 @@ class _NewBookState extends State<NewBook> {
               },
               hint: Text("Select Genre"),
             ),
-            SizedBox(height: 10), // Add spacing
+            const SizedBox(height: 10), // Add spacing
 
             // Condition (Star Rating)
-            Text(
+            const Text(
               "Condition",
               style: TextStyle(
                 fontSize: 16,
@@ -177,7 +258,7 @@ class _NewBookState extends State<NewBook> {
               allowHalfRating: true,
               itemCount: 5,
               itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-              itemBuilder: (context, _) => Icon(
+              itemBuilder: (context, _) => const Icon(
                 Icons.star,
                 color: Colors.amber,
               ),
@@ -186,10 +267,10 @@ class _NewBookState extends State<NewBook> {
                 print(rating);
               },
             ),
-            SizedBox(height: 10), // Add spacing
+            const SizedBox(height: 10), // Add spacing
 
             // Comment
-            Text(
+            const Text(
               "Comment",
               style: TextStyle(
                 fontSize: 16,
@@ -199,12 +280,12 @@ class _NewBookState extends State<NewBook> {
             TextFormField(
               // Comment input field
               maxLines: 3, // Allow multiple lines
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Enter your comment...",
               ),
             ),
 
-            SizedBox(height: 20), // Add spacing
+            const SizedBox(height: 20), // Add spacing
 
             // Save and Cancel Buttons
             Align(
@@ -216,9 +297,9 @@ class _NewBookState extends State<NewBook> {
                     onPressed: () {
                       // Add save functionality
                     },
-                    child: Text("Save"),
+                    child: const Text("Save"),
                   ),
-                  SizedBox(width: 10), // Add spacing
+                  const SizedBox(width: 10), // Add spacing
                   ElevatedButton(
                     onPressed: () {
                       // Add cancel functionality
@@ -227,7 +308,7 @@ class _NewBookState extends State<NewBook> {
                       backgroundColor: MaterialStateProperty.all(
                           Colors.red), // Red color for cancel button
                     ),
-                    child: Text("Cancel"),
+                    child: const Text("Cancel"),
                   ),
                 ],
               ),
