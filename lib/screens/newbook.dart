@@ -64,6 +64,8 @@ class _NewBookState extends State<NewBook> {
   final isbnController = TextEditingController();
   final titleController = TextEditingController();
   final authorController = TextEditingController();
+  String? selectedGenre;
+  bool isImageVisible = false;
 
   @override
   void dispose() {
@@ -113,18 +115,32 @@ class _NewBookState extends State<NewBook> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(color: Colors.black),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Implement the functionality to navigate back
+            Navigator.pop(context);
+          },
+        ),
+        title: const Text(
+          "Add a new book",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 79, 81, 140),
+          ),
+        ),
+        centerTitle: false,
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Add a new book",
-              style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 79, 81, 140)),
-            ),
             // Image Upload (To be implemented later)
             // Upload a Picture Box
             Container(
@@ -134,19 +150,46 @@ class _NewBookState extends State<NewBook> {
                 color: Colors.grey[200], // Background color
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    "Upload a Picture",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+              child: GestureDetector(
+                onTap: () {
+                  // when user clicks on "upload a picture"
+                  setState(() {
+                    isImageVisible =
+                        !isImageVisible; // Toggle the visibility of the image
+                  });
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20.0),
+                  height: 120.0,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200], // Background color
+                    borderRadius: BorderRadius.circular(10.0),
                   ),
-                  SizedBox(height: 10), // Add spacing
-                  // You can add image upload functionality here later
-                ],
+                  child: isImageVisible
+                      ? Image.asset(
+                          'lib/assets/images/picture1.jpg',
+                          height: 120.0,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        )
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: const <Widget>[
+                            Text(
+                              "Upload a Picture",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            // You can add image upload functionality here later
+                          ],
+                        ),
+                ),
               ),
             ),
 
@@ -228,7 +271,7 @@ class _NewBookState extends State<NewBook> {
               ),
             ),
             DropdownButton<String>(
-              // Genre dropdown (you can replace the items with your genres)
+              // Genre dropdown loads them from db
               items: genreNames.map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -237,8 +280,14 @@ class _NewBookState extends State<NewBook> {
               }).toList(),
               onChanged: (String? newValue) {
                 // Handle dropdown selection
+                setState(() {
+                  selectedGenre = newValue; // Update the selected genre
+                });
               },
-              hint: Text("Select Genre"),
+              value: selectedGenre,
+              hint: const Text("Select Genre"),
+              dropdownColor: Colors.white,
+              focusColor: Colors.transparent,
             ),
             const SizedBox(height: 10), // Add spacing
 
@@ -252,7 +301,7 @@ class _NewBookState extends State<NewBook> {
             ),
             //5 stars widget to rate the book
             RatingBar.builder(
-              initialRating: 3,
+              initialRating: 0,
               minRating: 1,
               direction: Axis.horizontal,
               allowHalfRating: true,

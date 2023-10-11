@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Widget> _buildScreens() {
     return [
-      Home(selectedItems: _selectedItems, currentIndex: _currentIndex),
+      Home(),
       Explore(),
       Matches(),
       Profile(),
