@@ -23,6 +23,7 @@ class _HomeState extends State<Home> {
   late String genreName = '';
   late String bookOwner = '';
   late bool isImageLarge;
+  late String kmNumber = '0';
 
   Future<void> _fetchBookDataByID(String id) async {
     try {
@@ -41,6 +42,7 @@ class _HomeState extends State<Home> {
         currentBook = bookData;
         genreName = gName;
         bookOwner = userName;
+        kmNumber = getKmNumber();
       });
     } catch (e) {
       print('Error fetching book data: $e');
@@ -82,7 +84,7 @@ class _HomeState extends State<Home> {
         onHorizontalDragEnd: (details) {
           // swipe Right
           if (details.primaryVelocity! > 0) {
-            print("RIGHT SWIPE");
+            //print("RIGHT SWIPE");
             setState(() {
               // TO DO: Change here
               if (bookToShow == '1') {
@@ -97,7 +99,7 @@ class _HomeState extends State<Home> {
             // Positive velocity means a right swipe
             // swipe Left
           } else if (details.primaryVelocity! < 0) {
-            print("LEFT SWIPE");
+            //print("LEFT SWIPE");
             setState(() {
               // TO DO: Change here
               if (bookToShow == '1') {
@@ -134,24 +136,12 @@ class _HomeState extends State<Home> {
                     )),
               ),
       ),
-
-      // child: Center(
-      //   child: Align(
-      //       alignment: Alignment.center, // Adjust alignment as needed
-      //       child: Image.asset(
-      //         currentBook['picture'] != null
-      //             ? 'lib/assets/images/${currentBook['picture']}'
-      //             : 'lib/assets/images/1.png',
-      //         height: 300.0,
-      //       )),
-      // ),
-
       isImageLarge
           ? GestureDetector(
               onVerticalDragUpdate: (details) {
                 if (details.delta.dy < 0) {
                   // User swiped up, perform a different action.
-                  print('Swiped Up');
+                  //print('Swiped Up');
                   setState(() {
                     isImageLarge = false; // Toggle the visibility of the image
                   });
@@ -215,7 +205,7 @@ class _HomeState extends State<Home> {
                                   255, 88, 158, 228), // Customize the color
                             ),
                             Text(
-                              '${getKmNumber()} km away',
+                              '$kmNumber km away',
                               style: TextStyle(
                                 fontSize: 13.0,
                               ),
@@ -229,7 +219,7 @@ class _HomeState extends State<Home> {
               onVerticalDragUpdate: (details) {
                 if (details.delta.dy > 0) {
                   // User swiped down, perform an action.
-                  print('Swiped Down');
+                  //print('Swiped Down');
                   setState(() {
                     isImageLarge = true; // Toggle the visibility of the image
                   });
@@ -293,7 +283,7 @@ class _HomeState extends State<Home> {
                                   255, 88, 158, 228), // Customize the color
                             ),
                             Text(
-                              '${getKmNumber()} km away',
+                              '$kmNumber km away',
                               style: TextStyle(
                                 fontSize: 13.0,
                               ),
@@ -312,12 +302,7 @@ class _HomeState extends State<Home> {
                         Padding(
                           padding: const EdgeInsets.only(left: 20.0, top: 8.0),
                           child: Text(
-                            //'Genre: ${currentBook['genre'] ?? ''}',
-                            //'Genre: ${_fetchGenreNameByID(currentBook['genre'])}',
                             'Genre: $genreName',
-
-                            //nullableString?.toUpperCase() ?? "Default Value";
-                            //currentBook['genre']?.'Genre: ${_fetchGenreNameByID(currentBook['genre'])}' ?? '';
                             style: TextStyle(
                               fontSize: 17.0,
                             ),
@@ -411,195 +396,6 @@ class _HomeState extends State<Home> {
                       ])),
                 ),
               ))
-
-      // GestureDetector(
-      //     onVerticalDragUpdate: (details) {
-      //       if (details.delta.dy > 0) {
-      //         // User swiped down, perform an action.
-      //         print('Swiped Down');
-      //         setState(() {
-      //           isImageLarge = true; // Toggle the visibility of the image
-      //         });
-      //       } else if (details.delta.dy < 0) {
-      //         // User swiped up, perform a different action.
-      //         print('Swiped Up');
-      //         setState(() {
-      //           isImageLarge = false; // Toggle the visibility of the image
-      //         });
-      //       }
-      //     },
-      //     child: Padding(
-      //       padding: EdgeInsets.all(10.0),
-      //       child: Container(
-      //         width: (MediaQuery.of(context).size.width),
-      //         height: (MediaQuery.of(context).size.width) - 250.0,
-      //         child: Container(
-      //             decoration: BoxDecoration(
-      //               border: Border.all(color: Color(0xffdabfff), width: 3.0),
-      //               color: Colors.white,
-      //               shape: BoxShape.rectangle,
-      //               borderRadius: BorderRadius.all(Radius.circular(30.0)),
-      //             ),
-      //             child: ListView(children: [
-      //               Row(
-      //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //                   children: [
-      //                     Padding(
-      //                       padding:
-      //                           const EdgeInsets.only(left: 15.0, top: 8.0),
-      //                       child: Text(
-      //                         currentBook['title'] ?? 'BookTitle',
-      //                         style: TextStyle(
-      //                           fontSize: 24.0,
-      //                           fontWeight: FontWeight.bold,
-      //                         ),
-      //                       ),
-      //                     ),
-      //                     Padding(
-      //                       padding:
-      //                           const EdgeInsets.only(right: 15.0, top: 8.0),
-      //                       child: Row(children: [
-      //                         Text(
-      //                           '$bookOwner',
-      //                           style: TextStyle(
-      //                             fontSize: 17.0,
-      //                             fontWeight: FontWeight.bold,
-      //                           ),
-      //                         ),
-      //                         Icon(
-      //                           Icons.person, // Use the person icon
-      //                           size: 25.0, // Adjust the size as needed
-      //                           color: Color(0xffdabfff), // Customize the color
-      //                         ),
-      //                       ]),
-      //                     )
-      //                   ]),
-      //               Padding(
-      //                 padding: const EdgeInsets.only(left: 15.0, top: 5.0),
-      //                 child: Row(children: [
-      //                   Icon(
-      //                     Icons.location_on_outlined, // Use the person icon
-      //                     size: 15.0, // Adjust the size as needed
-      //                     color: Color.fromARGB(
-      //                         255, 88, 158, 228), // Customize the color
-      //                   ),
-      //                   Text(
-      //                     '${getKmNumber()} km away',
-      //                     style: TextStyle(
-      //                       fontSize: 13.0,
-      //                     ),
-      //                   ),
-      //                 ]),
-      //               ),
-      //               Padding(
-      //                 padding: const EdgeInsets.only(left: 20.0, top: 15.0),
-      //                 child: Text(
-      //                   'Author: ${currentBook['author'] ?? ''}',
-      //                   style: TextStyle(
-      //                     fontSize: 17.0,
-      //                   ),
-      //                 ),
-      //               ),
-      //               Padding(
-      //                 padding: const EdgeInsets.only(left: 20.0, top: 8.0),
-      //                 child: Text(
-      //                   //'Genre: ${currentBook['genre'] ?? ''}',
-      //                   //'Genre: ${_fetchGenreNameByID(currentBook['genre'])}',
-      //                   'Genre: $genreName',
-
-      //                   //nullableString?.toUpperCase() ?? "Default Value";
-      //                   //currentBook['genre']?.'Genre: ${_fetchGenreNameByID(currentBook['genre'])}' ?? '';
-      //                   style: TextStyle(
-      //                     fontSize: 17.0,
-      //                   ),
-      //                 ),
-      //               ),
-      //               Row(children: [
-      //                 Padding(
-      //                   padding: const EdgeInsets.only(left: 20.0, top: 8.0),
-      //                   child: Text(
-      //                     'Book Condition:',
-      //                     style: TextStyle(
-      //                       fontSize: 17.0,
-      //                     ),
-      //                   ),
-      //                 ),
-      //                 RatingBar.builder(
-      //                   initialRating: currentBook['condition'] != null
-      //                       ? currentBook['condition'].toDouble()
-      //                       : 3.0,
-      //                   minRating: 1,
-      //                   direction: Axis.horizontal,
-      //                   allowHalfRating: true,
-      //                   itemCount: 5,
-      //                   itemSize: 25.0,
-      //                   itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-      //                   itemBuilder: (context, _) => Icon(
-      //                     Icons.star,
-      //                     color: Colors.amber,
-      //                   ),
-      //                   onRatingUpdate: (rating) {},
-      //                 ),
-      //               ]),
-      //               Padding(
-      //                 padding: const EdgeInsets.only(left: 20.0, top: 8.0),
-      //                 child: Text(
-      //                   'Edition: ${currentBook['edition'] ?? ''}',
-      //                   style: TextStyle(
-      //                     fontSize: 17.0,
-      //                   ),
-      //                 ),
-      //               ),
-      //               Padding(
-      //                 padding: const EdgeInsets.only(left: 20.0, top: 8.0),
-      //                 child: Text(
-      //                   'ISBN: ${currentBook['isbn'] ?? ''}',
-      //                   style: TextStyle(
-      //                     fontSize: 17.0,
-      //                   ),
-      //                 ),
-      //               ),
-      //               Row(
-      //                 crossAxisAlignment: CrossAxisAlignment
-      //                     .start, // Align the first Text to the top of the second one
-      //                 children: [
-      //                   Padding(
-      //                     padding: const EdgeInsets.only(left: 20.0, top: 8.0),
-      //                     child: Text(
-      //                       'Comment: ',
-      //                       style: TextStyle(
-      //                         fontSize: 17.0,
-      //                       ),
-      //                     ),
-      //                   ),
-      //                   Expanded(
-      //                     child: Column(
-      //                       crossAxisAlignment: CrossAxisAlignment
-      //                           .start, // Align text in the Column to the start (left)
-      //                       children: [
-      //                         Padding(
-      //                           padding: const EdgeInsets.only(
-      //                               left: 20.0, top: 8.0, right: 8.0),
-      //                           child: Text(
-      //                             '${currentBook['comment'] ?? ''}',
-      //                             style: TextStyle(
-      //                               fontSize: 17.0,
-      //                               fontStyle: FontStyle.italic,
-      //                             ),
-      //                             maxLines:
-      //                                 4, // Adjust the number of lines as needed
-      //                             overflow: TextOverflow
-      //                                 .ellipsis, // Truncate text with ellipsis if it overflows
-      //                           ),
-      //                         ),
-      //                       ],
-      //                     ),
-      //                   ),
-      //                 ],
-      //               )
-      //             ])),
-      //       ),
-      //     )),
     ]));
   }
 }
