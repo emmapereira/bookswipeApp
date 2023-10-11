@@ -68,6 +68,7 @@ class _NewBookState extends State<NewBook> {
   final authorController = TextEditingController();
   String? selectedGenre;
   bool isImageVisible = false;
+  late String booksLength = "";
 
   @override
   void dispose() {
@@ -102,15 +103,27 @@ class _NewBookState extends State<NewBook> {
 
   Future<void> _loadGenres() async {
     // Perform your asynchronous operations here
-    genreNames = await loadGenres();
+    genreNames = await getGenres();
     // Use setState to trigger a rebuild with the fetched data
     setState(() {});
+  }
+
+  Future<List<Map<String, dynamic>>> _getBooksNumber() async {
+    // Perform your asynchronous operations here
+    List<Map<String, dynamic>> books = await getBooks();
+    int length = books.length + 1;
+    // Use setState to trigger a rebuild with the fetched data
+    setState(() {
+      booksLength = length.toString();
+    });
+    return books;
   }
 
   @override
   void initState() {
     super.initState();
     _loadGenres();
+    _getBooksNumber();
     //getBookDetails("9780804172707");
   }
 
@@ -170,7 +183,9 @@ class _NewBookState extends State<NewBook> {
                   ),
                   child: isImageVisible
                       ? Image.asset(
-                          'lib/assets/images/picture1.jpg',
+                          booksLength != ""
+                              ? 'lib/assets/images/$booksLength.png'
+                              : 'lib/assets/images/1.png',
                           height: 120.0,
                           width: double.infinity,
                           fit: BoxFit.cover,

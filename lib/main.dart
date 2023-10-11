@@ -39,8 +39,8 @@ Future main() async {
   appState.init();
   runApp(MyApp(appState: appState));
   //await readUserData();
-  await readGenreData();
-  //await writeNewGenre("NEW GENRE");
+  //await readGenreData();
+  //await addGenre("NEW GENRE");
 }
 
 //this is the command i use to run the app

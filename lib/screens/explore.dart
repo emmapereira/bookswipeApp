@@ -2,12 +2,10 @@ import 'package:bookswipe/screens/newbook.dart';
 import 'package:flutter/material.dart';
 
 class Explore extends StatelessWidget {
-  final List<String> selectedItems;
-  final int currentIndex;
+  //final List<String> selectedItems;
+  //final int currentIndex;
 
-  const Explore(
-      {Key? key, required this.selectedItems, required this.currentIndex})
-      : super(key: key);
+  const Explore({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

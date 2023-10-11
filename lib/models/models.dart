@@ -3,7 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:math';
 
-Future<void> readUserData() async {
+Future<void> printUsers() async {
   print("holaa readuserdata");
 
   try {
@@ -26,30 +26,7 @@ Future<void> readUserData() async {
 }
 
 // reading data from Genres table
-Future<void> readGenreData() async {
-  print("READING GENRES");
-
-  try {
-    // Reference to the "genres" collection
-    CollectionReference genresCollection =
-        FirebaseFirestore.instance.collection('genres');
-
-    // Get all documents in the "genres" collection
-    QuerySnapshot querySnapshot = await genresCollection.get();
-
-    // Iterate through the documents and print their data
-    querySnapshot.docs.forEach((doc) {
-      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      print("Document ID: ${doc.id}");
-      print("Data: $data");
-    });
-  } catch (e) {
-    print('Error: $e');
-  }
-}
-
-// reading data from Genres table
-Future<List<String>> loadGenres() async {
+Future<List<String>> getGenres() async {
   List<String> genreNames = [];
   try {
     // Reference to the "genres" collection
@@ -79,8 +56,33 @@ Future<List<String>> loadGenres() async {
   }
 }
 
+// reading data from Genres table
+Future<List<Map<String, dynamic>>> getBooks() async {
+  List<Map<String, dynamic>> books = [];
+  //List<String> genreNames = [];
+  try {
+    // Reference to the "books" collection
+    CollectionReference booksCollection =
+        FirebaseFirestore.instance.collection('books');
+
+    // Get all documents in the "genres" collection
+    QuerySnapshot querySnapshot = await booksCollection.get();
+
+    // Iterate through the documents and print their data
+    querySnapshot.docs.forEach((doc) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      books.add(data);
+    });
+
+    return books; // Return the list of "name" values
+  } catch (e) {
+    print('Error: $e');
+    return []; // Return an empty list in case of an error
+  }
+}
+
 // Function to write a timestamp to the database
-Future<void> writeNewGenre(String genreName) async {
+Future<void> addGenre(String genreName) async {
   print("trying to add a new genre");
 
   try {
@@ -103,7 +105,7 @@ Future<void> writeNewGenre(String genreName) async {
   }
 }
 
-Future<Map<String, dynamic>?> fetchBookDataByID(String bookId) async {
+Future<Map<String, dynamic>?> getBookById(String bookId) async {
   try {
     // Reference to the Firestore collection 'books' and the specific document by ID
     DocumentSnapshot bookDoc =
@@ -135,7 +137,7 @@ String getKmNumber() {
   return s;
 }
 
-Future<String?> fetchGenreNameByID(String genreId) async {
+Future<String?> getGenreById(String genreId) async {
   try {
     DocumentSnapshot genreDoc = await FirebaseFirestore.instance
         .collection('genres')
@@ -167,7 +169,7 @@ Future<String?> fetchGenreNameByID(String genreId) async {
   return null;
 }
 
-Future<String?> fetchUserNameByID(String userId) async {
+Future<String?> getUserNameById(String userId) async {
   try {
     DocumentSnapshot userDoc =
         await FirebaseFirestore.instance.collection('users').doc(userId).get();

@@ -26,15 +26,15 @@ class _HomeState extends State<Home> {
   Future<void> _fetchBookDataByID(String id) async {
     try {
       // Perform your asynchronous operations here
-      final bookData = await fetchBookDataByID(id) as Map<String, dynamic>;
+      final bookData = await getBookById(id) as Map<String, dynamic>;
 
       DocumentReference<Map<String, dynamic>> genreRef = bookData['genre'];
       String genreId = genreRef.id;
-      final gName = await fetchGenreNameByID(genreId) as String;
+      final gName = await getGenreById(genreId) as String;
 
       DocumentReference<Map<String, dynamic>> userRef = bookData['owner'];
       String userId = userRef.id;
-      final userName = await fetchUserNameByID(userId) as String;
+      final userName = await getUserNameById(userId) as String;
       // Update currentBook with the fetched data
       setState(() {
         currentBook = bookData;
