@@ -89,8 +89,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Widget> _buildScreens() {
     return [
-      Home(selectedItems: _selectedItems, currentIndex: _currentIndex),
-      Explore(),
+      Home(),
+      Explore(selectedItems: _selectedItems, currentIndex: _currentIndex),
       Matches(),
       Profile(),
     ];
@@ -139,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: Color(0xffdabfff),
+      backgroundColor: const Color(0xffdabfff),
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
       stateManagement: true,

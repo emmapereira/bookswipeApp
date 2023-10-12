@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:math';
 
 Future<void> readUserData() async {
   print("holaa readuserdata");
@@ -145,4 +146,98 @@ Future<void> writeNewGenre(String genreName) async {
   } catch (e) {
     print('Error adding new genre: $e');
   }
+}
+
+Future<Map<String, dynamic>?> fetchBookDataByID(String bookId) async {
+  try {
+    // Reference to the Firestore collection 'books' and the specific document by ID
+    DocumentSnapshot bookDoc =
+        await FirebaseFirestore.instance.collection('books').doc(bookId).get();
+
+    if (bookDoc.exists) {
+      // The document exists, you can access its data
+      Map<String, dynamic> bookData = bookDoc.data() as Map<String, dynamic>;
+      //print('User Data: $bookData');
+      return bookData;
+      // Use the book data in your Flutter app
+      // For example, set it in a state variable or display it in a widget
+    } else {
+      print('User document with ID $bookId does not exist.');
+      return null;
+      // Handle the case where the document does not exist
+    }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    return null;
+    // Handle any errors that occur during the fetch
+  }
+}
+
+String getKmNumber() {
+  final random = Random();
+  int r = random.nextInt(10) + 1;
+  String s = r.toString();
+  return s;
+}
+
+Future<String?> fetchGenreNameByID(String genreId) async {
+  try {
+    DocumentSnapshot genreDoc = await FirebaseFirestore.instance
+        .collection('genres')
+        .doc(genreId)
+        .get();
+
+    if (genreDoc.exists) {
+      Map<String, dynamic> genreData = genreDoc.data() as Map<String, dynamic>;
+      //print('User Data: $genreData');
+
+      if (genreData.containsKey("name")) {
+        String name = genreData["name"];
+        //print('name: $name');
+
+        return name;
+      } else {
+        print("Name attribute not found in document ${genreDoc.id}");
+      }
+      // Use the genre data in your Flutter app
+      // For example, set it in a state variable or display it in a widget
+    } else {
+      print('User document with ID $genreId does not exist.');
+      return '';
+    }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    return '';
+  }
+  return null;
+}
+
+Future<String?> fetchUserNameByID(String userId) async {
+  try {
+    DocumentSnapshot userDoc =
+        await FirebaseFirestore.instance.collection('users').doc(userId).get();
+
+    if (userDoc.exists) {
+      Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
+      //print('User Data: $userData');
+
+      if (userData.containsKey("name")) {
+        String name = userData["name"];
+        //print('name: $name');
+
+        return name;
+      } else {
+        print("Name attribute not found in document ${userDoc.id}");
+      }
+      // Use the user data in your Flutter app
+      // For example, set it in a state variable or display it in a widget
+    } else {
+      print('User document with ID $userId does not exist.');
+      return '';
+    }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    return '';
+  }
+  return null;
 }
