@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
             // swipe Right
             if (details.delta.dx < 0) {
               swipeDetected = true;
-              print("LEFT SWIPE");
+              //print("LEFT SWIPE");
               setState(() {
                 // TO DO: Change here
                 int number =
@@ -114,7 +114,7 @@ class _HomeState extends State<Home> {
               // swipe Left
             } else if (details.delta.dx > 0) {
               swipeDetected = true;
-              print("RIGHT SWIPE");
+              //print("RIGHT SWIPE");
               setState(() {
                 // TO DO: Change here
                 int number =
