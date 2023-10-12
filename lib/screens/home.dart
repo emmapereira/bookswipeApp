@@ -24,6 +24,8 @@ class _HomeState extends State<Home> {
   late String bookOwner = '';
   late bool isImageLarge;
   late String kmNumber = '0';
+  late bool swipeDetected = false;
+  late int numberOfBooks = 0;
 
   Future<void> _fetchBookDataByID(String id) async {
     try {
@@ -43,6 +45,8 @@ class _HomeState extends State<Home> {
         genreName = gName;
         bookOwner = userName;
         kmNumber = getKmNumber();
+        swipeDetected = false;
+        numberOfBooks = numberOfBooks;
       });
     } catch (e) {
       print('Error fetching book data: $e');
@@ -54,8 +58,18 @@ class _HomeState extends State<Home> {
     super.initState();
     isImageLarge = true;
     // TO DO: List to contain only books filtered for this user
-    bookToShow = '1';
+    bookToShow = '14';
     _fetchBookDataByID(bookToShow);
+
+    CollectionReference booksCollection =
+        FirebaseFirestore.instance.collection('books');
+
+    booksCollection.get().then((QuerySnapshot querySnapshot) {
+      numberOfBooks = querySnapshot.docs.length;
+      print("Number of documents in the collection: $numberOfBooks");
+    }).catchError((error) {
+      print("Error counting documents: $error");
+    });
   }
 
   @override
@@ -81,38 +95,41 @@ class _HomeState extends State<Home> {
         ),
       ),
       GestureDetector(
-        onHorizontalDragEnd: (details) {
-          // swipe Right
-          if (details.primaryVelocity! > 0) {
-            //print("RIGHT SWIPE");
-            setState(() {
-              // TO DO: Change here
-              if (bookToShow == '1') {
-                bookToShow = '2';
-              } else if (bookToShow == '2') {
-                bookToShow = '3';
-              } else if (bookToShow == '3') {
-                bookToShow = '1';
-              }
-              _fetchBookDataByID(bookToShow);
-            });
-            // Positive velocity means a right swipe
-            // swipe Left
-          } else if (details.primaryVelocity! < 0) {
-            //print("LEFT SWIPE");
-            setState(() {
-              // TO DO: Change here
-              if (bookToShow == '1') {
-                bookToShow = '3';
-              } else if (bookToShow == '2') {
-                bookToShow = '1';
-              } else if (bookToShow == '3') {
-                bookToShow = '2';
-              }
-              _fetchBookDataByID(bookToShow);
-            });
-            // Negative velocity means a left swipe
+        onHorizontalDragUpdate: (details) {
+          if (!swipeDetected) {
+            // swipe Right
+            if (details.delta.dx < 0) {
+              swipeDetected = true;
+              print("LEFT SWIPE");
+              setState(() {
+                // TO DO: Change here
+                int number =
+                    int.parse(bookToShow); // Convert the string to an integer
+                number++; // Increment the integer
+                if (number == numberOfBooks + 1) number = 1;
+                bookToShow = number.toString();
+                _fetchBookDataByID(bookToShow);
+              });
+              // Positive velocity means a right swipe
+              // swipe Left
+            } else if (details.delta.dx > 0) {
+              swipeDetected = true;
+              print("RIGHT SWIPE");
+              setState(() {
+                // TO DO: Change here
+                int number =
+                    int.parse(bookToShow); // Convert the string to an integer
+                number--; // Increment the integer
+                if (number == 0) number = numberOfBooks;
+                bookToShow = number.toString();
+                _fetchBookDataByID(bookToShow);
+              });
+              // Negative velocity means a left swipe
+            }
           }
+        },
+        onHorizontalDragEnd: (details) {
+          swipeDetected = false;
         },
         child: isImageLarge
             ? Center(
