@@ -219,3 +219,63 @@ Future<List<Map<String, dynamic>>> getMatches() async {
     return []; // Return an empty list in case of an error
   }
 }
+
+Future<String?> fetchBookNameByID(String bookId) async {
+  try {
+    DocumentSnapshot bookDoc =
+        await FirebaseFirestore.instance.collection('books').doc(bookId).get();
+
+    if (bookDoc.exists) {
+      Map<String, dynamic> bookData = bookDoc.data() as Map<String, dynamic>;
+      //print('Book Data: $bookData');
+
+      if (bookData.containsKey("title")) {
+        String title = bookData["title"];
+
+        return title;
+      } else {
+        print("Name attribute not found in document ${bookDoc.id}");
+      }
+      // Use the user data in your Flutter app
+      // For example, set it in a state variable or display it in a widget
+    } else {
+      print('User document with ID $bookId does not exist.');
+      return '';
+    }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    return '';
+  }
+  return null;
+}
+
+Future<String?> fetchUserNameByBookID(String bookId) async {
+  try {
+    DocumentSnapshot bookDoc =
+        await FirebaseFirestore.instance.collection('books').doc(bookId).get();
+
+    if (bookDoc.exists) {
+      Map<String, dynamic> bookData = bookDoc.data() as Map<String, dynamic>;
+
+      if (bookData.containsKey("owner")) {
+        DocumentReference<Map<String, dynamic>> ownerRef = bookData["owner"];
+        String userId = ownerRef.id;
+
+        String userName = await fetchUserNameByID(userId) as String;
+
+        return userName;
+      } else {
+        print("Name attribute not found in document ${bookDoc.id}");
+      }
+      // Use the user data in your Flutter app
+      // For example, set it in a state variable or display it in a widget
+    } else {
+      print('User document with ID $bookId does not exist.');
+      return '';
+    }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    return '';
+  }
+  return null;
+}

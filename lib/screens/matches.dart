@@ -22,12 +22,43 @@ class _MatchesState extends State<Matches> {
     try {
       // Perform your asynchronous operations here
       final matches = await getMatches();
-      //print(matches);
       setState(() {
         allMatches = matches;
       });
     } catch (e) {
       print('Error fetching book data: $e');
+    }
+  }
+
+  Future<String> _getBookName(String bookId) async {
+    try {
+      // Perform your asynchronous operations here
+      final String bookName = await fetchBookNameByID(bookId) as String;
+
+      if (bookName != null) {
+        return bookName;
+      } else {
+        return 'Book name not found'; // You can return a default value or handle this case as needed.
+      }
+    } catch (e) {
+      print('Error fetching book data: $e');
+      return '';
+    }
+  }
+
+  Future<String> _fetchUserNameByBookID(String bookId) async {
+    try {
+      // Perform your asynchronous operations here
+      final String userName = await fetchUserNameByBookID(bookId) as String;
+
+      if (userName != null) {
+        return userName;
+      } else {
+        return 'USer name not found'; // You can return a default value or handle this case as needed.
+      }
+    } catch (e) {
+      print('Error fetching book data: $e');
+      return '';
     }
   }
 
@@ -52,117 +83,6 @@ class _MatchesState extends State<Matches> {
         ),
       ),
       const Divider(),
-      // ListView.builder(
-      //     scrollDirection: Axis.vertical,
-      //     shrinkWrap: true,
-      //     itemCount: allMatches.length,
-      //     itemBuilder: (context, index) {
-      //       final item = allMatches[index];
-
-      //       return Column(
-      //         children: [
-      //           Padding(
-      //             padding: const EdgeInsets.only(left: 9.0),
-      //             child: Row(
-      //               children: [
-      //                 Row(
-      //                   children: [
-      //                     Container(
-      //                       width: 80,
-      //                       height: 80,
-      //                       decoration: BoxDecoration(
-      //                         shape: BoxShape.circle,
-      //                         border: Border.all(
-      //                           color: Colors.green, // Border color
-      //                           width: 4.0, // Border width
-      //                         ),
-      //                       ),
-      //                       child: Padding(
-      //                         padding: const EdgeInsets.all(3.0),
-      //                         child: CircleAvatar(
-      //                           backgroundImage:
-      //                               AssetImage('lib/assets/images/1.png'),
-      //                         ),
-      //                       ),
-      //                     ),
-      //                     SizedBox(width: 3), // Spacing between images
-      //                     Container(
-      //                       width: 80,
-      //                       height: 80,
-      //                       decoration: BoxDecoration(
-      //                         shape: BoxShape.circle,
-      //                         border: Border.all(
-      //                           color: Colors.red, // Border color
-      //                           width: 4.0, // Border width
-      //                         ),
-      //                       ),
-      //                       child: Padding(
-      //                         padding: const EdgeInsets.all(3.0),
-      //                         child: CircleAvatar(
-      //                           backgroundImage:
-      //                               AssetImage('lib/assets/images/2.png'),
-      //                         ),
-      //                       ),
-      //                     ),
-      //                   ],
-      //                 ),
-      //                 // Right side with title and subtitle
-      //                 SizedBox(width: 20), // Spacing between images
-
-      //                 Expanded(
-      //                   child: Padding(
-      //                     padding: const EdgeInsets.all(1.0),
-      //                     child: Column(
-      //                       crossAxisAlignment: CrossAxisAlignment.start,
-      //                       children: [
-      //                         Text(
-      //                           'Title',
-      //                           style: TextStyle(
-      //                               fontSize: 25, fontWeight: FontWeight.bold),
-      //                         ),
-      //                         //Text('subtitle', style: TextStyle(fontSize: 16)),
-      //                         RichText(
-      //                           text: TextSpan(
-      //                             children: [
-      //                               TextSpan(
-      //                                 text: 'Get their ',
-      //                                 style: TextStyle(
-      //                                     color: Colors.black, fontSize: 18),
-      //                               ),
-      //                               TextSpan(
-      //                                 text: 'their book',
-      //                                 style: TextStyle(
-      //                                     color: Colors.green, fontSize: 18),
-      //                               ),
-      //                               TextSpan(
-      //                                 text: ' for your ',
-      //                                 style: TextStyle(
-      //                                     color: Colors.black, fontSize: 18),
-      //                               ),
-      //                               TextSpan(
-      //                                 text: 'your book',
-      //                                 style: TextStyle(
-      //                                     color: Colors.red, fontSize: 18),
-      //                               ),
-      //                               TextSpan(
-      //                                 text: '.',
-      //                                 style: TextStyle(
-      //                                     color: Colors.black, fontSize: 18),
-      //                               ),
-      //                             ],
-      //                           ),
-      //                         )
-      //                       ],
-      //                     ),
-      //                   ),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //           const Divider(),
-      //         ],
-      //       );
-      //     })
       Expanded(
           child: ListView.builder(
         scrollDirection: Axis.vertical,
@@ -223,42 +143,150 @@ class _MatchesState extends State<Matches> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Title',
+                        Text.rich(TextSpan(
+                          text: '', // Leave this empty initially
                           style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'Get their ',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 18),
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
+                          children: [
+                            WidgetSpan(
+                              alignment: PlaceholderAlignment.middle,
+                              child: FutureBuilder<String>(
+                                future: _fetchUserNameByBookID(
+                                    '${item['book2'].id}'),
+                                builder: (BuildContext context,
+                                    AsyncSnapshot<String> snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return CircularProgressIndicator(); // Display a loading indicator.
+                                  } else if (snapshot.hasError) {
+                                    return Text(
+                                      "Error: ${snapshot.error}",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize:
+                                              20), // Change the text style for error message.
+                                    );
+                                  } else {
+                                    return Text(
+                                      snapshot.data ?? 'Book name not found',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize:
+                                              20), // Change the text style for the book name.
+                                    );
+                                  }
+                                },
                               ),
-                              TextSpan(
-                                text: 'their book',
-                                style: TextStyle(
-                                    color: Colors.green, fontSize: 18),
-                              ),
-                              TextSpan(
-                                text: ' for your ',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 18),
-                              ),
-                              TextSpan(
-                                text: 'your book',
-                                style:
-                                    TextStyle(color: Colors.red, fontSize: 18),
-                              ),
-                              TextSpan(
-                                text: '.',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 18),
-                              ),
-                            ],
+                            ),
+                          ],
+                        )),
+                        SizedBox(
+                          width: (MediaQuery.of(context).size.width) - 195,
+                          child: RichText(
+                            maxLines:
+                                10, // Set the maximum number of lines before text wraps
+                            overflow: TextOverflow.visible,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'Get their ',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 18),
+                                ),
+                                TextSpan(
+                                  text: '', // Leave this empty initially
+                                  style: TextStyle(
+                                      color: Colors.green, fontSize: 18),
+                                  children: [
+                                    WidgetSpan(
+                                      alignment: PlaceholderAlignment.middle,
+                                      child: FutureBuilder<String>(
+                                        future:
+                                            _getBookName('${item['book1'].id}'),
+                                        builder: (BuildContext context,
+                                            AsyncSnapshot<String> snapshot) {
+                                          if (snapshot.connectionState ==
+                                              ConnectionState.waiting) {
+                                            return CircularProgressIndicator(); // Display a loading indicator.
+                                          } else if (snapshot.hasError) {
+                                            return Text(
+                                              "Error: ${snapshot.error}",
+                                              style: TextStyle(
+                                                  color: Colors.green,
+                                                  fontSize:
+                                                      18), // Change the text style for error message.
+                                            );
+                                          } else {
+                                            return Text(
+                                              snapshot.data ??
+                                                  'Book name not found',
+                                              style: TextStyle(
+                                                  color: Colors.green,
+                                                  fontSize:
+                                                      18), // Change the text style for the book name.
+                                            );
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                TextSpan(
+                                  text: ' for your ',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 18),
+                                ),
+                                TextSpan(
+                                  text: '', // Leave this empty initially
+                                  style: TextStyle(
+                                      color: Colors.red, fontSize: 18),
+                                  children: [
+                                    WidgetSpan(
+                                      alignment: PlaceholderAlignment.middle,
+                                      child: FutureBuilder<String>(
+                                        future:
+                                            _getBookName('${item['book2'].id}'),
+                                        builder: (BuildContext context,
+                                            AsyncSnapshot<String> snapshot) {
+                                          if (snapshot.connectionState ==
+                                              ConnectionState.waiting) {
+                                            return CircularProgressIndicator(); // Display a loading indicator.
+                                          } else if (snapshot.hasError) {
+                                            return Text(
+                                              "Error: ${snapshot.error}",
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontSize:
+                                                      18), // Change the text style for error message.
+                                            );
+                                          } else {
+                                            return Text(
+                                              snapshot.data ??
+                                                  'Book name not found',
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontSize:
+                                                      18), // Change the text style for the book name.
+                                            );
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                TextSpan(
+                                  text: '.',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 18),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ],
