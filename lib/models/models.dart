@@ -196,3 +196,26 @@ Future<String?> fetchUserNameByID(String userId) async {
   }
   return null;
 }
+
+Future<List<Map<String, dynamic>>> getMatches() async {
+  List<Map<String, dynamic>> matches = [];
+  try {
+    // Reference to the "matches" collection
+    CollectionReference matchesCollection =
+        FirebaseFirestore.instance.collection('matches');
+
+    // Get all documents in the "matches" collection
+    QuerySnapshot querySnapshot = await matchesCollection.get();
+
+    // Iterate through the documents and print their data
+    querySnapshot.docs.forEach((doc) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      matches.add(data);
+    });
+
+    return matches;
+  } catch (e) {
+    print('Error: $e');
+    return []; // Return an empty list in case of an error
+  }
+}
