@@ -78,6 +78,51 @@ Future<List<String>> loadGenres() async {
   }
 }
 
+// function to read the favourite genres of the user (to be used for user 1)
+Future<List<String>> fetchFavoriteGenresById(String id) async {
+  List<String> favoriteGenres = [];
+
+  try {
+    final userDocRef = FirebaseFirestore.instance.collection('users').doc(id);
+    final userSnapshot = await userDocRef.get();
+
+    if (userSnapshot.exists) {
+      final userData = userSnapshot.data() as Map<String, dynamic>;
+      print("User data for ID $id: $userData");
+
+      if (userData.containsKey('favourite_genres')) {
+        // Cast the favorite genres references to a list of DocumentReferences
+        List<DocumentReference> genreRefs =
+            (userData['favourite_genres'] as List<dynamic>)
+                .cast<DocumentReference>();
+        List<String> genreIds = genreRefs.map((ref) => ref.id).toList();
+
+        // Fetch all genres in a single query
+        final genresSnapshot = await FirebaseFirestore.instance
+            .collection('genres')
+            .where(FieldPath.documentId, whereIn: genreIds)
+            .get();
+
+        for (var genreDoc in genresSnapshot.docs) {
+          final genreData = genreDoc.data() as Map<String, dynamic>;
+          if (genreData.containsKey('name')) {
+            favoriteGenres.add(genreData['name']);
+          }
+        }
+      } else {
+        print("User with ID $id does not have 'favourite_genres' field.");
+      }
+    } else {
+      print("No user found with ID $id");
+    }
+  } catch (e) {
+    // Handle any errors that occur during the fetch
+    print("Error fetching user data: $e");
+  }
+
+  return favoriteGenres;
+}
+
 // Function to write a timestamp to the database
 Future<void> writeNewGenre(String genreName) async {
   print("trying to add a new genre");
