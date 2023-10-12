@@ -239,7 +239,36 @@ Future<String?> fetchBookNameByID(String bookId) async {
       // Use the user data in your Flutter app
       // For example, set it in a state variable or display it in a widget
     } else {
-      print('User document with ID $bookId does not exist.');
+      print('Book document with ID $bookId does not exist.');
+      return '';
+    }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    return '';
+  }
+  return null;
+}
+
+Future<String?> fetchBookPictureByID(String bookId) async {
+  try {
+    DocumentSnapshot bookDoc =
+        await FirebaseFirestore.instance.collection('books').doc(bookId).get();
+
+    if (bookDoc.exists) {
+      Map<String, dynamic> bookData = bookDoc.data() as Map<String, dynamic>;
+      //print('Book Data: $bookData');
+
+      if (bookData.containsKey("picture")) {
+        String picture = bookData["picture"];
+
+        return picture;
+      } else {
+        print("Picture attribute not found in document ${bookDoc.id}");
+      }
+      // Use the user data in your Flutter app
+      // For example, set it in a state variable or display it in a widget
+    } else {
+      print('Book document with ID $bookId does not exist.');
       return '';
     }
   } catch (e) {
