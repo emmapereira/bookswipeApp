@@ -1,7 +1,51 @@
 // ignore_for_file: avoid_print
 
+//import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:math';
+
+class BookInformation {
+  final String title;
+  final String author;
+  final String isbn;
+  final String edition;
+  final double condition;
+  final String comment;
+  final DocumentReference genre;
+  final String picture;
+  final DocumentReference owner;
+  final bool swapped;
+
+  BookInformation({
+    required this.title,
+    required this.author,
+    required this.isbn,
+    required this.edition,
+    required this.condition,
+    required this.comment,
+    required this.genre,
+    required this.picture,
+    required this.owner,
+    required this.swapped,
+  });
+
+  // Convert to a map for Firestore
+  Map<String, dynamic> toMap() {
+    return {
+      'title': title,
+      'author': author,
+      'isbn': isbn,
+      'edition': edition,
+      'condition': condition,
+      'comment': comment,
+      'genre': genre,
+      'picture': picture,
+      'owner': owner,
+      'swapped': swapped,
+    };
+  }
+}
 
 Future<void> printUsers() async {
   print("holaa readuserdata");
@@ -102,6 +146,20 @@ Future<void> addGenre(String genreName) async {
         'New genre "$genreName" added to Firestore with custom ID "$customId".');
   } catch (e) {
     print('Error adding new genre: $e');
+  }
+}
+
+// Function to write a book to the database
+Future<void> addBook(BookInformation bookInfo, String bookId) async {
+  try {
+    CollectionReference booksCollection =
+        FirebaseFirestore.instance.collection('books');
+    DocumentReference docRef =
+        booksCollection.doc(bookId); // Set the specific document ID
+    await docRef.set(bookInfo.toMap());
+    print('New book added to Firestore with ID: ${docRef.id}');
+  } catch (e) {
+    print('Error adding a new book: $e');
   }
 }
 

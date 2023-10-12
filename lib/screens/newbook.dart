@@ -66,6 +66,8 @@ class _NewBookState extends State<NewBook> {
   final isbnController = TextEditingController();
   final titleController = TextEditingController();
   final authorController = TextEditingController();
+  final editionController = TextEditingController();
+  final commentController = TextEditingController();
   String? selectedGenre;
   bool isImageVisible = false;
   late String booksLength = "";
@@ -101,7 +103,7 @@ class _NewBookState extends State<NewBook> {
     }
   }
 
-  Future<void> _loadGenres() async {
+  Future<void> _getGenres() async {
     // Perform your asynchronous operations here
     genreNames = await getGenres();
     // Use setState to trigger a rebuild with the fetched data
@@ -119,12 +121,49 @@ class _NewBookState extends State<NewBook> {
     return books;
   }
 
+// function to add book calling the model
+  Future<void> _addBook(BookInformation book) async {
+    String bookId = booksLength;
+    await addBook(book, bookId);
+  }
+
+// will call this function from the save button soon, need to not hard code some values!
+  Future<void> addBookToFirestore() async {
+    final isbn = isbnController.text;
+    final author = authorController.text;
+    final title = titleController.text;
+    final edition = editionController.text;
+    final comment = commentController.text;
+    final condition =
+        3.0; // Get the condition value (from the RatingBar, for example)
+    final genreRef =
+        FirebaseFirestore.instance.collection('genres').doc("genre_id");
+    final userRef =
+        FirebaseFirestore.instance.collection('users').doc("user_id");
+
+    // Create a new BookInformation object with the extracted data
+    BookInformation newBook = BookInformation(
+      title: title,
+      author: author,
+      isbn: isbn,
+      edition: edition,
+      condition: condition,
+      comment: comment,
+      genre: genreRef,
+      picture: '20.png',
+      owner: userRef,
+      swapped: false,
+    );
+
+    _addBook(newBook);
+  }
+
   @override
   void initState() {
     super.initState();
-    _loadGenres();
+    _getGenres();
     _getBooksNumber();
-    //getBookDetails("9780804172707");
+    //getBookDetails("9780451499066");
   }
 
   @override
@@ -175,7 +214,7 @@ class _NewBookState extends State<NewBook> {
                 },
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(3.0),
                   height: 120.0,
                   decoration: BoxDecoration(
                     color: Colors.grey[200], // Background color
@@ -362,6 +401,27 @@ class _NewBookState extends State<NewBook> {
                   ElevatedButton(
                     onPressed: () {
                       // Add save functionality
+                      final genreRef = FirebaseFirestore.instance
+                          .collection('genres')
+                          .doc('1');
+                      final userRef = FirebaseFirestore.instance
+                          .collection('users')
+                          .doc('1');
+                      BookInformation newBook = BookInformation(
+                        title: 'Sample Book',
+                        author: 'John Doe',
+                        isbn: '1234567890',
+                        edition: '1st Edition',
+                        condition: 4.5,
+                        comment: 'A great book!',
+                        genre: genreRef,
+                        picture: '20.png',
+                        owner: userRef,
+                        swapped: false,
+                      );
+
+                      _addBook(newBook);
+                      //will change these things above and use the new big add book function to take user inputs!
                     },
                     child: const Text("Save"),
                   ),
