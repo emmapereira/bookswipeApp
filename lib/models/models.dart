@@ -100,6 +100,30 @@ Future<List<String>> getGenres() async {
   }
 }
 
+Future<DocumentSnapshot> getGenreByName(String genreName) async {
+  try {
+    // Reference to the "genres" collection
+    CollectionReference genresCollection =
+        FirebaseFirestore.instance.collection('genres');
+
+    // Query for the genre document with the specified name
+    QuerySnapshot querySnapshot =
+        await genresCollection.where('name', isEqualTo: genreName).get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      // If a matching document is found, return the first one (assuming genre names are unique)
+      return querySnapshot.docs.first;
+    } else {
+      // No matching document found, return a default genre document with ID 8
+      return FirebaseFirestore.instance.collection('genres').doc('8').get();
+    }
+  } catch (e) {
+    print('Error: $e');
+    // Return the default genre document with ID 8 in case of an error
+    return FirebaseFirestore.instance.collection('genres').doc('8').get();
+  }
+}
+
 // reading data from Genres table
 Future<List<Map<String, dynamic>>> getBooks() async {
   List<Map<String, dynamic>> books = [];

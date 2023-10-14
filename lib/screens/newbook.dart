@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/models.dart';
@@ -71,6 +72,9 @@ class _NewBookState extends State<NewBook> {
   String? selectedGenre;
   bool isImageVisible = false;
   late String booksLength = "";
+  double userRating = 0.0;
+  DocumentReference selectedGenreRef =
+      FirebaseFirestore.instance.collection('genres').doc('8');
 
   @override
   void dispose() {
@@ -127,19 +131,25 @@ class _NewBookState extends State<NewBook> {
     await addBook(book, bookId);
   }
 
+  // function to get a genre by the name
+  Future<void> _getGenreByName(String genreName) async {
+    final genreSnapshot = await getGenreByName(genreName);
+    setState(() {
+      selectedGenreRef = genreSnapshot.reference;
+    });
+  }
+
 // will call this function from the save button soon, need to not hard code some values!
+//i think it should not be async???
   Future<void> addBookToFirestore() async {
     final isbn = isbnController.text;
     final author = authorController.text;
     final title = titleController.text;
     final edition = editionController.text;
     final comment = commentController.text;
-    final condition =
-        3.0; // Get the condition value (from the RatingBar, for example)
-    final genreRef =
-        FirebaseFirestore.instance.collection('genres').doc("genre_id");
-    final userRef =
-        FirebaseFirestore.instance.collection('users').doc("user_id");
+    final condition = userRating;
+    final genreRef = selectedGenreRef;
+    final userRef = FirebaseFirestore.instance.collection('users').doc("1");
 
     // Create a new BookInformation object with the extracted data
     BookInformation newBook = BookInformation(
@@ -311,6 +321,7 @@ class _NewBookState extends State<NewBook> {
               ),
             ),
             TextFormField(
+              controller: editionController,
               readOnly: false, // To make it editable
               decoration: const InputDecoration(
                 hintText: "Book edition",
@@ -339,6 +350,11 @@ class _NewBookState extends State<NewBook> {
                 setState(() {
                   selectedGenre = newValue; // Update the selected genre
                 });
+
+                if (newValue != null) {
+                  // Fetch the genre reference based on the selected value
+                  _getGenreByName(newValue);
+                }
               },
               value: selectedGenre,
               hint: const Text("Select Genre"),
@@ -368,8 +384,10 @@ class _NewBookState extends State<NewBook> {
                 color: Colors.amber,
               ),
               onRatingUpdate: (rating) {
-                //rating contains the rating value from 1 to 5, also allows half values
-                print(rating);
+                // Update the userRating controller with the selected rating
+                setState(() {
+                  userRating = rating;
+                });
               },
             ),
             const SizedBox(height: 10), // Add spacing
@@ -383,7 +401,7 @@ class _NewBookState extends State<NewBook> {
               ),
             ),
             TextFormField(
-              // Comment input field
+              controller: commentController,
               maxLines: 3, // Allow multiple lines
               decoration: const InputDecoration(
                 hintText: "Enter your comment...",
@@ -401,6 +419,7 @@ class _NewBookState extends State<NewBook> {
                   ElevatedButton(
                     onPressed: () {
                       // Add save functionality
+                      /*
                       final genreRef = FirebaseFirestore.instance
                           .collection('genres')
                           .doc('1');
@@ -422,6 +441,8 @@ class _NewBookState extends State<NewBook> {
 
                       _addBook(newBook);
                       //will change these things above and use the new big add book function to take user inputs!
+                      */
+                      addBookToFirestore();
                     },
                     child: const Text("Save"),
                   ),
