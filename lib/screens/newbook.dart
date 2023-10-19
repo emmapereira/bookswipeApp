@@ -1,7 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/models.dart';
@@ -160,7 +159,7 @@ class _NewBookState extends State<NewBook> {
       condition: condition,
       comment: comment,
       genre: genreRef,
-      picture: '20.png',
+      picture: booksLength,
       owner: userRef,
       swapped: false,
     );
@@ -410,7 +409,7 @@ class _NewBookState extends State<NewBook> {
 
             const SizedBox(height: 20), // Add spacing
 
-            // Save and Cancel Buttons
+            // Save button
             Align(
               alignment: Alignment.bottomRight,
               child: Row(
@@ -418,45 +417,15 @@ class _NewBookState extends State<NewBook> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      // Add save functionality
-                      /*
-                      final genreRef = FirebaseFirestore.instance
-                          .collection('genres')
-                          .doc('1');
-                      final userRef = FirebaseFirestore.instance
-                          .collection('users')
-                          .doc('1');
-                      BookInformation newBook = BookInformation(
-                        title: 'Sample Book',
-                        author: 'John Doe',
-                        isbn: '1234567890',
-                        edition: '1st Edition',
-                        condition: 4.5,
-                        comment: 'A great book!',
-                        genre: genreRef,
-                        picture: '20.png',
-                        owner: userRef,
-                        swapped: false,
-                      );
-
-                      _addBook(newBook);
-                      //will change these things above and use the new big add book function to take user inputs!
-                      */
+                      // adding the book to the database
                       addBookToFirestore();
                     },
                     child: const Text("Save"),
-                  ),
-                  const SizedBox(width: 10), // Add spacing
-                  ElevatedButton(
-                    onPressed: () {
-                      // Add cancel functionality
-                    },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                          Colors.red), // Red color for cancel button
+                      minimumSize: MaterialStateProperty.all(Size(
+                          120, 50)), // Adjust the width and height as needed
                     ),
-                    child: const Text("Cancel"),
-                  ),
+                  )
                 ],
               ),
             ),
