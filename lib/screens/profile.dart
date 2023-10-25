@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'profile_preferences.dart';
+import '../models/models.dart';
 
 class Profile extends StatelessWidget {
   final String name;
@@ -50,6 +52,45 @@ class Profile extends StatelessWidget {
                     Text(
                       email,
                       style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    const SizedBox(height: 16),
+                    // Add rectangular buttons here with fixed height
+                    SizedBox(
+                      height: 50, // Set a fixed height for the buttons
+                      width: double.infinity, // Make buttons take up full width
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Handle the "Personal details" button press
+                        },
+                        child: Text("Personal Details"),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      height: 50, // Set a fixed height for the buttons
+                      width: double.infinity, // Make buttons take up full width
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PreferencesPage(id: "1"),
+                            ),
+                          );
+                        },
+                        child: Text("Preferences"),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      height: 50, // Set a fixed height for the buttons
+                      width: double.infinity, // Make buttons take up full width
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Handle the "My Books" button press
+                        },
+                        child: Text("My Books"),
+                      ),
                     ),
                   ],
                 ),
