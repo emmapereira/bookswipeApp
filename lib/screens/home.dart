@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
     super.initState();
     isImageLarge = true;
     // TO DO: List to contain only books filtered for this user
-    bookToShow = '14';
+    bookToShow = '1';
     _fetchBookDataByID(bookToShow);
 
     CollectionReference booksCollection =
