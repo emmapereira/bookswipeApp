@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -74,6 +74,25 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    Color tagColor = Colors.grey;
+    if (currentBook['genre'].id == "1") {
+      tagColor = Colors.pink;
+    } else if (currentBook['genre'].id == "2") {
+      tagColor = Colors.orange;
+    } else if (currentBook['genre'].id == "3") {
+      tagColor = Colors.green;
+    } else if (currentBook['genre'].id == "4") {
+      tagColor = Colors.blue;
+    } else if (currentBook['genre'].id == "5") {
+      tagColor = Colors.brown;
+    } else if (currentBook['genre'].id == "6") {
+      tagColor = Colors.red;
+    } else if (currentBook['genre'].id == "7") {
+      tagColor = Colors.yellow;
+    } else if (currentBook['genre'].id == "8") {
+      tagColor = Colors.purple;
+    }
+
     return Scaffold(
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       const Padding(
@@ -316,15 +335,36 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20.0, top: 8.0),
-                          child: Text(
-                            'Genre: $genreName',
-                            style: TextStyle(
-                              fontSize: 17.0,
+                        Row(children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 20.0, top: 8.0),
+                            child: Text(
+                              'Genre:',
+                              style: TextStyle(
+                                fontSize: 17.0,
+                              ),
                             ),
                           ),
-                        ),
+                          Container(
+                            padding: const EdgeInsets.only(left: 3.0, top: 8.0),
+                            alignment: Alignment.centerLeft,
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 4.0),
+                              decoration: BoxDecoration(
+                                color: tagColor,
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: Text(
+                                '$genreName',
+                                style: TextStyle(
+                                  fontSize: 17.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ]),
                         Row(children: [
                           Padding(
                             padding:
@@ -345,7 +385,8 @@ class _HomeState extends State<Home> {
                             allowHalfRating: true,
                             itemCount: 5,
                             itemSize: 25.0,
-                            itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                            itemPadding: EdgeInsets.only(
+                                left: 5.0, right: 5.0, top: 4.0),
                             itemBuilder: (context, _) => Icon(
                               Icons.star,
                               color: Colors.amber,
