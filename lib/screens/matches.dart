@@ -54,7 +54,23 @@ class _MatchesState extends State<Matches> {
       if (userName != null) {
         return userName;
       } else {
-        return 'USer name not found'; // You can return a default value or handle this case as needed.
+        return 'User name not found'; // You can return a default value or handle this case as needed.
+      }
+    } catch (e) {
+      print('Error fetching book data: $e');
+      return '';
+    }
+  }
+
+  Future<String> _fetchBookPictureByID(String bookId) async {
+    try {
+      // Perform your asynchronous operations here
+      final String pictureName = await fetchBookPictureByID(bookId) as String;
+
+      if (pictureName != null) {
+        return pictureName;
+      } else {
+        return 'Book Picture not found'; // You can return a default value or handle this case as needed.
       }
     } catch (e) {
       print('Error fetching book data: $e');
@@ -110,32 +126,59 @@ class _MatchesState extends State<Matches> {
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(3.0),
-                            child: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('lib/assets/images/1.png'),
-                            ),
-                          ),
+                              padding: const EdgeInsets.all(3.0),
+                              child: FutureBuilder<String>(
+                                future: _fetchBookPictureByID(
+                                    '${item['book1'].id}'),
+                                builder: (BuildContext context,
+                                    AsyncSnapshot<String> snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return CircularProgressIndicator(); // Display a loading indicator.
+                                  } else if (snapshot.hasError) {
+                                    return Text("Error: ${snapshot.error}");
+                                  } else {
+                                    String imagePath =
+                                        'lib/assets/images/${snapshot.data}'; // Use a default image path if snapshot.data is null
+                                    return CircleAvatar(
+                                      backgroundImage: AssetImage(imagePath),
+                                    );
+                                  }
+                                },
+                              )),
                         ),
                         SizedBox(width: 3), // Spacing between images
                         Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.red, // Border color
-                              width: 4.0, // Border width
+                            width: 80,
+                            height: 80,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.red, // Border color
+                                width: 4.0, // Border width
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(3.0),
-                            child: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('lib/assets/images/2.png'),
-                            ),
-                          ),
-                        ),
+                            child: Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: FutureBuilder<String>(
+                                  future: _fetchBookPictureByID(
+                                      '${item['book2'].id}'),
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot<String> snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return CircularProgressIndicator(); // Display a loading indicator.
+                                    } else if (snapshot.hasError) {
+                                      return Text("Error: ${snapshot.error}");
+                                    } else {
+                                      String imagePath =
+                                          'lib/assets/images/${snapshot.data}'; // Use a default image path if snapshot.data is null
+                                      return CircleAvatar(
+                                        backgroundImage: AssetImage(imagePath),
+                                      );
+                                    }
+                                  },
+                                ))),
                       ],
                     ),
                     // Right side with title and subtitle
