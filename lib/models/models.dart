@@ -149,6 +149,51 @@ Future<List<Map<String, dynamic>>> getBooks() async {
   }
 }
 
+// function to read the favourite genres of the user (to be used for user 1)
+Future<List<String>> fetchFavoriteGenresById(String id) async {
+  List<String> favoriteGenres = [];
+
+  try {
+    final userDocRef = FirebaseFirestore.instance.collection('users').doc(id);
+    final userSnapshot = await userDocRef.get();
+
+    if (userSnapshot.exists) {
+      final userData = userSnapshot.data() as Map<String, dynamic>;
+      print("User data for ID $id: $userData");
+
+      if (userData.containsKey('favourite_genres')) {
+        // Cast the favorite genres references to a list of DocumentReferences
+        List<DocumentReference> genreRefs =
+            (userData['favourite_genres'] as List<dynamic>)
+                .cast<DocumentReference>();
+        List<String> genreIds = genreRefs.map((ref) => ref.id).toList();
+
+        // Fetch all genres in a single query
+        final genresSnapshot = await FirebaseFirestore.instance
+            .collection('genres')
+            .where(FieldPath.documentId, whereIn: genreIds)
+            .get();
+
+        for (var genreDoc in genresSnapshot.docs) {
+          final genreData = genreDoc.data() as Map<String, dynamic>;
+          if (genreData.containsKey('name')) {
+            favoriteGenres.add(genreData['name']);
+          }
+        }
+      } else {
+        print("User with ID $id does not have 'favourite_genres' field.");
+      }
+    } else {
+      print("No user found with ID $id");
+    }
+  } catch (e) {
+    // Handle any errors that occur during the fetch
+    print("Error fetching user data: $e");
+  }
+
+  return favoriteGenres;
+}
+
 // Function to write a timestamp to the database
 Future<void> addGenre(String genreName) async {
   print("trying to add a new genre");
@@ -272,6 +317,141 @@ Future<String?> getUserNameById(String userId) async {
       // For example, set it in a state variable or display it in a widget
     } else {
       print('User document with ID $userId does not exist.');
+      return '';
+    }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    return '';
+  }
+  return null;
+}
+
+Future<List<Map<String, dynamic>>> getMatches() async {
+  List<Map<String, dynamic>> matches = [];
+  try {
+    // Reference to the "matches" collection
+    CollectionReference matchesCollection =
+        FirebaseFirestore.instance.collection('matches');
+
+    // Get all documents in the "matches" collection
+    QuerySnapshot querySnapshot = await matchesCollection.get();
+
+    // Iterate through the documents and print their data
+    querySnapshot.docs.forEach((doc) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      matches.add(data);
+    });
+
+    return matches;
+  } catch (e) {
+    print('Error: $e');
+    return []; // Return an empty list in case of an error
+  }
+}
+
+Future<List<Map<String, dynamic>>> getBooks() async {
+  List<Map<String, dynamic>> books = [];
+  try {
+    // Reference to the "books" collection
+    CollectionReference booksCollection =
+        FirebaseFirestore.instance.collection('books');
+
+    // Get all documents in the "books" collection
+    QuerySnapshot querySnapshot = await booksCollection.get();
+
+    // Iterate through the documents and print their data
+    querySnapshot.docs.forEach((doc) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      books.add(data);
+    });
+
+    return books;
+  } catch (e) {
+    print('Error: $e');
+    return []; // Return an empty list in case of an error
+  }
+}
+
+Future<String?> fetchBookNameByID(String bookId) async {
+  try {
+    DocumentSnapshot bookDoc =
+        await FirebaseFirestore.instance.collection('books').doc(bookId).get();
+
+    if (bookDoc.exists) {
+      Map<String, dynamic> bookData = bookDoc.data() as Map<String, dynamic>;
+      //print('Book Data: $bookData');
+
+      if (bookData.containsKey("title")) {
+        String title = bookData["title"];
+
+        return title;
+      } else {
+        print("Name attribute not found in document ${bookDoc.id}");
+      }
+      // Use the user data in your Flutter app
+      // For example, set it in a state variable or display it in a widget
+    } else {
+      print('Book document with ID $bookId does not exist.');
+      return '';
+    }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    return '';
+  }
+  return null;
+}
+
+Future<String?> fetchBookPictureByID(String bookId) async {
+  try {
+    DocumentSnapshot bookDoc =
+        await FirebaseFirestore.instance.collection('books').doc(bookId).get();
+
+    if (bookDoc.exists) {
+      Map<String, dynamic> bookData = bookDoc.data() as Map<String, dynamic>;
+      //print('Book Data: $bookData');
+
+      if (bookData.containsKey("picture")) {
+        String picture = bookData["picture"];
+
+        return picture;
+      } else {
+        print("Picture attribute not found in document ${bookDoc.id}");
+      }
+      // Use the user data in your Flutter app
+      // For example, set it in a state variable or display it in a widget
+    } else {
+      print('Book document with ID $bookId does not exist.');
+      return '';
+    }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    return '';
+  }
+  return null;
+}
+
+Future<String?> fetchUserNameByBookID(String bookId) async {
+  try {
+    DocumentSnapshot bookDoc =
+        await FirebaseFirestore.instance.collection('books').doc(bookId).get();
+
+    if (bookDoc.exists) {
+      Map<String, dynamic> bookData = bookDoc.data() as Map<String, dynamic>;
+
+      if (bookData.containsKey("owner")) {
+        DocumentReference<Map<String, dynamic>> ownerRef = bookData["owner"];
+        String userId = ownerRef.id;
+
+        String userName = await fetchUserNameByID(userId) as String;
+
+        return userName;
+      } else {
+        print("Name attribute not found in document ${bookDoc.id}");
+      }
+      // Use the user data in your Flutter app
+      // For example, set it in a state variable or display it in a widget
+    } else {
+      print('User document with ID $bookId does not exist.');
       return '';
     }
   } catch (e) {
