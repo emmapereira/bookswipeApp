@@ -8,6 +8,7 @@ import 'screens/explore.dart';
 import 'screens/matches.dart';
 import 'screens/profile.dart';
 import 'models/app_state.dart';
+import 'screens/newbook.dart';
 import 'models/models.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -92,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return [
       Home(),
       Explore(),
+      NewBook(),
       Matches(),
       Profile(),
     ];
@@ -108,6 +110,11 @@ class _MyHomePageState extends State<MyHomePage> {
       PersistentBottomNavBarItem(
           icon: const Icon(Icons.travel_explore),
           title: "Explore",
+          activeColorPrimary: Colors.black,
+          inactiveColorPrimary: Color.fromARGB(255, 119, 119, 119)),
+      PersistentBottomNavBarItem(
+          icon: const Icon(Icons.add_circle),
+          title: "Add",
           activeColorPrimary: Colors.black,
           inactiveColorPrimary: Color.fromARGB(255, 119, 119, 119)),
       PersistentBottomNavBarItem(

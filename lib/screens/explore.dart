@@ -83,36 +83,6 @@ class _ExploreState extends State<Explore> {
                   color: Color.fromARGB(255, 79, 81, 140)),
             ),
           ),
-
-          // the plus sign here
-          Center(
-            child: GestureDetector(
-              onTap: () {
-                // navigate to selectable closet screen
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => NewBook()));
-              },
-              child: Container(
-                width: 40.0,
-                height: 100.0,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2.0,
-                  ),
-                  shape: BoxShape.circle,
-                ),
-                child: const Center(
-                  child: Icon(
-                    Icons.add,
-                    color: Colors.black,
-                    size: 32.0,
-                  ),
-                ),
-              ),
-            ),
-          ),
-
           Padding(
             padding: const EdgeInsets.only(bottom: 10.0),
             child: Padding(
@@ -143,7 +113,6 @@ class _ExploreState extends State<Explore> {
               ),
             ),
           ),
-
           Expanded(
               child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
