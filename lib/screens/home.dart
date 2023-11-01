@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -24,25 +24,29 @@ class _HomeState extends State<Home> {
   late String bookOwner = '';
   late bool isImageLarge;
   late String kmNumber = '0';
+  late bool swipeDetected = false;
+  late int numberOfBooks = 0;
 
   Future<void> _fetchBookDataByID(String id) async {
     try {
       // Perform your asynchronous operations here
-      final bookData = await fetchBookDataByID(id) as Map<String, dynamic>;
+      final bookData = await getBookById(id) as Map<String, dynamic>;
 
       DocumentReference<Map<String, dynamic>> genreRef = bookData['genre'];
       String genreId = genreRef.id;
-      final gName = await fetchGenreNameByID(genreId) as String;
+      final gName = await getGenreById(genreId) as String;
 
       DocumentReference<Map<String, dynamic>> userRef = bookData['owner'];
       String userId = userRef.id;
-      final userName = await fetchUserNameByID(userId) as String;
+      final userName = await getUserNameById(userId) as String;
       // Update currentBook with the fetched data
       setState(() {
         currentBook = bookData;
         genreName = gName;
         bookOwner = userName;
         kmNumber = getKmNumber();
+        swipeDetected = false;
+        numberOfBooks = numberOfBooks;
       });
     } catch (e) {
       print('Error fetching book data: $e');
@@ -56,10 +60,39 @@ class _HomeState extends State<Home> {
     // TO DO: List to contain only books filtered for this user
     bookToShow = '1';
     _fetchBookDataByID(bookToShow);
+
+    CollectionReference booksCollection =
+        FirebaseFirestore.instance.collection('books');
+
+    booksCollection.get().then((QuerySnapshot querySnapshot) {
+      numberOfBooks = querySnapshot.docs.length;
+      print("Number of documents in the collection: $numberOfBooks");
+    }).catchError((error) {
+      print("Error counting documents: $error");
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    Color tagColor = Colors.grey;
+    if (currentBook['genre'].id == "1") {
+      tagColor = Colors.pink;
+    } else if (currentBook['genre'].id == "2") {
+      tagColor = Colors.orange;
+    } else if (currentBook['genre'].id == "3") {
+      tagColor = Colors.green;
+    } else if (currentBook['genre'].id == "4") {
+      tagColor = Colors.blue;
+    } else if (currentBook['genre'].id == "5") {
+      tagColor = Colors.brown;
+    } else if (currentBook['genre'].id == "6") {
+      tagColor = Colors.red;
+    } else if (currentBook['genre'].id == "7") {
+      tagColor = Colors.yellow;
+    } else if (currentBook['genre'].id == "8") {
+      tagColor = Colors.purple;
+    }
+
     return Scaffold(
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       const Padding(
@@ -81,38 +114,41 @@ class _HomeState extends State<Home> {
         ),
       ),
       GestureDetector(
-        onHorizontalDragEnd: (details) {
-          // swipe Right
-          if (details.primaryVelocity! > 0) {
-            //print("RIGHT SWIPE");
-            setState(() {
-              // TO DO: Change here
-              if (bookToShow == '1') {
-                bookToShow = '2';
-              } else if (bookToShow == '2') {
-                bookToShow = '3';
-              } else if (bookToShow == '3') {
-                bookToShow = '1';
-              }
-              _fetchBookDataByID(bookToShow);
-            });
-            // Positive velocity means a right swipe
-            // swipe Left
-          } else if (details.primaryVelocity! < 0) {
-            //print("LEFT SWIPE");
-            setState(() {
-              // TO DO: Change here
-              if (bookToShow == '1') {
-                bookToShow = '3';
-              } else if (bookToShow == '2') {
-                bookToShow = '1';
-              } else if (bookToShow == '3') {
-                bookToShow = '2';
-              }
-              _fetchBookDataByID(bookToShow);
-            });
-            // Negative velocity means a left swipe
+        onHorizontalDragUpdate: (details) {
+          if (!swipeDetected) {
+            // swipe Right
+            if (details.delta.dx < 0) {
+              swipeDetected = true;
+              //print("LEFT SWIPE");
+              setState(() {
+                // TO DO: Change here
+                int number =
+                    int.parse(bookToShow); // Convert the string to an integer
+                number++; // Increment the integer
+                if (number == numberOfBooks + 1) number = 1;
+                bookToShow = number.toString();
+                _fetchBookDataByID(bookToShow);
+              });
+              // Positive velocity means a right swipe
+              // swipe Left
+            } else if (details.delta.dx > 0) {
+              swipeDetected = true;
+              //print("RIGHT SWIPE");
+              setState(() {
+                // TO DO: Change here
+                int number =
+                    int.parse(bookToShow); // Convert the string to an integer
+                number--; // Increment the integer
+                if (number == 0) number = numberOfBooks;
+                bookToShow = number.toString();
+                _fetchBookDataByID(bookToShow);
+              });
+              // Negative velocity means a left swipe
+            }
           }
+        },
+        onHorizontalDragEnd: (details) {
+          swipeDetected = false;
         },
         child: isImageLarge
             ? Center(
@@ -299,15 +335,36 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20.0, top: 8.0),
-                          child: Text(
-                            'Genre: $genreName',
-                            style: TextStyle(
-                              fontSize: 17.0,
+                        Row(children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 20.0, top: 8.0),
+                            child: Text(
+                              'Genre:',
+                              style: TextStyle(
+                                fontSize: 17.0,
+                              ),
                             ),
                           ),
-                        ),
+                          Container(
+                            padding: const EdgeInsets.only(left: 3.0, top: 8.0),
+                            alignment: Alignment.centerLeft,
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 4.0),
+                              decoration: BoxDecoration(
+                                color: tagColor,
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: Text(
+                                '$genreName',
+                                style: TextStyle(
+                                  fontSize: 17.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ]),
                         Row(children: [
                           Padding(
                             padding:
@@ -328,7 +385,8 @@ class _HomeState extends State<Home> {
                             allowHalfRating: true,
                             itemCount: 5,
                             itemSize: 25.0,
-                            itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                            itemPadding: EdgeInsets.only(
+                                left: 5.0, right: 5.0, top: 4.0),
                             itemBuilder: (context, _) => Icon(
                               Icons.star,
                               color: Colors.amber,

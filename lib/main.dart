@@ -39,8 +39,8 @@ Future main() async {
   appState.init();
   runApp(MyApp(appState: appState));
   //await readUserData();
-  await readGenreData();
-  //await writeNewGenre("NEW GENRE");
+  //await readGenreData();
+  //await addGenre("NEW GENRE");
 }
 
 //this is the command i use to run the app
@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'BookSwipe',
       theme: ThemeData(
+        //fontFamily: 'LibreBaskerville',
         primarySwatch: Colors.purple,
         bottomNavigationBarTheme:
             const BottomNavigationBarThemeData(selectedItemColor: Colors.black),
@@ -90,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> _buildScreens() {
     return [
       Home(),
-      Explore(selectedItems: _selectedItems, currentIndex: _currentIndex),
+      Explore(),
       Matches(),
       Profile(),
     ];
