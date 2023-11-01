@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'profile_preferences.dart';
+import 'profile_mybooks.dart';
 import '../models/models.dart';
 
 class Profile extends StatelessWidget {
@@ -88,6 +89,12 @@ class Profile extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           // Handle the "My Books" button press
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyBooksPage(id: "1"),
+                            ),
+                          );
                         },
                         child: Text("My Books"),
                       ),

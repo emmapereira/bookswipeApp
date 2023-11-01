@@ -372,6 +372,35 @@ Future<List<Map<String, dynamic>>> getBooks() async {
   }
 }
 
+Future<List<Map<String, dynamic>>> getBooksbyUserID(String ownerId) async {
+  List<Map<String, dynamic>> books = [];
+  try {
+    // Reference to the "books" collection
+    CollectionReference booksCollection =
+        FirebaseFirestore.instance.collection('books');
+
+    // Get all documents in the "books" collection
+    QuerySnapshot querySnapshot = await booksCollection.get();
+
+    // Iterate through the documents and print their data
+    querySnapshot.docs.forEach((doc) {
+      Map<String, dynamic> bookData = doc.data() as Map<String, dynamic>;
+      if (bookData.containsKey("owner")) {
+        DocumentReference<Map<String, dynamic>> ownerRef = bookData["owner"];
+        String userId = ownerRef.id;
+        if (userId == ownerId) {
+          books.add(bookData);
+        }
+      }
+    });
+
+    return books;
+  } catch (e) {
+    print('Error: $e');
+    return []; // Return an empty list in case of an error
+  }
+}
+
 Future<String?> fetchBookNameByID(String bookId) async {
   try {
     DocumentSnapshot bookDoc =
