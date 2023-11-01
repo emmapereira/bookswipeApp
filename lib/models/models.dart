@@ -212,6 +212,33 @@ Future<String?> fetchGenreNameByID(String genreId) async {
   return null;
 }
 
+Future<List<String>> fetchFavouriteAuthors(String userId) async {
+  try {
+    // Fetch the user document from Firestore
+    DocumentSnapshot userDoc =
+        await FirebaseFirestore.instance.collection('users').doc(userId).get();
+
+    if (userDoc.exists) {
+      Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
+
+      // If the user has favourite authors, return them as a list
+      if (userData.containsKey("favourite_authors")) {
+        List<String> authors = List<String>.from(userData["favourite_authors"]);
+        return authors;
+      } else {
+        print("favourite_authors attribute not found for user ${userDoc.id}");
+        return [];
+      }
+    } else {
+      print('User document with ID $userId does not exist.');
+      return [];
+    }
+  } catch (e) {
+    print('Error fetching favourite authors: $e');
+    return [];
+  }
+}
+
 Future<String?> fetchUserNameByID(String userId) async {
   try {
     DocumentSnapshot userDoc =
@@ -240,4 +267,168 @@ Future<String?> fetchUserNameByID(String userId) async {
     return '';
   }
   return null;
+}
+
+Future<void> deleteFavoriteGenreFromUser(
+    String genreName, String userId) async {
+  try {
+    // Reference to the specific user document
+    DocumentReference userDocRef =
+        FirebaseFirestore.instance.collection('users').doc(userId);
+
+    // Find the genreId based on the genreName
+    QuerySnapshot genreQuery = await FirebaseFirestore.instance
+        .collection('genres')
+        .where('name', isEqualTo: genreName)
+        .get();
+
+    // Check if the genre exists
+    if (genreQuery.docs.isEmpty) {
+      print('No genre found with the name: $genreName');
+      return;
+    }
+
+    String genreId = genreQuery.docs.first.id;
+    DocumentReference genreRef = FirebaseFirestore.instance
+        .collection('genres')
+        .doc(genreId); // Reference to the genre
+
+    // Use a transaction to safely update the favorite genres
+    await FirebaseFirestore.instance.runTransaction((transaction) async {
+      DocumentSnapshot userSnapshot = await transaction.get(userDocRef);
+      if (userSnapshot.exists) {
+        List<dynamic> favoriteGenres =
+            (userSnapshot.data() as Map<String, dynamic>)['favourite_genres'] ??
+                [];
+
+        // Remove the genre reference from the list if it exists
+        favoriteGenres.removeWhere(
+            (element) => (element as DocumentReference).id == genreRef.id);
+
+        // Update the user document with the modified list
+        transaction.update(userDocRef, {'favourite_genres': favoriteGenres});
+      }
+    });
+
+    print(
+        'Genre with name "$genreName" (ID: $genreId) removed from user $userId favorites.');
+  } catch (e) {
+    print('Error removing favorite genre: $e');
+  }
+}
+
+Future<void> addFavoriteGenreToUser(String genreName, String userId) async {
+  try {
+    // Reference to the specific user document
+    DocumentReference userDocRef =
+        FirebaseFirestore.instance.collection('users').doc(userId);
+
+    // Find the genreId based on the genreName
+    QuerySnapshot genreQuery = await FirebaseFirestore.instance
+        .collection('genres')
+        .where('name', isEqualTo: genreName)
+        .get();
+
+    // Check if the genre exists
+    if (genreQuery.docs.isEmpty) {
+      print('No genre found with the name: $genreName');
+      return;
+    }
+
+    DocumentReference genreRef = FirebaseFirestore.instance
+        .collection('genres')
+        .doc(genreQuery.docs.first.id); // Reference to the genre
+
+    // Use a transaction to safely update the favorite genres
+    await FirebaseFirestore.instance.runTransaction((transaction) async {
+      DocumentSnapshot userSnapshot = await transaction.get(userDocRef);
+      if (userSnapshot.exists) {
+        List<dynamic> favoriteGenres =
+            (userSnapshot.data() as Map<String, dynamic>)['favourite_genres'] ??
+                [];
+
+        // Add the genre reference to the list if it doesn't already exist
+        if (!favoriteGenres.contains(genreRef)) {
+          favoriteGenres.add(genreRef);
+        }
+
+        // Update the user document with the modified list
+        transaction.update(userDocRef, {'favourite_genres': favoriteGenres});
+      }
+    });
+
+    print('Genre "$genreName" added to user $userId favorites.');
+  } catch (e) {
+    print('Error adding favorite genre: $e');
+  }
+}
+
+Future<List<String>> fetchAllGenres() async {
+  try {
+    QuerySnapshot genreQuery =
+        await FirebaseFirestore.instance.collection('genres').get();
+    return genreQuery.docs.map((doc) => doc.get('name') as String).toList();
+  } catch (e) {
+    print('Error fetching all genres: $e');
+    return [];
+  }
+}
+
+Future<void> addFavoriteAuthorToUser(String authorName, String userId) async {
+  try {
+    // Reference to the specific user document
+    DocumentReference userDocRef =
+        FirebaseFirestore.instance.collection('users').doc(userId);
+
+    // Use a transaction to safely update the favorite authors
+    await FirebaseFirestore.instance.runTransaction((transaction) async {
+      DocumentSnapshot userSnapshot = await transaction.get(userDocRef);
+      if (userSnapshot.exists) {
+        List<dynamic> favoriteAuthors = (userSnapshot.data()
+                as Map<String, dynamic>)['favourite_authors'] ??
+            [];
+
+        // Add the author name to the list if it doesn't already exist
+        if (!favoriteAuthors.contains(authorName)) {
+          favoriteAuthors.add(authorName);
+        }
+
+        // Update the user document with the modified list
+        transaction.update(userDocRef, {'favourite_authors': favoriteAuthors});
+      }
+    });
+
+    print('Author "$authorName" added to user $userId favorites.');
+  } catch (e) {
+    print('Error adding favorite author: $e');
+  }
+}
+
+Future<void> deleteFavoriteAuthorFromUser(
+    String authorName, String userId) async {
+  try {
+    // Reference to the specific user document
+    DocumentReference userDocRef =
+        FirebaseFirestore.instance.collection('users').doc(userId);
+
+    // Use a transaction to safely update the favorite authors
+    await FirebaseFirestore.instance.runTransaction((transaction) async {
+      DocumentSnapshot userSnapshot = await transaction.get(userDocRef);
+      if (userSnapshot.exists) {
+        List<dynamic> favoriteAuthors = (userSnapshot.data()
+                as Map<String, dynamic>)['favourite_authors'] ??
+            [];
+
+        // Remove the author name from the list if it exists
+        favoriteAuthors.remove(authorName);
+
+        // Update the user document with the modified list
+        transaction.update(userDocRef, {'favourite_authors': favoriteAuthors});
+      }
+    });
+
+    print('Author "$authorName" removed from user $userId favorites.');
+  } catch (e) {
+    print('Error removing favorite author: $e');
+  }
 }
