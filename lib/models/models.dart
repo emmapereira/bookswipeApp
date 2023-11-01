@@ -433,7 +433,6 @@ Future<String?> fetchGenreNameByID(String genreId) async {
   return null;
 }
 
-
 Future<List<String>> fetchFavouriteAuthors(String userId) async {
   try {
     // Fetch the user document from Firestore
@@ -459,6 +458,7 @@ Future<List<String>> fetchFavouriteAuthors(String userId) async {
     print('Error fetching favourite authors: $e');
     return [];
   }
+}
 
 Future<String?> fetchBookPictureByID(String bookId) async {
   try {
@@ -487,7 +487,6 @@ Future<String?> fetchBookPictureByID(String bookId) async {
     return '';
   }
   return null;
-
 }
 
 Future<String?> fetchUserNameByID(String userId) async {
@@ -682,6 +681,7 @@ Future<void> deleteFavoriteAuthorFromUser(
   } catch (e) {
     print('Error removing favorite author: $e');
   }
+}
 
 Future<String?> fetchUserNameByBookID(String bookId) async {
   try {
