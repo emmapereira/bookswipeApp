@@ -124,31 +124,6 @@ Future<DocumentSnapshot> getGenreByName(String genreName) async {
   }
 }
 
-// reading data from Genres table
-// Future<List<Map<String, dynamic>>> getBooks() async {
-//   List<Map<String, dynamic>> books = [];
-//   //List<String> genreNames = [];
-//   try {
-//     // Reference to the "books" collection
-//     CollectionReference booksCollection =
-//         FirebaseFirestore.instance.collection('books');
-
-//     // Get all documents in the "genres" collection
-//     QuerySnapshot querySnapshot = await booksCollection.get();
-
-//     // Iterate through the documents and print their data
-//     querySnapshot.docs.forEach((doc) {
-//       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-//       books.add(data);
-//     });
-
-//     return books; // Return the list of "name" values
-//   } catch (e) {
-//     print('Error: $e');
-//     return []; // Return an empty list in case of an error
-//   }
-// }
-
 // function to read the favourite genres of the user (to be used for user 1)
 Future<List<String>> fetchFavoriteGenresById(String id) async {
   List<String> favoriteGenres = [];
@@ -363,6 +338,35 @@ Future<List<Map<String, dynamic>>> getBooks() async {
     querySnapshot.docs.forEach((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       books.add(data);
+    });
+
+    return books;
+  } catch (e) {
+    print('Error: $e');
+    return []; // Return an empty list in case of an error
+  }
+}
+
+Future<List<Map<String, dynamic>>> getBooksbyUserID(String ownerId) async {
+  List<Map<String, dynamic>> books = [];
+  try {
+    // Reference to the "books" collection
+    CollectionReference booksCollection =
+        FirebaseFirestore.instance.collection('books');
+
+    // Get all documents in the "books" collection
+    QuerySnapshot querySnapshot = await booksCollection.get();
+
+    // Iterate through the documents and print their data
+    querySnapshot.docs.forEach((doc) {
+      Map<String, dynamic> bookData = doc.data() as Map<String, dynamic>;
+      if (bookData.containsKey("owner")) {
+        DocumentReference<Map<String, dynamic>> ownerRef = bookData["owner"];
+        String userId = ownerRef.id;
+        if (userId == ownerId) {
+          books.add(bookData);
+        }
+      }
     });
 
     return books;

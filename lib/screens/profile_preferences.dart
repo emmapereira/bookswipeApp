@@ -223,6 +223,7 @@ class _PreferencesPageState extends State<PreferencesPage> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         leading: IconButton(
+          color: Color.fromARGB(255, 79, 81, 140),
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             // Implement the functionality to navigate back
