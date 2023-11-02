@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'BookSwipe',
       theme: ThemeData(
-        //fontFamily: 'LibreBaskerville',
+        fontFamily: 'Almarai',
         primarySwatch: Colors.purple,
         bottomNavigationBarTheme:
             const BottomNavigationBarThemeData(selectedItemColor: Colors.black),
