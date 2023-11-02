@@ -221,7 +221,25 @@ class _PreferencesPageState extends State<PreferencesPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text("Preferences"),
+        iconTheme: IconThemeData(color: Colors.black),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Implement the functionality to navigate back
+            Navigator.pop(context);
+          },
+        ),
+        title: Text(
+          "Preferences",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 79, 81, 140),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        centerTitle: false,
+        elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -286,26 +304,35 @@ class _PreferencesPageState extends State<PreferencesPage> {
                     ),
                     SizedBox(height: 16),
                     // Add a Slider for max distance selection
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "${selectedDistance.toStringAsFixed(0)} km",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        Slider(
-                          value: selectedDistance,
-                          onChanged: (newValue) {
-                            setState(() {
-                              selectedDistance = newValue;
-                            });
-                          },
-                          min: 0,
-                          max: 100,
-                          divisions: 20,
-                        ),
-                      ],
-                    ),
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        activeTrackColor: Color(
+                            0xFFABD2FA), // Change the color of the active track.
+                        inactiveTrackColor: Color(0xffD3D3D3),
+                        thumbColor: Color(
+                            0xFFABD2FA), // Change the color of the inactive track.
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "${selectedDistance.toStringAsFixed(0)} km",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Slider(
+                            value: selectedDistance,
+                            onChanged: (newValue) {
+                              setState(() {
+                                selectedDistance = newValue;
+                              });
+                            },
+                            min: 0,
+                            max: 100,
+                            divisions: 20,
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),

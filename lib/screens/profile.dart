@@ -62,7 +62,16 @@ class Profile extends StatelessWidget {
                         onPressed: () {
                           // Handle the "Personal details" button press
                         },
-                        child: Text("Personal Details"),
+                        child: const Text(
+                          "Personal Details",
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color(0xFFABD2FA)), // Set your desired color here
+                        ),
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -78,7 +87,16 @@ class Profile extends StatelessWidget {
                             ),
                           );
                         },
-                        child: Text("Preferences"),
+                        child: const Text(
+                          "Preferences",
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color(0xFFABD2FA)), // Set your desired color here
+                        ),
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -89,7 +107,16 @@ class Profile extends StatelessWidget {
                         onPressed: () {
                           // Handle the "My Books" button press
                         },
-                        child: Text("My Books"),
+                        child: const Text(
+                          "My Books",
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color(0xFFABD2FA)), // Set your desired color here
+                        ),
                       ),
                     ),
                   ],

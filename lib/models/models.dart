@@ -149,7 +149,6 @@ Future<DocumentSnapshot> getGenreByName(String genreName) async {
 //   }
 // }
 
-
 // function to read the favourite genres of the user (to be used for user 1)
 Future<List<String>> fetchFavoriteGenresById(String id) async {
   List<String> favoriteGenres = [];
@@ -715,6 +714,7 @@ Future<String?> fetchUserNameByBookID(String bookId) async {
   return null;
 }
 
+/*
 Future<String?> fetchGenreNameByID(String genreId) async {
   try {
     DocumentSnapshot genreDoc = await FirebaseFirestore.instance
@@ -747,6 +747,7 @@ Future<String?> fetchGenreNameByID(String genreId) async {
   return null;
 }
 
+
 Future<String?> fetchUserNameByID(String userId) async {
   try {
     DocumentSnapshot userDoc =
@@ -775,4 +776,4 @@ Future<String?> fetchUserNameByID(String userId) async {
     return '';
   }
   return null;
-}
+}*/

@@ -124,7 +124,7 @@ class _MatchesState extends State<Matches> {
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                  color: Colors.green, // Border color
+                                  color: Color(0xFFABD2FA), // Border color
                                   width: 4.0, // Border width
                                 ),
                               ),
@@ -158,7 +158,7 @@ class _MatchesState extends State<Matches> {
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Colors.red, // Border color
+                                    color: Color(0xff4F518C), // Border color
                                     width: 4.0, // Border width
                                   ),
                                 ),
@@ -250,7 +250,8 @@ class _MatchesState extends State<Matches> {
                                     TextSpan(
                                       text: '', // Leave this empty initially
                                       style: TextStyle(
-                                          color: Colors.green, fontSize: 18),
+                                          color: Color(0xFFABD2FA),
+                                          fontSize: 18),
                                       children: [
                                         WidgetSpan(
                                           alignment:
@@ -268,7 +269,7 @@ class _MatchesState extends State<Matches> {
                                                 return Text(
                                                   "Error: ${snapshot.error}",
                                                   style: TextStyle(
-                                                      color: Colors.green,
+                                                      color: Color(0xFFABD2FA),
                                                       fontSize:
                                                           18), // Change the text style for error message.
                                                 );
@@ -277,9 +278,10 @@ class _MatchesState extends State<Matches> {
                                                   snapshot.data ??
                                                       'Book name not found',
                                                   style: TextStyle(
-                                                      color: Colors.green,
-                                                      fontSize:
-                                                          18), // Change the text style for the book name.
+                                                      color: Color(0xFFABD2FA),
+                                                      fontSize: 18,
+                                                      fontWeight: FontWeight
+                                                          .bold), // Change the text style for the book name.
                                                 );
                                               }
                                             },
@@ -295,7 +297,8 @@ class _MatchesState extends State<Matches> {
                                     TextSpan(
                                       text: '', // Leave this empty initially
                                       style: TextStyle(
-                                          color: Colors.red, fontSize: 18),
+                                          color: Color(0xff4F518C),
+                                          fontSize: 18),
                                       children: [
                                         WidgetSpan(
                                           alignment:
@@ -313,18 +316,20 @@ class _MatchesState extends State<Matches> {
                                                 return Text(
                                                   "Error: ${snapshot.error}",
                                                   style: TextStyle(
-                                                      color: Colors.red,
-                                                      fontSize:
-                                                          18), // Change the text style for error message.
+                                                      color: Color(0xff4F518C),
+                                                      fontSize: 18,
+                                                      fontWeight: FontWeight
+                                                          .bold), // Change the text style for error message.
                                                 );
                                               } else {
                                                 return Text(
                                                   snapshot.data ??
                                                       'Book name not found',
                                                   style: TextStyle(
-                                                      color: Colors.red,
-                                                      fontSize:
-                                                          18), // Change the text style for the book name.
+                                                      color: Color(0xff4F518C),
+                                                      fontSize: 18,
+                                                      fontWeight: FontWeight
+                                                          .bold), // Change the text style for the book name.
                                                 );
                                               }
                                             },
