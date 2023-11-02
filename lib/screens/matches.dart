@@ -87,259 +87,270 @@ class _MatchesState extends State<Matches> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Padding(
-        padding: EdgeInsets.all(20.0),
-        child: Text(
-          "My book matches",
-          style: TextStyle(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: const Text(
+            "My book matches",
+            style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 79, 81, 140)),
+              color: Color.fromARGB(255, 79, 81, 140),
+            ),
+          ),
+          centerTitle: false,
+          elevation: 0,
         ),
-      ),
-      const Divider(),
-      Expanded(
-          child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: allMatches.length,
-        itemBuilder: (context, index) {
-          final item = allMatches[index];
+        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const Divider(),
+          Expanded(
+              child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: allMatches.length,
+            itemBuilder: (context, index) {
+              final item = allMatches[index];
 
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 9.0),
-                child: Row(
-                  children: [
-                    Row(
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 9.0),
+                    child: Row(
                       children: [
-                        Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.green, // Border color
-                              width: 4.0, // Border width
-                            ),
-                          ),
-                          child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: FutureBuilder<String>(
-                                future: _fetchBookPictureByID(
-                                    '${item['book1'].id}'),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<String> snapshot) {
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return CircularProgressIndicator(); // Display a loading indicator.
-                                  } else if (snapshot.hasError) {
-                                    return Text("Error: ${snapshot.error}");
-                                  } else {
-                                    String imagePath =
-                                        'lib/assets/images/${snapshot.data}'; // Use a default image path if snapshot.data is null
-                                    return CircleAvatar(
-                                      backgroundImage: AssetImage(imagePath),
-                                    );
-                                  }
-                                },
-                              )),
-                        ),
-                        SizedBox(width: 3), // Spacing between images
-                        Container(
-                            width: 80,
-                            height: 80,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Colors.red, // Border color
-                                width: 4.0, // Border width
-                              ),
-                            ),
-                            child: Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: FutureBuilder<String>(
-                                  future: _fetchBookPictureByID(
-                                      '${item['book2'].id}'),
-                                  builder: (BuildContext context,
-                                      AsyncSnapshot<String> snapshot) {
-                                    if (snapshot.connectionState ==
-                                        ConnectionState.waiting) {
-                                      return CircularProgressIndicator(); // Display a loading indicator.
-                                    } else if (snapshot.hasError) {
-                                      return Text("Error: ${snapshot.error}");
-                                    } else {
-                                      String imagePath =
-                                          'lib/assets/images/${snapshot.data}'; // Use a default image path if snapshot.data is null
-                                      return CircleAvatar(
-                                        backgroundImage: AssetImage(imagePath),
-                                      );
-                                    }
-                                  },
-                                ))),
-                      ],
-                    ),
-                    // Right side with title and subtitle
-                    SizedBox(width: 20), // Spacing between images
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text.rich(TextSpan(
-                          text: '', // Leave this empty initially
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                        Row(
                           children: [
-                            WidgetSpan(
-                              alignment: PlaceholderAlignment.middle,
-                              child: FutureBuilder<String>(
-                                future: _fetchUserNameByBookID(
-                                    '${item['book2'].id}'),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<String> snapshot) {
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return CircularProgressIndicator(); // Display a loading indicator.
-                                  } else if (snapshot.hasError) {
-                                    return Text(
-                                      "Error: ${snapshot.error}",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize:
-                                              20), // Change the text style for error message.
-                                    );
-                                  } else {
-                                    return Text(
-                                      snapshot.data ?? 'Book name not found',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize:
-                                              20), // Change the text style for the book name.
-                                    );
-                                  }
-                                },
+                            Container(
+                              width: 80,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Colors.green, // Border color
+                                  width: 4.0, // Border width
+                                ),
                               ),
+                              child: Padding(
+                                  padding: const EdgeInsets.all(3.0),
+                                  child: FutureBuilder<String>(
+                                    future: _fetchBookPictureByID(
+                                        '${item['book1'].id}'),
+                                    builder: (BuildContext context,
+                                        AsyncSnapshot<String> snapshot) {
+                                      if (snapshot.connectionState ==
+                                          ConnectionState.waiting) {
+                                        return CircularProgressIndicator(); // Display a loading indicator.
+                                      } else if (snapshot.hasError) {
+                                        return Text("Error: ${snapshot.error}");
+                                      } else {
+                                        String imagePath =
+                                            'lib/assets/images/${snapshot.data}'; // Use a default image path if snapshot.data is null
+                                        return CircleAvatar(
+                                          backgroundImage:
+                                              AssetImage(imagePath),
+                                        );
+                                      }
+                                    },
+                                  )),
                             ),
+                            SizedBox(width: 3), // Spacing between images
+                            Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.red, // Border color
+                                    width: 4.0, // Border width
+                                  ),
+                                ),
+                                child: Padding(
+                                    padding: const EdgeInsets.all(3.0),
+                                    child: FutureBuilder<String>(
+                                      future: _fetchBookPictureByID(
+                                          '${item['book2'].id}'),
+                                      builder: (BuildContext context,
+                                          AsyncSnapshot<String> snapshot) {
+                                        if (snapshot.connectionState ==
+                                            ConnectionState.waiting) {
+                                          return CircularProgressIndicator(); // Display a loading indicator.
+                                        } else if (snapshot.hasError) {
+                                          return Text(
+                                              "Error: ${snapshot.error}");
+                                        } else {
+                                          String imagePath =
+                                              'lib/assets/images/${snapshot.data}'; // Use a default image path if snapshot.data is null
+                                          return CircleAvatar(
+                                            backgroundImage:
+                                                AssetImage(imagePath),
+                                          );
+                                        }
+                                      },
+                                    ))),
                           ],
-                        )),
-                        SizedBox(
-                          width: (MediaQuery.of(context).size.width) - 195,
-                          child: RichText(
-                            maxLines:
-                                10, // Set the maximum number of lines before text wraps
-                            overflow: TextOverflow.visible,
-                            text: TextSpan(
+                        ),
+                        // Right side with title and subtitle
+                        SizedBox(width: 20), // Spacing between images
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text.rich(TextSpan(
+                              text: '', // Leave this empty initially
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
                               children: [
-                                TextSpan(
-                                  text: 'Get their ',
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 18),
-                                ),
-                                TextSpan(
-                                  text: '', // Leave this empty initially
-                                  style: TextStyle(
-                                      color: Colors.green, fontSize: 18),
-                                  children: [
-                                    WidgetSpan(
-                                      alignment: PlaceholderAlignment.middle,
-                                      child: FutureBuilder<String>(
-                                        future:
-                                            _getBookName('${item['book1'].id}'),
-                                        builder: (BuildContext context,
-                                            AsyncSnapshot<String> snapshot) {
-                                          if (snapshot.connectionState ==
-                                              ConnectionState.waiting) {
-                                            return CircularProgressIndicator(); // Display a loading indicator.
-                                          } else if (snapshot.hasError) {
-                                            return Text(
-                                              "Error: ${snapshot.error}",
-                                              style: TextStyle(
-                                                  color: Colors.green,
-                                                  fontSize:
-                                                      18), // Change the text style for error message.
-                                            );
-                                          } else {
-                                            return Text(
-                                              snapshot.data ??
-                                                  'Book name not found',
-                                              style: TextStyle(
-                                                  color: Colors.green,
-                                                  fontSize:
-                                                      18), // Change the text style for the book name.
-                                            );
-                                          }
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                TextSpan(
-                                  text: ' for your ',
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 18),
-                                ),
-                                TextSpan(
-                                  text: '', // Leave this empty initially
-                                  style: TextStyle(
-                                      color: Colors.red, fontSize: 18),
-                                  children: [
-                                    WidgetSpan(
-                                      alignment: PlaceholderAlignment.middle,
-                                      child: FutureBuilder<String>(
-                                        future:
-                                            _getBookName('${item['book2'].id}'),
-                                        builder: (BuildContext context,
-                                            AsyncSnapshot<String> snapshot) {
-                                          if (snapshot.connectionState ==
-                                              ConnectionState.waiting) {
-                                            return CircularProgressIndicator(); // Display a loading indicator.
-                                          } else if (snapshot.hasError) {
-                                            return Text(
-                                              "Error: ${snapshot.error}",
-                                              style: TextStyle(
-                                                  color: Colors.red,
-                                                  fontSize:
-                                                      18), // Change the text style for error message.
-                                            );
-                                          } else {
-                                            return Text(
-                                              snapshot.data ??
-                                                  'Book name not found',
-                                              style: TextStyle(
-                                                  color: Colors.red,
-                                                  fontSize:
-                                                      18), // Change the text style for the book name.
-                                            );
-                                          }
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                TextSpan(
-                                  text: '.',
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 18),
+                                WidgetSpan(
+                                  alignment: PlaceholderAlignment.middle,
+                                  child: FutureBuilder<String>(
+                                    future: _fetchUserNameByBookID(
+                                        '${item['book2'].id}'),
+                                    builder: (BuildContext context,
+                                        AsyncSnapshot<String> snapshot) {
+                                      if (snapshot.connectionState ==
+                                          ConnectionState.waiting) {
+                                        return CircularProgressIndicator(); // Display a loading indicator.
+                                      } else if (snapshot.hasError) {
+                                        return Text(
+                                          "Error: ${snapshot.error}",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize:
+                                                  20), // Change the text style for error message.
+                                        );
+                                      } else {
+                                        return Text(
+                                          snapshot.data ??
+                                              'Book name not found',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize:
+                                                  20), // Change the text style for the book name.
+                                        );
+                                      }
+                                    },
+                                  ),
                                 ),
                               ],
-                            ),
-                          ),
-                        )
+                            )),
+                            SizedBox(
+                              width: (MediaQuery.of(context).size.width) - 195,
+                              child: RichText(
+                                maxLines:
+                                    10, // Set the maximum number of lines before text wraps
+                                overflow: TextOverflow.visible,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'Get their ',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18),
+                                    ),
+                                    TextSpan(
+                                      text: '', // Leave this empty initially
+                                      style: TextStyle(
+                                          color: Colors.green, fontSize: 18),
+                                      children: [
+                                        WidgetSpan(
+                                          alignment:
+                                              PlaceholderAlignment.middle,
+                                          child: FutureBuilder<String>(
+                                            future: _getBookName(
+                                                '${item['book1'].id}'),
+                                            builder: (BuildContext context,
+                                                AsyncSnapshot<String>
+                                                    snapshot) {
+                                              if (snapshot.connectionState ==
+                                                  ConnectionState.waiting) {
+                                                return CircularProgressIndicator(); // Display a loading indicator.
+                                              } else if (snapshot.hasError) {
+                                                return Text(
+                                                  "Error: ${snapshot.error}",
+                                                  style: TextStyle(
+                                                      color: Colors.green,
+                                                      fontSize:
+                                                          18), // Change the text style for error message.
+                                                );
+                                              } else {
+                                                return Text(
+                                                  snapshot.data ??
+                                                      'Book name not found',
+                                                  style: TextStyle(
+                                                      color: Colors.green,
+                                                      fontSize:
+                                                          18), // Change the text style for the book name.
+                                                );
+                                              }
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    TextSpan(
+                                      text: ' for your ',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18),
+                                    ),
+                                    TextSpan(
+                                      text: '', // Leave this empty initially
+                                      style: TextStyle(
+                                          color: Colors.red, fontSize: 18),
+                                      children: [
+                                        WidgetSpan(
+                                          alignment:
+                                              PlaceholderAlignment.middle,
+                                          child: FutureBuilder<String>(
+                                            future: _getBookName(
+                                                '${item['book2'].id}'),
+                                            builder: (BuildContext context,
+                                                AsyncSnapshot<String>
+                                                    snapshot) {
+                                              if (snapshot.connectionState ==
+                                                  ConnectionState.waiting) {
+                                                return CircularProgressIndicator(); // Display a loading indicator.
+                                              } else if (snapshot.hasError) {
+                                                return Text(
+                                                  "Error: ${snapshot.error}",
+                                                  style: TextStyle(
+                                                      color: Colors.red,
+                                                      fontSize:
+                                                          18), // Change the text style for error message.
+                                                );
+                                              } else {
+                                                return Text(
+                                                  snapshot.data ??
+                                                      'Book name not found',
+                                                  style: TextStyle(
+                                                      color: Colors.red,
+                                                      fontSize:
+                                                          18), // Change the text style for the book name.
+                                                );
+                                              }
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    TextSpan(
+                                      text: '.',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              Divider(),
-            ],
-          );
-        },
-      ))
-    ]));
+                  ),
+                  Divider(),
+                ],
+              );
+            },
+          ))
+        ]));
   }
 }

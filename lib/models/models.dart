@@ -149,6 +149,7 @@ Future<DocumentSnapshot> getGenreByName(String genreName) async {
 //   }
 // }
 
+
 // function to read the favourite genres of the user (to be used for user 1)
 Future<List<String>> fetchFavoriteGenresById(String id) async {
   List<String> favoriteGenres = [];
@@ -705,6 +706,68 @@ Future<String?> fetchUserNameByBookID(String bookId) async {
       // For example, set it in a state variable or display it in a widget
     } else {
       print('User document with ID $bookId does not exist.');
+      return '';
+    }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    return '';
+  }
+  return null;
+}
+
+Future<String?> fetchGenreNameByID(String genreId) async {
+  try {
+    DocumentSnapshot genreDoc = await FirebaseFirestore.instance
+        .collection('genres')
+        .doc(genreId)
+        .get();
+
+    if (genreDoc.exists) {
+      Map<String, dynamic> genreData = genreDoc.data() as Map<String, dynamic>;
+      //print('User Data: $genreData');
+
+      if (genreData.containsKey("name")) {
+        String name = genreData["name"];
+        //print('name: $name');
+
+        return name;
+      } else {
+        print("Name attribute not found in document ${genreDoc.id}");
+      }
+      // Use the genre data in your Flutter app
+      // For example, set it in a state variable or display it in a widget
+    } else {
+      print('User document with ID $genreId does not exist.');
+      return '';
+    }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    return '';
+  }
+  return null;
+}
+
+Future<String?> fetchUserNameByID(String userId) async {
+  try {
+    DocumentSnapshot userDoc =
+        await FirebaseFirestore.instance.collection('users').doc(userId).get();
+
+    if (userDoc.exists) {
+      Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
+      //print('User Data: $userData');
+
+      if (userData.containsKey("name")) {
+        String name = userData["name"];
+        //print('name: $name');
+
+        return name;
+      } else {
+        print("Name attribute not found in document ${userDoc.id}");
+      }
+      // Use the user data in your Flutter app
+      // For example, set it in a state variable or display it in a widget
+    } else {
+      print('User document with ID $userId does not exist.');
       return '';
     }
   } catch (e) {
