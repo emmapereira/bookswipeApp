@@ -28,6 +28,11 @@ class BottomNavBar extends StatelessWidget {
           backgroundColor: Color(0xff4F518C),
         ),
         BottomNavigationBarItem(
+          icon: Icon(Icons.add_circle),
+          label: 'Add',
+          backgroundColor: Color(0xff4F518C),
+        ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.query_stats),
           label: 'Tracker',
           backgroundColor: Color(0xff4F518C),

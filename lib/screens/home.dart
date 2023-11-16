@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations
 
+import 'package:bookswipe/screens/matches.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -51,6 +52,52 @@ class _HomeState extends State<Home> {
     } catch (e) {
       print('Error fetching book data: $e');
     }
+  }
+
+  Future<void> _showPopup() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('New book match!'),
+              IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Your book x has matched with bookx.'),
+                // Add more widgets as needed
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  child: Text('Go to matches'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Matches()));
+                  },
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -119,7 +166,7 @@ class _HomeState extends State<Home> {
           GestureDetector(
             onHorizontalDragUpdate: (details) {
               if (!swipeDetected) {
-                // swipe Right
+                // swipe left
                 if (details.delta.dx < 0) {
                   swipeDetected = true;
                   //print("LEFT SWIPE");
@@ -133,9 +180,11 @@ class _HomeState extends State<Home> {
                     _fetchBookDataByID(bookToShow);
                   });
                   // Positive velocity means a right swipe
-                  // swipe Left
+
+                  // swipe right
                 } else if (details.delta.dx > 0) {
                   swipeDetected = true;
+                  _showPopup(); // Call the function to show the popup
                   //print("RIGHT SWIPE");
                   setState(() {
                     // TO DO: Change here

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:bookswipe/screens/home.dart';
 import 'package:bookswipe/screens/newbook.dart';
 import 'package:bookswipe/models/models.dart';
 
@@ -65,6 +66,55 @@ class _ExploreState extends State<Explore> {
               book['title'].toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
+  }
+
+  Future<void> _showPopup() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Want to swap with this book?'),
+              IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                    'Start swiping on the home screen and try to match with this book!'),
+                // Add more widgets as needed
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  child: Text('Go to home screen'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Home()),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -181,6 +231,7 @@ class _ExploreState extends State<Explore> {
                   //     builder: (context) => Item(itemId: clothingItem.id),
                   //   ),
                   // );
+                  _showPopup();
                 },
                 child: GridTile(
                   child: Padding(
