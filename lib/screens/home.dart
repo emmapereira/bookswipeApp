@@ -1,7 +1,5 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations, use_build_context_synchronously
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations
 
-import 'package:bookswipe/screens/matches.dart';
-import 'package:bookswipe/screens/profile_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -29,8 +27,6 @@ class _HomeState extends State<Home> {
   late String kmNumber = '0';
   late bool swipeDetected = false;
   late int numberOfBooks = 0;
-  late DocumentReference<Map<String, dynamic>> bookOwnerID;
-  late bool navigateToMatches = false;
   late bool showLiked = false;
   late bool showDisliked = false;
   bool isFetchingBookData = false;
@@ -43,162 +39,48 @@ class _HomeState extends State<Home> {
 
   Future<void> _fetchBookDataByID(String id) async {
     try {
-      // Perform your asynchronous operations here
-      final bookData = await getBookById(id) as Map<String, dynamic>;
+      // Fetch the book data using the getBookById function
+      final Map<String, dynamic>? bookData = await getBookById(id);
 
-      DocumentReference<Map<String, dynamic>> genreRef = bookData['genre'];
-      String genreId = genreRef.id;
-      final gName = await getGenreById(genreId) as String;
+      // If book data is found
+      if (bookData != null) {
+        // Fetch additional details like genre and owner if they exist
+        String fetchedGenreName = '';
+        String fetchedBookOwner = '';
 
-      DocumentReference<Map<String, dynamic>> userRef = bookData['owner'];
-      String userId = userRef.id;
-      final userName = await getUserNameById(userId) as String;
-      // Update currentBook with the fetched data
-      setState(() {
-        currentBook = bookData;
-        genreName = gName;
-        bookOwner = userName;
-        bookOwnerID = userRef;
-        kmNumber = getKmNumber();
-        swipeDetected = false;
-        numberOfBooks = numberOfBooks;
-      });
+        if (bookData['genre'] != null) {
+          DocumentReference<Map<String, dynamic>> genreRef = bookData['genre'];
+          String genreId = genreRef.id;
+          fetchedGenreName = await getGenreById(genreId) as String;
+        }
+
+        if (bookData['owner'] != null) {
+          DocumentReference<Map<String, dynamic>> userRef = bookData['owner'];
+          String userId = userRef.id;
+          fetchedBookOwner = await getUserNameById(userId) as String;
+        }
+
+        // Update the state with the fetched data
+        setState(() {
+          currentBook = bookData;
+          genreName = fetchedGenreName;
+          bookOwner = fetchedBookOwner;
+          kmNumber =
+              getKmNumber(); // Assuming this function returns a string for kmNumber
+        });
+      } else {
+        print('Book with ID $id not found');
+        // Handle the case where no book is found
+      }
     } catch (e) {
       print('Error fetching book data: $e');
-    }
-  }
-
-  Future<void> _addLike() async {
-    DocumentReference<Map<String, dynamic>> liked_bookRef =
-        FirebaseFirestore.instance.collection('books').doc(bookToShow);
-    DocumentReference<Map<String, dynamic>> book_ownerRef = bookOwnerID;
-    DocumentReference<Map<String, dynamic>> likerRef =
-        FirebaseFirestore.instance.collection('users').doc('1');
-    print('LIKE TO ADD: ');
-    print(likerRef);
-    print(liked_bookRef);
-    print(book_ownerRef);
-    await addLike(likerRef, liked_bookRef, book_ownerRef);
-    _checkIfNewMatch();
-  }
-
-  void _navigateToMatches() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Matches()),
-    );
-  }
-
-  Future<void> _showPopup() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return Builder(
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('New book match!'),
-                  IconButton(
-                    icon: Icon(Icons.close),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              ),
-              content: SingleChildScrollView(
-                child: ListBody(
-                  children: <Widget>[
-                    Text('Your book x has matched with bookx.'),
-                    // Add more widgets as needed
-                  ],
-                ),
-              ),
-              actions: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        // Close the dialog
-                        navigateToMatches = true;
-                        Navigator.of(context, rootNavigator: true).pop();
-                      },
-                      icon: Icon(Icons.explore),
-                      label: Text("Go to matches"),
-                    ),
-                    /*
-                    TextButton(
-                      child: Text('Go to matches'),
-                      onPressed: () {
-                        navigateToMatches = true;
-                        Navigator.of(context, rootNavigator: true).pop();
-                        /*Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => Matches()));*/
-                        //Navigator.pushNamed(context, '/matches');
-                        //_navigateToMatches();
-                      },
-                    ),*/
-                  ],
-                ),
-              ],
-            );
-          },
-        );
-      },
-    );
-  }
-
-  Future<void> _checkIfNewMatch() async {
-    QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await FirebaseFirestore.instance
-            .collection('likes') // Replace with your actual collection name
-            .get();
-
-    List<Map<String, dynamic>> matchingPairs = [];
-
-    List<Map<String, dynamic>> allInstances =
-        querySnapshot.docs.map((doc) => doc.data()).toList();
-
-    if (allInstances.isNotEmpty) {
-      var lastAddedInstance = allInstances.last;
-
-      for (var instance in allInstances) {
-        if ((instance['liker'] == lastAddedInstance['book_owner']) &&
-            (instance['book_owner'] == lastAddedInstance['liker'])) {
-          matchingPairs.add(instance);
-        }
-      }
-
-      if (matchingPairs.isNotEmpty) {
-        print('Matching pairs with the last added instance:');
-        for (var pair in matchingPairs) {
-          print(pair);
-          print(
-              'book1: ${pair['liked_book']}, book2: ${lastAddedInstance['liked_book']}');
-
-          _addMatch(pair['liked_book'], lastAddedInstance['liked_book']);
-        }
-      } else {
-        print('No matching pairs found with the last added instance.');
-      }
-    } else {
-      print('No instances found in the collection.');
-    }
-  }
-
-  Future<void> _addMatch(book1, book2) async {
-    await addMatch(book1, book2);
-    _showPopup(); // Call the function to show the popup
-    if (navigateToMatches) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Matches()),
-      );
-      navigateToMatches = false;
+      // Handle any exceptions during fetch
+    } finally {
+      // Reset the flags in finally block to ensure they are reset whether the fetch is successful or not
+      setState(() {
+        swipeDetected = false;
+        isFetchingBookData = false;
+      });
     }
   }
 
@@ -243,22 +125,22 @@ class _HomeState extends State<Home> {
     }
 
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: const Text(
-            "Start swiping!",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 79, 81, 140),
+        body: Stack(children: [
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Text(
+              "Start swiping!",
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 79, 81, 140)),
             ),
           ),
-          centerTitle: false,
-          elevation: 0,
-        ),
-        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const Padding(
-            padding: const EdgeInsets.only(left: 17.0, bottom: 10.0),
+            padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
             child: Text(
               "Swipe right if you like a book, swipe left to move onto the next one.",
               style: TextStyle(
@@ -266,40 +148,31 @@ class _HomeState extends State<Home> {
             ),
           ),
           GestureDetector(
-            onHorizontalDragUpdate: (details) async {
-              if (!swipeDetected) {
-                // swipe left
-                if (details.delta.dx < 0) {
-                  swipeDetected = true;
-                  //print("LEFT SWIPE");
-                  setState(() {
-                    // TO DO: Change here
-                    int number = int.parse(
-                        bookToShow); // Convert the string to an integer
-                    number++; // Increment the integer
-                    if (number == numberOfBooks + 1) number = 1;
-                    bookToShow = number.toString();
-                    _fetchBookDataByID(bookToShow);
-                  });
-                  // Positive velocity means a right swipe
+            onHorizontalDragUpdate: (details) {
+              if (!swipeDetected && !isFetchingBookData) {
+                swipeDetected = true;
+                isFetchingBookData = true;
 
-                  // swipe right
-                } else if (details.delta.dx > 0) {
-                  swipeDetected = true;
-                  _addLike();
+                // Assuming book IDs are sequential and start from 1
+                int currentId = int.tryParse(bookToShow) ?? 0;
+                currentId = (currentId % numberOfBooks) +
+                    1; // Increment to get the next book ID
+                bookToShow = currentId.toString();
 
-                  //print("RIGHT SWIPE");
+                setState(() {
+                  showLiked = details.delta.dx > 0;
+                  showDisliked = details.delta.dx < 0;
+                });
+
+                _fetchBookDataByID(bookToShow); // Fetch data for the new book
+
+                Timer(Duration(milliseconds: 500), () {
                   setState(() {
-                    // TO DO: Change here
-                    int number = int.parse(
-                        bookToShow); // Convert the string to an integer
-                    number--; // Increment the integer
-                    if (number == 0) number = numberOfBooks;
-                    bookToShow = number.toString();
-                    _fetchBookDataByID(bookToShow);
+                    showLiked = false;
+                    showDisliked = false;
+                    swipeDetected = false;
                   });
-                  // Negative velocity means a left swipe
-                }
+                });
               }
             },
             onHorizontalDragEnd: (details) {
@@ -370,6 +243,11 @@ class _HomeState extends State<Home> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                        Icons.expand_less), // The arrow icon
+                                    onPressed: _toggleImageSize,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
@@ -453,6 +331,11 @@ class _HomeState extends State<Home> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                        Icons.expand_more), // The arrow icon
+                                    onPressed: _toggleImageSize,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
@@ -625,6 +508,24 @@ class _HomeState extends State<Home> {
                           ])),
                     ),
                   ))
-        ]));
+        ],
+      ),
+      if (showDisliked)
+        Center(
+          child: Icon(
+            Icons.favorite,
+            color: Colors.green,
+            size: 100.0,
+          ),
+        ),
+      if (showLiked)
+        Center(
+          child: Icon(
+            Icons.close,
+            color: Colors.red,
+            size: 100.0,
+          ),
+        ),
+    ]));
   }
 }
