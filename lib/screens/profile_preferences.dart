@@ -186,12 +186,27 @@ class _PreferencesPageState extends State<PreferencesPage> {
                           },
                         ),
                       )),
-                  TextField(
-                    controller: authorController,
-                    decoration: InputDecoration(
-                      labelText: 'Add New Author',
-                      hintText: 'Enter author name',
-                    ),
+                  Autocomplete<String>(
+                    optionsBuilder: (TextEditingValue textEditingValue) async {
+                      if (textEditingValue.text == '') {
+                        return const Iterable<String>.empty();
+                      }
+                      return await fetchAuthors(textEditingValue.text);
+                    },
+                    onSelected: (String selection) {
+                      authorController.text = selection;
+                    },
+                    fieldViewBuilder: (context, textEditingController,
+                        focusNode, onFieldSubmitted) {
+                      return TextField(
+                        controller: textEditingController,
+                        focusNode: focusNode,
+                        decoration: InputDecoration(
+                          labelText: 'Add New Author',
+                          hintText: 'Enter author name',
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

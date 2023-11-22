@@ -56,6 +56,207 @@ class _HomeState extends State<Home> {
       print('Error fetching book data: $e');
     }
   }
+  
+  Future<void> _addLike() async {
+    DocumentReference<Map<String, dynamic>> liked_bookRef =
+        FirebaseFirestore.instance.collection('books').doc(bookToShow);
+    DocumentReference<Map<String, dynamic>> book_ownerRef = bookOwnerID;
+    DocumentReference<Map<String, dynamic>> likerRef =
+        FirebaseFirestore.instance.collection('users').doc('1');
+    print('LIKE TO ADD: ');
+    print(likerRef);
+    print(liked_bookRef);
+    print(book_ownerRef);
+    await addLike(likerRef, liked_bookRef, book_ownerRef);
+    _checkIfNewMatch();
+  }
+
+  void _navigateToMatches() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Matches()),
+    );
+  }
+
+  Future<String> _getBookName(String bookId) async {
+    try {
+      // Perform your asynchronous operations here
+      final String bookName = await fetchBookNameByID(bookId) as String;
+
+      if (bookName != null) {
+        return bookName;
+      } else {
+        return 'Book name not found'; // You can return a default value or handle this case as needed.
+      }
+    } catch (e) {
+      print('Error fetching book data: $e');
+      return '';
+    }
+  }
+
+  Future<void> _showPopup(DocumentReference<Map<String, dynamic>> book1,
+      DocumentReference<Map<String, dynamic>> book2) async {
+    String bookId1 = book1.id;
+    String bookId2 = book2.id;
+    String bookName1 = await _getBookName(bookId1);
+    String bookName2 = await _getBookName(bookId2);
+
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return Builder(
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('New book match!'),
+                  IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Amazing! Your book ',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
+                          ),
+                          TextSpan(
+                            text:
+                                bookName1, // Replace with the actual bookName1 variable
+                            style: TextStyle(
+                              color: Color(0xff4F518C),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ' has matched with book ',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
+                          ),
+                          TextSpan(
+                            text:
+                                bookName2, // Replace with the actual bookName2 variable
+                            style: TextStyle(
+                              color: Color(0xFFABD2FA),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          TextSpan(
+                            text: '.',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // Add more widgets as needed
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        // Close the dialog
+                        navigateToMatches = true;
+                        Navigator.of(context, rootNavigator: true).pop();
+                      },
+                      icon: Icon(Icons.explore),
+                      label: Text("Go to matches"),
+                    ),
+                    /*
+                    TextButton(
+                      child: Text('Go to matches'),
+                      onPressed: () {
+                        navigateToMatches = true;
+                        Navigator.of(context, rootNavigator: true).pop();
+                        /*Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Matches()));*/
+                        //Navigator.pushNamed(context, '/matches');
+                        //_navigateToMatches();
+                      },
+                    ),*/
+                  ],
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Future<void> _checkIfNewMatch() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await FirebaseFirestore.instance
+            .collection('likes') // Replace with your actual collection name
+            .get();
+
+    List<Map<String, dynamic>> matchingPairs = [];
+
+    List<Map<String, dynamic>> allInstances =
+        querySnapshot.docs.map((doc) => doc.data()).toList();
+
+    if (allInstances.isNotEmpty) {
+      var lastAddedInstance = allInstances.last;
+
+      for (var instance in allInstances) {
+        if ((instance['liker'] == lastAddedInstance['book_owner']) &&
+            (instance['book_owner'] == lastAddedInstance['liker'])) {
+          matchingPairs.add(instance);
+        }
+      }
+
+      if (matchingPairs.isNotEmpty) {
+        print('Matching pairs with the last added instance:');
+        for (var pair in matchingPairs) {
+          print(pair);
+          print(
+              'book1: ${pair['liked_book']}, book2: ${lastAddedInstance['liked_book']}');
+
+          _addMatch(pair['liked_book'], lastAddedInstance['liked_book']);
+        }
+      } else {
+        print('No matching pairs found with the last added instance.');
+      }
+    } else {
+      print('No instances found in the collection.');
+    }
+  }
+
+  Future<void> _addMatch(book1, book2) async {
+    await addMatch(book1, book2);
+    _showPopup(book1, book2); // Call the function to show the popup
+    if (navigateToMatches) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Matches()),
+      );
+      navigateToMatches = false;
+    }
+  }
+
 
   @override
   void initState() {
