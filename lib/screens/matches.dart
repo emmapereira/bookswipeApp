@@ -7,12 +7,13 @@ class Matches extends StatefulWidget {
   @override
   _MatchesState createState() => _MatchesState();
 
+/*
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Matches(),
     );
-  }
+  }*/
 }
 
 class _MatchesState extends State<Matches> {

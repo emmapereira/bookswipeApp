@@ -24,12 +24,17 @@ class BottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.checkroom),
-          label: 'Closet',
+          label: 'Explore',
+          backgroundColor: Color(0xff4F518C),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.add_circle),
+          label: 'Add',
           backgroundColor: Color(0xff4F518C),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.query_stats),
-          label: 'Tracker',
+          label: 'Matches',
           backgroundColor: Color(0xff4F518C),
         ),
         BottomNavigationBarItem(
