@@ -31,56 +31,29 @@ class _HomeState extends State<Home> {
   late bool showDisliked = false;
   bool isFetchingBookData = false;
 
-  void _toggleImageSize() {
-    setState(() {
-      isImageLarge = !isImageLarge;
-    });
-  }
-
   Future<void> _fetchBookDataByID(String id) async {
     try {
-      // Fetch the book data using the getBookById function
-      final Map<String, dynamic>? bookData = await getBookById(id);
+      // Perform your asynchronous operations here
+      final bookData = await getBookById(id) as Map<String, dynamic>;
 
-      // If book data is found
-      if (bookData != null) {
-        // Fetch additional details like genre and owner if they exist
-        String fetchedGenreName = '';
-        String fetchedBookOwner = '';
+      DocumentReference<Map<String, dynamic>> genreRef = bookData['genre'];
+      String genreId = genreRef.id;
+      final gName = await getGenreById(genreId) as String;
 
-        if (bookData['genre'] != null) {
-          DocumentReference<Map<String, dynamic>> genreRef = bookData['genre'];
-          String genreId = genreRef.id;
-          fetchedGenreName = await getGenreById(genreId) as String;
-        }
-
-        if (bookData['owner'] != null) {
-          DocumentReference<Map<String, dynamic>> userRef = bookData['owner'];
-          String userId = userRef.id;
-          fetchedBookOwner = await getUserNameById(userId) as String;
-        }
-
-        // Update the state with the fetched data
-        setState(() {
-          currentBook = bookData;
-          genreName = fetchedGenreName;
-          bookOwner = fetchedBookOwner;
-          kmNumber =
-              getKmNumber(); // Assuming this function returns a string for kmNumber
-        });
-      } else {
-        print('Book with ID $id not found');
-        // Handle the case where no book is found
-      }
+      DocumentReference<Map<String, dynamic>> userRef = bookData['owner'];
+      String userId = userRef.id;
+      final userName = await getUserNameById(userId) as String;
+      // Update currentBook with the fetched data
+      setState(() {
+        currentBook = bookData;
+        genreName = gName;
+        bookOwner = userName;
+        kmNumber = getKmNumber();
+        swipeDetected = false;
+        numberOfBooks = numberOfBooks;
+      });
     } catch (e) {
       print('Error fetching book data: $e');
-      // Handle any exceptions during fetch
-    } finally {
-      // Reset the flags in finally block to ensure they are reset whether the fetch is successful or not
-      setState(() {
-        swipeDetected = false;
-        isFetchingBookData = false;
-      });
     }
   }
 
@@ -151,7 +124,6 @@ class _HomeState extends State<Home> {
             onHorizontalDragUpdate: (details) {
               if (!swipeDetected && !isFetchingBookData) {
                 swipeDetected = true;
-                isFetchingBookData = true;
 
                 // Assuming book IDs are sequential and start from 1
                 int currentId = int.tryParse(bookToShow) ?? 0;
@@ -244,11 +216,6 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                   ),
-                                  IconButton(
-                                    icon: Icon(
-                                        Icons.expand_less), // The arrow icon
-                                    onPressed: _toggleImageSize,
-                                  ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         right: 15.0, top: 8.0),
@@ -331,11 +298,6 @@ class _HomeState extends State<Home> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                  ),
-                                  IconButton(
-                                    icon: Icon(
-                                        Icons.expand_more), // The arrow icon
-                                    onPressed: _toggleImageSize,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
