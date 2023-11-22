@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../models/models.dart';
+import 'dart:async';
 
 class Home extends StatefulWidget {
   @override
@@ -30,6 +31,15 @@ class _HomeState extends State<Home> {
   late int numberOfBooks = 0;
   late DocumentReference<Map<String, dynamic>> bookOwnerID;
   late bool navigateToMatches = false;
+  late bool showLiked = false;
+  late bool showDisliked = false;
+  bool isFetchingBookData = false;
+
+  void _toggleImageSize() {
+    setState(() {
+      isImageLarge = !isImageLarge;
+    });
+  }
 
   Future<void> _fetchBookDataByID(String id) async {
     try {

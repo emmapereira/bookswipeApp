@@ -1,5 +1,20 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+Future<List<String>> fetchAuthors(String query) async {
+  final response = await http
+      .get(Uri.parse('http://openlibrary.org/search/authors.json?q=$query'));
+
+  if (response.statusCode == 200) {
+    final data = json.decode(response.body);
+    final List<dynamic> authors = data['docs'];
+    return authors.map((author) => author['name'] as String).toList();
+  } else {
+    throw Exception('Failed to load authors');
+  }
+}
 
 class PreferencesPage extends StatefulWidget {
   final String id;
