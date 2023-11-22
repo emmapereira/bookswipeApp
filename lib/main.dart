@@ -1,3 +1,4 @@
+import 'package:bookswipe/screens/newbook.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -62,6 +63,10 @@ class MyApp extends StatelessWidget {
             const BottomNavigationBarThemeData(selectedItemColor: Colors.black),
       ),
       home: MyHomePage(title: 'BookSwipe', appState: appState),
+      routes: {
+        '/matches': (context) => Matches(),
+        // Add more routes as needed...
+      },
     );
   }
 }
@@ -92,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return [
       Home(),
       Explore(),
+      NewBook(),
       Matches(),
       Profile(),
     ];
@@ -108,6 +114,11 @@ class _MyHomePageState extends State<MyHomePage> {
       PersistentBottomNavBarItem(
           icon: const Icon(Icons.travel_explore),
           title: "Explore",
+          activeColorPrimary: Colors.black,
+          inactiveColorPrimary: Color.fromARGB(255, 119, 119, 119)),
+      PersistentBottomNavBarItem(
+          icon: const Icon(Icons.add_circle),
+          title: "Add",
           activeColorPrimary: Colors.black,
           inactiveColorPrimary: Color.fromARGB(255, 119, 119, 119)),
       PersistentBottomNavBarItem(

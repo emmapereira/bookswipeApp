@@ -183,14 +183,14 @@ class _NewBookState extends State<NewBook> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(color: Colors.black),
-        leading: IconButton(
+        /*leading: IconButton(
           color: Color.fromARGB(255, 79, 81, 140),
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             // Implement the functionality to navigate back
-            Navigator.pop(context);
+            //Navigator.pop(context);
           },
-        ),
+        ),*/
         title: const Text(
           "Add a new book",
           style: TextStyle(

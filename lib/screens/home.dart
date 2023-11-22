@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
   late int numberOfBooks = 0;
   late DocumentReference<Map<String, dynamic>> bookOwnerID;
   late bool navigateToMatches = false;
+
   Future<void> _fetchBookDataByID(String id) async {
     try {
       // Perform your asynchronous operations here
@@ -56,7 +57,6 @@ class _HomeState extends State<Home> {
       print('Error fetching book data: $e');
     }
   }
-
   Future<void> _addLike() async {
     DocumentReference<Map<String, dynamic>> liked_bookRef =
         FirebaseFirestore.instance.collection('books').doc(bookToShow);
@@ -70,7 +70,6 @@ class _HomeState extends State<Home> {
     await addLike(likerRef, liked_bookRef, book_ownerRef);
     _checkIfNewMatch();
   }
-
   void _navigateToMatches() {
     Navigator.pushReplacement(
       context,
@@ -140,7 +139,6 @@ class _HomeState extends State<Home> {
       },
     );
   }
-
   Future<void> _checkIfNewMatch() async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot =
         await FirebaseFirestore.instance
@@ -182,7 +180,6 @@ class _HomeState extends State<Home> {
   Future<void> _addMatch(book1, book2) async {
     await addMatch(book1, book2);
   }
-
   @override
   void initState() {
     super.initState();
