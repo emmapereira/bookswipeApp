@@ -89,7 +89,29 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Future<void> _showPopup() async {
+  Future<String> _getBookName(String bookId) async {
+    try {
+      // Perform your asynchronous operations here
+      final String bookName = await fetchBookNameByID(bookId) as String;
+
+      if (bookName != null) {
+        return bookName;
+      } else {
+        return 'Book name not found'; // You can return a default value or handle this case as needed.
+      }
+    } catch (e) {
+      print('Error fetching book data: $e');
+      return '';
+    }
+  }
+
+  Future<void> _showPopup(DocumentReference<Map<String, dynamic>> book1,
+      DocumentReference<Map<String, dynamic>> book2) async {
+    String bookId1 = book1.id;
+    String bookId2 = book2.id;
+    String bookName1 = await _getBookName(bookId1);
+    String bookName2 = await _getBookName(bookId2);
+
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -112,7 +134,8 @@ class _HomeState extends State<Home> {
               content: SingleChildScrollView(
                 child: ListBody(
                   children: <Widget>[
-                    Text('Your book x has matched with bookx.'),
+                    Text(
+                        'Your book $bookName1 has matched with book $bookName2.'),
                     // Add more widgets as needed
                   ],
                 ),
@@ -192,7 +215,7 @@ class _HomeState extends State<Home> {
 
   Future<void> _addMatch(book1, book2) async {
     await addMatch(book1, book2);
-    _showPopup(); // Call the function to show the popup
+    _showPopup(book1, book2); // Call the function to show the popup
     if (navigateToMatches) {
       Navigator.push(
         context,
