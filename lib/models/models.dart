@@ -169,7 +169,6 @@ Future<List<String>> fetchFavoriteGenresById(String id) async {
   return favoriteGenres;
 }
 
-// Function to write a timestamp to the database
 Future<void> addGenre(String genreName) async {
   print("trying to add a new genre");
 
@@ -204,6 +203,56 @@ Future<void> addBook(BookInformation bookInfo, String bookId) async {
     print('New book added to Firestore with ID: ${docRef.id}');
   } catch (e) {
     print('Error adding a new book: $e');
+  }
+}
+
+Future<void> addLike(
+    DocumentReference<Map<String, dynamic>> liker,
+    DocumentReference<Map<String, dynamic>> liked_book,
+    DocumentReference<Map<String, dynamic>> book_owner) async {
+  print("trying to add a new like");
+
+  try {
+    // Reference to the "like" collection
+    CollectionReference likesCollection =
+        FirebaseFirestore.instance.collection('likes');
+
+    QuerySnapshot querySnapshot = await likesCollection.get();
+
+    int customId = querySnapshot.size + 1;
+    // Set the document with the custom ID and data
+    await likesCollection.doc(customId.toString()).set({
+      'liker': liker,
+      'liked_book': liked_book,
+      'book_owner': book_owner,
+    });
+
+    print('New like added to Firestore with custom ID "$customId".');
+  } catch (e) {
+    print('Error adding new like: $e');
+  }
+}
+
+Future<void> addMatch(DocumentReference<Map<String, dynamic>> book1,
+    DocumentReference<Map<String, dynamic>> book2) async {
+  print("trying to add a new match");
+
+  try {
+    // Reference to the "matches" collection
+    CollectionReference matchesCollection =
+        FirebaseFirestore.instance.collection('matches');
+
+    QuerySnapshot querySnapshot = await matchesCollection.get();
+
+    int customId = querySnapshot.size + 1;
+    // Set the document with the custom ID and data
+    await matchesCollection
+        .doc(customId.toString())
+        .set({'book1': book1, 'book2': book2});
+
+    print('New match added to Firestore with custom ID "$customId".');
+  } catch (e) {
+    print('Error adding new match: $e');
   }
 }
 

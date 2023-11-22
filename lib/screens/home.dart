@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations, use_build_context_synchronously
 
 import 'package:bookswipe/screens/matches.dart';
 import 'package:bookswipe/screens/profile_preferences.dart';
@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
   late String kmNumber = '0';
   late bool swipeDetected = false;
   late int numberOfBooks = 0;
-
+  late DocumentReference<Map<String, dynamic>> bookOwnerID;
   late bool navigateToMatches = false;
 
   Future<void> _fetchBookDataByID(String id) async {
@@ -48,6 +48,7 @@ class _HomeState extends State<Home> {
         currentBook = bookData;
         genreName = gName;
         bookOwner = userName;
+        bookOwnerID = userRef;
         kmNumber = getKmNumber();
         swipeDetected = false;
         numberOfBooks = numberOfBooks;
@@ -56,7 +57,19 @@ class _HomeState extends State<Home> {
       print('Error fetching book data: $e');
     }
   }
-
+  Future<void> _addLike() async {
+    DocumentReference<Map<String, dynamic>> liked_bookRef =
+        FirebaseFirestore.instance.collection('books').doc(bookToShow);
+    DocumentReference<Map<String, dynamic>> book_ownerRef = bookOwnerID;
+    DocumentReference<Map<String, dynamic>> likerRef =
+        FirebaseFirestore.instance.collection('users').doc('1');
+    print('LIKE TO ADD: ');
+    print(likerRef);
+    print(liked_bookRef);
+    print(book_ownerRef);
+    await addLike(likerRef, liked_bookRef, book_ownerRef);
+    _checkIfNewMatch();
+  }
   void _navigateToMatches() {
     Navigator.pushReplacement(
       context,
@@ -126,7 +139,47 @@ class _HomeState extends State<Home> {
       },
     );
   }
+  Future<void> _checkIfNewMatch() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await FirebaseFirestore.instance
+            .collection('likes') // Replace with your actual collection name
+            .get();
 
+    List<Map<String, dynamic>> matchingPairs = [];
+
+    List<Map<String, dynamic>> allInstances =
+        querySnapshot.docs.map((doc) => doc.data()).toList();
+
+    if (allInstances.isNotEmpty) {
+      var lastAddedInstance = allInstances.last;
+
+      for (var instance in allInstances) {
+        if ((instance['liker'] == lastAddedInstance['book_owner']) &&
+            (instance['book_owner'] == lastAddedInstance['liker'])) {
+          matchingPairs.add(instance);
+        }
+      }
+
+      if (matchingPairs.isNotEmpty) {
+        print('Matching pairs with the last added instance:');
+        for (var pair in matchingPairs) {
+          print(pair);
+          print(
+              'book1: ${pair['liked_book']}, book2: ${lastAddedInstance['liked_book']}');
+
+          _addMatch(pair['liked_book'], lastAddedInstance['liked_book']);
+        }
+      } else {
+        print('No matching pairs found with the last added instance.');
+      }
+    } else {
+      print('No instances found in the collection.');
+    }
+  }
+
+  Future<void> _addMatch(book1, book2) async {
+    await addMatch(book1, book2);
+  }
   @override
   void initState() {
     super.initState();
@@ -211,6 +264,7 @@ class _HomeState extends State<Home> {
                   // swipe right
                 } else if (details.delta.dx > 0) {
                   swipeDetected = true;
+                  _addLike();
                   await _showPopup(); // Call the function to show the popup
                   if (navigateToMatches) {
                     Navigator.push(
