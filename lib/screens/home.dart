@@ -1,7 +1,5 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations, use_build_context_synchronously
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations
 
-import 'package:bookswipe/screens/matches.dart';
-import 'package:bookswipe/screens/profile_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -29,17 +27,9 @@ class _HomeState extends State<Home> {
   late String kmNumber = '0';
   late bool swipeDetected = false;
   late int numberOfBooks = 0;
-  late DocumentReference<Map<String, dynamic>> bookOwnerID;
-  late bool navigateToMatches = false;
   late bool showLiked = false;
   late bool showDisliked = false;
   bool isFetchingBookData = false;
-
-  void _toggleImageSize() {
-    setState(() {
-      isImageLarge = !isImageLarge;
-    });
-  }
 
   Future<void> _fetchBookDataByID(String id) async {
     try {
@@ -58,7 +48,6 @@ class _HomeState extends State<Home> {
         currentBook = bookData;
         genreName = gName;
         bookOwner = userName;
-        bookOwnerID = userRef;
         kmNumber = getKmNumber();
         swipeDetected = false;
         numberOfBooks = numberOfBooks;
@@ -67,7 +56,7 @@ class _HomeState extends State<Home> {
       print('Error fetching book data: $e');
     }
   }
-
+  
   Future<void> _addLike() async {
     DocumentReference<Map<String, dynamic>> liked_bookRef =
         FirebaseFirestore.instance.collection('books').doc(bookToShow);
@@ -268,6 +257,7 @@ class _HomeState extends State<Home> {
     }
   }
 
+
   @override
   void initState() {
     super.initState();
@@ -309,22 +299,22 @@ class _HomeState extends State<Home> {
     }
 
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: const Text(
-            "Start swiping!",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 79, 81, 140),
+        body: Stack(children: [
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Text(
+              "Start swiping!",
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 79, 81, 140)),
             ),
           ),
-          centerTitle: false,
-          elevation: 0,
-        ),
-        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const Padding(
-            padding: const EdgeInsets.only(left: 17.0, bottom: 10.0),
+            padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
             child: Text(
               "Swipe right if you like a book, swipe left to move onto the next one.",
               style: TextStyle(
@@ -332,40 +322,30 @@ class _HomeState extends State<Home> {
             ),
           ),
           GestureDetector(
-            onHorizontalDragUpdate: (details) async {
-              if (!swipeDetected) {
-                // swipe left
-                if (details.delta.dx < 0) {
-                  swipeDetected = true;
-                  //print("LEFT SWIPE");
-                  setState(() {
-                    // TO DO: Change here
-                    int number = int.parse(
-                        bookToShow); // Convert the string to an integer
-                    number++; // Increment the integer
-                    if (number == numberOfBooks + 1) number = 1;
-                    bookToShow = number.toString();
-                    _fetchBookDataByID(bookToShow);
-                  });
-                  // Positive velocity means a right swipe
+            onHorizontalDragUpdate: (details) {
+              if (!swipeDetected && !isFetchingBookData) {
+                swipeDetected = true;
 
-                  // swipe right
-                } else if (details.delta.dx > 0) {
-                  swipeDetected = true;
-                  _addLike();
+                // Assuming book IDs are sequential and start from 1
+                int currentId = int.tryParse(bookToShow) ?? 0;
+                currentId = (currentId % numberOfBooks) +
+                    1; // Increment to get the next book ID
+                bookToShow = currentId.toString();
 
-                  //print("RIGHT SWIPE");
+                setState(() {
+                  showLiked = details.delta.dx > 0;
+                  showDisliked = details.delta.dx < 0;
+                });
+
+                _fetchBookDataByID(bookToShow); // Fetch data for the new book
+
+                Timer(Duration(milliseconds: 500), () {
                   setState(() {
-                    // TO DO: Change here
-                    int number = int.parse(
-                        bookToShow); // Convert the string to an integer
-                    number--; // Increment the integer
-                    if (number == 0) number = numberOfBooks;
-                    bookToShow = number.toString();
-                    _fetchBookDataByID(bookToShow);
+                    showLiked = false;
+                    showDisliked = false;
+                    swipeDetected = false;
                   });
-                  // Negative velocity means a left swipe
-                }
+                });
               }
             },
             onHorizontalDragEnd: (details) {
@@ -691,6 +671,24 @@ class _HomeState extends State<Home> {
                           ])),
                     ),
                   ))
-        ]));
+        ],
+      ),
+      if (showDisliked)
+        Center(
+          child: Icon(
+            Icons.favorite,
+            color: Colors.green,
+            size: 100.0,
+          ),
+        ),
+      if (showLiked)
+        Center(
+          child: Icon(
+            Icons.close,
+            color: Colors.red,
+            size: 100.0,
+          ),
+        ),
+    ]));
   }
 }
