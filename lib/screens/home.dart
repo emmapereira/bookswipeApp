@@ -57,6 +57,7 @@ class _HomeState extends State<Home> {
       print('Error fetching book data: $e');
     }
   }
+
   Future<void> _addLike() async {
     DocumentReference<Map<String, dynamic>> liked_bookRef =
         FirebaseFirestore.instance.collection('books').doc(bookToShow);
@@ -70,6 +71,7 @@ class _HomeState extends State<Home> {
     await addLike(likerRef, liked_bookRef, book_ownerRef);
     _checkIfNewMatch();
   }
+
   void _navigateToMatches() {
     Navigator.pushReplacement(
       context,
@@ -139,6 +141,7 @@ class _HomeState extends State<Home> {
       },
     );
   }
+
   Future<void> _checkIfNewMatch() async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot =
         await FirebaseFirestore.instance
@@ -179,7 +182,16 @@ class _HomeState extends State<Home> {
 
   Future<void> _addMatch(book1, book2) async {
     await addMatch(book1, book2);
+    _showPopup(); // Call the function to show the popup
+    if (navigateToMatches) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Matches()),
+      );
+      navigateToMatches = false;
+    }
   }
+
   @override
   void initState() {
     super.initState();
@@ -265,14 +277,7 @@ class _HomeState extends State<Home> {
                 } else if (details.delta.dx > 0) {
                   swipeDetected = true;
                   _addLike();
-                  await _showPopup(); // Call the function to show the popup
-                  if (navigateToMatches) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Matches()),
-                    );
-                    navigateToMatches = false;
-                  }
+
                   //print("RIGHT SWIPE");
                   setState(() {
                     // TO DO: Change here
