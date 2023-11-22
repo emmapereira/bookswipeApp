@@ -134,8 +134,51 @@ class _HomeState extends State<Home> {
               content: SingleChildScrollView(
                 child: ListBody(
                   children: <Widget>[
-                    Text(
-                        'Your book $bookName1 has matched with book $bookName2.'),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Amazing! Your book ',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
+                          ),
+                          TextSpan(
+                            text:
+                                bookName1, // Replace with the actual bookName1 variable
+                            style: TextStyle(
+                              color: Color(0xff4F518C),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ' has matched with book ',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
+                          ),
+                          TextSpan(
+                            text:
+                                bookName2, // Replace with the actual bookName2 variable
+                            style: TextStyle(
+                              color: Color(0xFFABD2FA),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          TextSpan(
+                            text: '.',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     // Add more widgets as needed
                   ],
                 ),
