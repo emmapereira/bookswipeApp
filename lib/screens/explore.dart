@@ -22,6 +22,7 @@ class _ExploreState extends State<Explore> {
   late List<Map<String, dynamic>> allBooks = [];
 
   List<Map<String, dynamic>> filteredBooks = [];
+  late bool navigateToMatches = false;
 
   Future<void> _getBooks() async {
     try {
@@ -68,6 +69,13 @@ class _ExploreState extends State<Explore> {
     });
   }
 
+  void _navigateToMatches() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Home()),
+    );
+  }
+
   Future<void> _showPopup() async {
     return showDialog<void>(
       context: context,
@@ -99,15 +107,14 @@ class _ExploreState extends State<Explore> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextButton(
-                  child: Text('Go to home screen'),
+                ElevatedButton.icon(
                   onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Home()),
-                    );
+                    // Close the dialog
+                    navigateToMatches = true;
+                    Navigator.of(context, rootNavigator: true).pop();
                   },
+                  icon: Icon(Icons.explore),
+                  label: Text("Go to home"),
                 ),
               ],
             ),
@@ -224,14 +231,21 @@ class _ExploreState extends State<Explore> {
               }
 
               return GestureDetector(
-                onTap: () {
+                onTap: () async {
                   // Navigator.push(
                   //   context,
                   //   MaterialPageRoute(
                   //     builder: (context) => Item(itemId: clothingItem.id),
                   //   ),
                   // );
-                  _showPopup();
+                  await _showPopup();
+                  if (navigateToMatches) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Home()),
+                    );
+                    navigateToMatches = false;
+                  }
                 },
                 child: GridTile(
                   child: Padding(

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations
 
 import 'package:bookswipe/screens/matches.dart';
+import 'package:bookswipe/screens/profile_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -28,6 +29,8 @@ class _HomeState extends State<Home> {
   late bool swipeDetected = false;
   late int numberOfBooks = 0;
 
+  late bool navigateToMatches = false;
+
   Future<void> _fetchBookDataByID(String id) async {
     try {
       // Perform your asynchronous operations here
@@ -54,47 +57,71 @@ class _HomeState extends State<Home> {
     }
   }
 
+  void _navigateToMatches() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Matches()),
+    );
+  }
+
   Future<void> _showPopup() async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('New book match!'),
-              IconButton(
-                icon: Icon(Icons.close),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+        return Builder(
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('New book match!'),
+                  IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
               ),
-            ],
-          ),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('Your book x has matched with bookx.'),
-                // Add more widgets as needed
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  child: Text('Go to matches'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Matches()));
-                  },
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+                    Text('Your book x has matched with bookx.'),
+                    // Add more widgets as needed
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        // Close the dialog
+                        navigateToMatches = true;
+                        Navigator.of(context, rootNavigator: true).pop();
+                      },
+                      icon: Icon(Icons.explore),
+                      label: Text("Go to matches"),
+                    ),
+                    /*
+                    TextButton(
+                      child: Text('Go to matches'),
+                      onPressed: () {
+                        navigateToMatches = true;
+                        Navigator.of(context, rootNavigator: true).pop();
+                        /*Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Matches()));*/
+                        //Navigator.pushNamed(context, '/matches');
+                        //_navigateToMatches();
+                      },
+                    ),*/
+                  ],
                 ),
               ],
-            ),
-          ],
+            );
+          },
         );
       },
     );
@@ -164,7 +191,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           GestureDetector(
-            onHorizontalDragUpdate: (details) {
+            onHorizontalDragUpdate: (details) async {
               if (!swipeDetected) {
                 // swipe left
                 if (details.delta.dx < 0) {
@@ -184,7 +211,14 @@ class _HomeState extends State<Home> {
                   // swipe right
                 } else if (details.delta.dx > 0) {
                   swipeDetected = true;
-                  _showPopup(); // Call the function to show the popup
+                  await _showPopup(); // Call the function to show the popup
+                  if (navigateToMatches) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Matches()),
+                    );
+                    navigateToMatches = false;
+                  }
                   //print("RIGHT SWIPE");
                   setState(() {
                     // TO DO: Change here

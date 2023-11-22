@@ -63,6 +63,10 @@ class MyApp extends StatelessWidget {
             const BottomNavigationBarThemeData(selectedItemColor: Colors.black),
       ),
       home: MyHomePage(title: 'BookSwipe', appState: appState),
+      routes: {
+        '/matches': (context) => Matches(),
+        // Add more routes as needed...
+      },
     );
   }
 }
