@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations
 
+import 'package:bookswipe/screens/matches.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -26,6 +27,7 @@ class _HomeState extends State<Home> {
   late String kmNumber = '0';
   late bool swipeDetected = false;
   late int numberOfBooks = 0;
+  late DocumentReference<Map<String, dynamic>> bookOwnerID;
 
   Future<void> _fetchBookDataByID(String id) async {
     try {
@@ -44,6 +46,7 @@ class _HomeState extends State<Home> {
         currentBook = bookData;
         genreName = gName;
         bookOwner = userName;
+        bookOwnerID = userRef;
         kmNumber = getKmNumber();
         swipeDetected = false;
         numberOfBooks = numberOfBooks;
@@ -51,6 +54,62 @@ class _HomeState extends State<Home> {
     } catch (e) {
       print('Error fetching book data: $e');
     }
+  }
+
+  Future<void> _addLike() async {
+    DocumentReference<Map<String, dynamic>> liked_bookRef =
+        FirebaseFirestore.instance.collection('books').doc(bookToShow);
+    DocumentReference<Map<String, dynamic>> book_ownerRef = bookOwnerID;
+    DocumentReference<Map<String, dynamic>> likerRef =
+        FirebaseFirestore.instance.collection('users').doc('1');
+    print('LIKE TO ADD: ');
+    print(likerRef);
+    print(liked_bookRef);
+    print(book_ownerRef);
+    await addLike(likerRef, liked_bookRef, book_ownerRef);
+    _checkIfNewMatch();
+  }
+
+  Future<void> _checkIfNewMatch() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await FirebaseFirestore.instance
+            .collection('likes') // Replace with your actual collection name
+            .get();
+
+    List<Map<String, dynamic>> matchingPairs = [];
+
+    List<Map<String, dynamic>> allInstances =
+        querySnapshot.docs.map((doc) => doc.data()).toList();
+
+    if (allInstances.isNotEmpty) {
+      var lastAddedInstance = allInstances.last;
+
+      for (var instance in allInstances) {
+        if ((instance['liker'] == lastAddedInstance['book_owner']) &&
+            (instance['book_owner'] == lastAddedInstance['liker'])) {
+          matchingPairs.add(instance);
+        }
+      }
+
+      if (matchingPairs.isNotEmpty) {
+        print('Matching pairs with the last added instance:');
+        for (var pair in matchingPairs) {
+          print(pair);
+          print(
+              'book1: ${pair['liked_book']}, book2: ${lastAddedInstance['liked_book']}');
+
+          _addMatch(pair['liked_book'], lastAddedInstance['liked_book']);
+        }
+      } else {
+        print('No matching pairs found with the last added instance.');
+      }
+    } else {
+      print('No instances found in the collection.');
+    }
+  }
+
+  Future<void> _addMatch(book1, book2) async {
+    await addMatch(book1, book2);
   }
 
   @override
@@ -136,6 +195,7 @@ class _HomeState extends State<Home> {
                   // swipe Left
                 } else if (details.delta.dx > 0) {
                   swipeDetected = true;
+                  _addLike();
                   //print("RIGHT SWIPE");
                   setState(() {
                     // TO DO: Change here

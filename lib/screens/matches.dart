@@ -30,6 +30,14 @@ class _MatchesState extends State<Matches> {
     }
   }
 
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   WidgetsBinding.instance!.addPostFrameCallback((_) {
+  //     _getMatches();
+  //   });
+  // }
+
   Future<String> _getBookName(String bookId) async {
     try {
       // Perform your asynchronous operations here
@@ -82,6 +90,11 @@ class _MatchesState extends State<Matches> {
   void initState() {
     super.initState();
     _getMatches();
+  }
+
+  // This method will be called when the Matches screen is popped
+  void didPop() {
+    _getMatches(); // Refresh data when navigating back to this screen
   }
 
   @override
