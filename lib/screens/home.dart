@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, unnecessary_string_interpolations, use_build_context_synchronously
 
 import 'package:bookswipe/screens/matches.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -40,30 +40,81 @@ class _HomeState extends State<Home> {
     });
   }
 
+  // Future<void> _fetchBookDataByID(String id) async {
+  //   try {
+  //     // Perform your asynchronous operations here
+  //     final bookData = await getBookById(id) as Map<String, dynamic>;
+
+  //     DocumentReference<Map<String, dynamic>> genreRef = bookData['genre'];
+  //     String genreId = genreRef.id;
+  //     final gName = await getGenreById(genreId) as String;
+
+  //     DocumentReference<Map<String, dynamic>> userRef = bookData['owner'];
+  //     String userId = userRef.id;
+  //     final userName = await getUserNameById(userId) as String;
+  //     // Update currentBook with the fetched data
+  //     setState(() {
+  //       currentBook = bookData;
+  //       genreName = gName;
+  //       bookOwner = userName;
+  //       bookOwnerID = userRef;
+  //       kmNumber = getKmNumber();
+  //       swipeDetected = false;
+  //       numberOfBooks = numberOfBooks;
+  //     });
+  //   } catch (e) {
+  //     print('Error fetching book data: $e');
+  //   }
+  // }
+
   Future<void> _fetchBookDataByID(String id) async {
     try {
-      // Perform your asynchronous operations here
-      final bookData = await getBookById(id) as Map<String, dynamic>;
+      // Fetch the book data using the getBookById function
+      final Map<String, dynamic>? bookData = await getBookById(id);
 
-      DocumentReference<Map<String, dynamic>> genreRef = bookData['genre'];
-      String genreId = genreRef.id;
-      final gName = await getGenreById(genreId) as String;
+      // If book data is found
+      if (bookData != null) {
+        // Fetch additional details like genre and owner if they exist
+        String fetchedGenreName = '';
+        String fetchedBookOwner = '';
 
-      DocumentReference<Map<String, dynamic>> userRef = bookData['owner'];
-      String userId = userRef.id;
-      final userName = await getUserNameById(userId) as String;
-      // Update currentBook with the fetched data
-      setState(() {
-        currentBook = bookData;
-        genreName = gName;
-        bookOwner = userName;
-        bookOwnerID = userRef;
-        kmNumber = getKmNumber();
-        swipeDetected = false;
-        numberOfBooks = numberOfBooks;
-      });
+        if (bookData['genre'] != null) {
+          DocumentReference<Map<String, dynamic>> genreRef = bookData['genre'];
+          String genreId = genreRef.id;
+          fetchedGenreName = await getGenreById(genreId) as String;
+        }
+
+        if (bookData['owner'] != null) {
+          DocumentReference<Map<String, dynamic>> userRef = bookData['owner'];
+          String userId = userRef.id;
+          fetchedBookOwner = await getUserNameById(userId) as String;
+        }
+
+        // Update the state with the fetched data
+        setState(() {
+          currentBook = bookData;
+          genreName = fetchedGenreName;
+          bookOwner = fetchedBookOwner;
+          kmNumber = getKmNumber();
+
+          bookOwnerID = bookData['owner'];
+
+          numberOfBooks =
+              numberOfBooks; // Assuming this function returns a string for kmNumber
+        });
+      } else {
+        print('Book with ID $id not found');
+        // Handle the case where no book is found
+      }
     } catch (e) {
       print('Error fetching book data: $e');
+      // Handle any exceptions during fetch
+    } finally {
+      // Reset the flags in finally block to ensure they are reset whether the fetch is successful or not
+      setState(() {
+        swipeDetected = false;
+        isFetchingBookData = false;
+      });
     }
   }
 
@@ -257,7 +308,7 @@ class _HomeState extends State<Home> {
 
   Future<void> _addMatch(book1, book2) async {
     await addMatch(book1, book2);
-    _showPopup(book1, book2); // Call the function to show the popup
+    await _showPopup(book1, book2); // Call the function to show the popup
     if (navigateToMatches) {
       Navigator.push(
         context,
@@ -333,6 +384,9 @@ class _HomeState extends State<Home> {
           GestureDetector(
             onHorizontalDragUpdate: (details) {
               if (!swipeDetected && !isFetchingBookData) {
+                if (details.delta.dx > 0) {
+                  _addLike();
+                }
                 swipeDetected = true;
 
                 // Assuming book IDs are sequential and start from 1
@@ -426,6 +480,11 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                   ),
+                                  IconButton(
+                                    icon: Icon(
+                                        Icons.expand_less), // The arrow icon
+                                    onPressed: _toggleImageSize,
+                                  ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         right: 15.0, top: 8.0),
@@ -508,6 +567,11 @@ class _HomeState extends State<Home> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                        Icons.expand_more), // The arrow icon
+                                    onPressed: _toggleImageSize,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
@@ -682,7 +746,7 @@ class _HomeState extends State<Home> {
                   ))
         ],
       ),
-      if (showDisliked)
+      if (showLiked)
         Center(
           child: Icon(
             Icons.favorite,
@@ -690,7 +754,7 @@ class _HomeState extends State<Home> {
             size: 100.0,
           ),
         ),
-      if (showLiked)
+      if (showDisliked)
         Center(
           child: Icon(
             Icons.close,
