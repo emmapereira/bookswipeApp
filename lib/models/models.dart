@@ -233,6 +233,52 @@ Future<void> addLike(
   }
 }
 
+Future<void> deleteLikeById(String likeId) async {
+  try {
+    // Reference to the "likes" collection
+    CollectionReference likesCollection =
+        FirebaseFirestore.instance.collection('likes');
+
+    // Get the document reference of the like to delete
+    DocumentReference likeToDeleteRef = likesCollection.doc(likeId);
+
+    // Check if the document exists before attempting deletion
+    DocumentSnapshot snapshot = await likeToDeleteRef.get();
+    if (snapshot.exists) {
+      // Delete the document
+      await likeToDeleteRef.delete();
+      print('Successfully deleted LIKE with ID: $likeId');
+    } else {
+      print('No like found with ID: $likeId');
+    }
+  } catch (e) {
+    print('Error deleting like: $e');
+  }
+}
+
+Future<void> deleteMatchById(String matchId) async {
+  try {
+    // Reference to the "matches" collection
+    CollectionReference matchesCollection =
+        FirebaseFirestore.instance.collection('matches');
+
+    // Get the document reference of the like to delete
+    DocumentReference matchToDeleteRef = matchesCollection.doc(matchId);
+
+    // Check if the document exists before attempting deletion
+    DocumentSnapshot snapshot = await matchToDeleteRef.get();
+    if (snapshot.exists) {
+      // Delete the document
+      await matchToDeleteRef.delete();
+      print('Successfully deleted MATCH with ID: $matchId');
+    } else {
+      print('No match found with ID: $matchId');
+    }
+  } catch (e) {
+    print('Error deleting match: $e');
+  }
+}
+
 Future<void> addMatch(DocumentReference<Map<String, dynamic>> book1,
     DocumentReference<Map<String, dynamic>> book2) async {
   print("trying to add a new match");
@@ -253,6 +299,45 @@ Future<void> addMatch(DocumentReference<Map<String, dynamic>> book1,
     print('New match added to Firestore with custom ID "$customId".');
   } catch (e) {
     print('Error adding new match: $e');
+  }
+}
+
+Future<void> deleteLikesandMatches() async {
+  try {
+    // Reference to the Firestore collection 'likes'
+    QuerySnapshot<Map<String, dynamic>> likesSnapshot =
+        await FirebaseFirestore.instance.collection('likes').get();
+    QuerySnapshot<Map<String, dynamic>> matchesSnapshot =
+        await FirebaseFirestore.instance.collection('matches').get();
+
+    if (likesSnapshot.docs.isNotEmpty) {
+      // Iterate through all documents in the 'likes' collection
+      for (QueryDocumentSnapshot<Map<String, dynamic>> like
+          in likesSnapshot.docs) {
+        // Parse the document ID as an integer and print it
+        int likeId = int.tryParse(like.id) ?? 0;
+        if (likeId > 5) {
+          deleteLikeById(like.id);
+        }
+      }
+    } else {
+      print('No likes found in the collection.');
+    }
+    if (matchesSnapshot.docs.isNotEmpty) {
+      // Iterate through all documents in the 'matches' collection
+      for (QueryDocumentSnapshot<Map<String, dynamic>> match
+          in matchesSnapshot.docs) {
+        // Parse the document ID as an integer and print it
+        int matchId = int.tryParse(match.id) ?? 0;
+        if (matchId > 5) {
+          deleteMatchById(match.id);
+        }
+      }
+    } else {
+      print('No matches found in the collection.');
+    }
+  } catch (e) {
+    print('Error fetching likes or matches data: $e');
   }
 }
 
