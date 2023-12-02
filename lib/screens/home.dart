@@ -284,7 +284,8 @@ class _HomeState extends State<Home> {
 
       for (var instance in allInstances) {
         if ((instance['liker'] == lastAddedInstance['book_owner']) &&
-            (instance['book_owner'] == lastAddedInstance['liker'])) {
+            (instance['book_owner'] == lastAddedInstance['liker']) &&
+            (instance['liker'] != instance['book_owner'])) {
           matchingPairs.add(instance);
         }
       }
