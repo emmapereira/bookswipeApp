@@ -276,8 +276,30 @@ class _HomeState extends State<Home> {
 
     List<Map<String, dynamic>> matchingPairs = [];
 
-    List<Map<String, dynamic>> allInstances =
-        querySnapshot.docs.map((doc) => doc.data()).toList();
+    List<Map<String, dynamic>> allInstances = querySnapshot.docs
+        .map((doc) => {
+              'id': int.tryParse(doc.id), // Add the document ID to the data
+              ...doc.data(), // Add other document data
+            })
+        .toList();
+
+    allInstances.sort((a, b) {
+      final int? idA = a['id'] as int?;
+      final int? idB = b['id'] as int?;
+
+      // Handle cases where either idA or idB is null
+      if (idA == null || idB == null) {
+        if (idA == null && idB == null) {
+          return 0;
+        } else if (idA == null) {
+          return -1;
+        } else {
+          return 1;
+        }
+      }
+
+      return idA.compareTo(idB);
+    });
 
     if (allInstances.isNotEmpty) {
       var lastAddedInstance = allInstances.last;

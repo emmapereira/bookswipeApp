@@ -13,7 +13,7 @@ import 'models/models.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 Future main() async {
-  //deleteLikesandMatches();
+  deleteLikesandMatches();
   WidgetsFlutterBinding.ensureInitialized();
 
   //we usually use web, so the app will typically run this in our case
